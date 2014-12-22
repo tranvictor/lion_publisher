@@ -1,0 +1,64 @@
+# robots.txt
+User-agent: Googlebot
+Disallow:
+Disallow: /admin
+Disallow: /cdn-cgi/
+
+User-agent: Googlebot-News (Googlebot)
+Disallow:
+Disallow: /admin
+Disallow: /cdn-cgi/
+
+User-agent: Googlebot-Image (Googlebot)
+Disallow:
+Disallow: /admin
+Disallow: /cdn-cgi/
+
+User-agent: Googlebot-Video (Googlebot)
+Disallow:
+Disallow: /admin
+Disallow: /cdn-cgi/
+
+User-agent: Googlebot-Mobile
+Disallow:
+Disallow: /admin
+Disallow: /cdn-cgi/
+
+User-agent:  Mediapartners (Googlebot)
+Disallow:
+Disallow: /admin
+Disallow: /cdn-cgi/
+
+User-agent: Mediapartners-Google Mediapartners (Googlebot)
+Disallow:
+Disallow: /admin
+Disallow: /cdn-cgi/
+
+User-agent: AdsBot-Google
+Disallow:
+Disallow: /admin
+Disallow: /cdn-cgi/
+
+User-agent: facebookexternalhit/1.0 
+Disallow:
+Disallow: /admin
+Disallow: /cdn-cgi/
+
+
+User-agent: facebookexternalhit/1.1
+Disallow:
+Disallow: /admin
+Disallow: /cdn-cgi/
+
+User-agent: Twitterbot
+Disallow:
+Disallow: /admin
+Disallow: /cdn-cgi/
+
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: *
+Disallow: /
+
+Sitemap: http://www.teensdigest.com/sitemap.xml

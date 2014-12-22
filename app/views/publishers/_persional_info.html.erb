@@ -1,0 +1,86 @@
+<div class="personal-information" >
+    <h3>Personal Information</h3>
+    <table class="table">
+      <tr>
+        <th>Name </th>
+        <td><%= publisher.name %></td>
+      </tr>
+      <tr>
+        <th>Domain</th><td><%= publisher_domain %></td>
+      </tr>
+      <tr>
+        <th>Payment method</th><td><%= publisher.payment %></td>
+      </tr>
+      <% if publisher.payment == 'Paypal' %>
+        <tr>
+          <th>Paypal email</th><td><%= publisher.paypal_email %></td>
+        </tr>
+      <% else %>
+        <% if publisher.payment == 'US Checks' %>
+          <tr>
+            <th>Address</th><td><%= publisher.checks_address %></td>
+          </tr>
+          <tr>
+            <th>City</th><td><%= publisher.checks_city %></td>
+          </tr>
+          <tr>
+            <th>State</th><td><%= publisher.checks_state %></td>
+          </tr>
+          <tr>
+            <th>Zip Code</th><td><%= publisher.checks_zipcode %></td>
+          </tr>
+        <% else %>
+          <% if publisher.payment == 'Foreign Bank Transfer' %>
+            <tr>
+              <th>Bank Name</th><td><%= publisher.foreign_account_number %></td>
+            </tr>
+            <tr>
+              <th>Bank Address</th><td><%= publisher.bank_account %></td>
+            </tr>
+            <tr>
+              <th>Your Address (Address on Bank Statement/Information)</th><td><%= publisher.foreign_address %></td>
+            </tr>
+            <tr>
+              <th>Branch Sort Code</th><td><%= publisher.foreign_branch_sort_code %></td>
+            </tr>
+            <tr>
+              <th>Account Number</th><td><%= publisher.foreign_bank_name %></td>
+            </tr>
+            <tr>
+              <th>SWIFT Code</th><td><%= publisher.foreign_swift_code %></td>
+            </tr>
+            <tr>
+              <th>IRC</th><td><%= publisher.foreign_irc_code %></td>
+            </tr>
+            <tr>
+              <th>IBAN</th><td><%= publisher.foreign_iban_code %></td>
+            </tr>
+            <tr>
+              <th>Currency</th><td><%= publisher.real_currency %></td>
+            </tr>
+        <% else %>
+          <% if publisher.payment == 'US Bank Transfer' %>
+          <tr>
+            <th>Bank Name</th><td><%= publisher.bank_bank_name %></td>
+          </tr>
+          <tr>
+            <th>Checking Account Number</th><td><%= publisher.bank_account_number %></td>
+          </tr>
+          <tr>
+            <th>Routing Number</th><td><%= publisher.bank_routing_number %></td>
+          </tr>
+          <% else %>
+            <% if publisher.payment == 'Google Wallet' %>
+              <tr>
+                <th>Google Wallet Email</th><td><%= publisher.google_wallet_email %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    </table>
+    <a href="<%= edit_publisher_path(publisher) %>" class="btn btn-primary">Edit</a>
+  </div>
+

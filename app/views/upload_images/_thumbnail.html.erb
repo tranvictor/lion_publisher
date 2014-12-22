@@ -1,0 +1,59 @@
+<div class="photo">
+    <figure>
+        <div class="title">
+            <% if image.title != nil and  image.title != '' %>
+                <%# link_to image.title, upload_image_url(image), title: "View image" %>
+            <% else %>
+                <%# link_to "", upload_image_url(image), title: "View image" %>
+            <% end %>
+            <div class="pull-right" id="action-btn">
+                <% if user_signed_in? %>
+                    <% if current_user.id == image.user.id or current_user.admin? %>
+                        <a href="<%# edit_upload_image_path(image) %>" title="Edit image">
+                            <i class="icon-edit"></i>
+                        </a>
+                        <a href="<%# upload_image_path(image) %>"
+                            data-confirm="Are you sure?"
+                            data-method="delete"
+                            title="Remove image">
+                            <i class="icon-remove"></i>
+                        </a>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+        <div class="fix_height_div">
+            <a href="<%# upload_image_url(image) %>">
+                <%# image_tag image.content.url(:medium), title: "View image" %>
+            </a>
+        </div>
+        <div class="social-buttons">
+            <%# link_to "share", 'http://www.facebook.com/sharer.php?u=' + upload_image_url(image),
+                :target => :blank, :title =>"Share on Facebook" %>
+            <%# link_to "tweet", "http://twitter.com/home?status=#{image.title} #{upload_image_url(image)}",\
+                :target => :blank, :title => "Tweet me" %>
+            <%# link_to "+1", 'https://plus.google.com/share?url=' + upload_image_url(image),
+                :target => :blank, :title => "share on Google plus" %>
+        </div>
+    </figure>
+    <div class="image-stats" data-id="<%= image.id%>" >
+        <div class="user-info">
+            <% unless request.path_parameters[:controller] == "users" %>
+                <%= image_tag(image.user.avatar.url(:tiny_thumb), class: "avatar-thumb") %>
+                <span><%=link_to image.user.user_name, user_path(image.user) %></span>
+            <% end %>
+        </div>
+        <div class="statistic" data-id="<%= image.id%>">
+            <span id="like-counter"><%= image.count_like %></span>
+            <% if user_signed_in? %>
+                <% if image.liked_by(current_user) %>
+                    <%= image_tag 'Like.png', class: "like-this like-btn liked", title: "Unlike this" %>
+                <% else %>
+                    <%= image_tag 'Like.png', class: "like-this like-btn", title: "Like this" %>
+                <% end %>
+            <% else %>
+                <%= image_tag 'Like.png', class: "like-btn" %>
+            <% end %>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title> Magz</title>
+    <link rel="stylesheet" href="components/foundation/css/normalize.css">
+    <link rel="stylesheet" href="components/foundation/css/foundation.css">
+    <link rel="stylesheet" href="components/animate.css/animate.min.css">
+    <link rel="stylesheet" href="components/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body class="minimal">
+    <section class="top non-fixed">
+      <div class="row">
+        <div class="columns small-10 medium-5 small-text-centered small-centered medium-uncentered"><a href="index.html" class="logo text-center">
+            <h1 class="title">TeensDigest</h1>
+            <p class="sub-title">Channel For Teens</p></a></div>
+        <div class="columns small-1 medium-6 large-4 text-right hide-for-small hide-on-search animated fadeIn">
+          <ul class="social-networks">
+            <li><a class="facebook with-counter"><i class="fa fa-facebook-square"></i><span class="counter">1.2M</span></a></li>
+            <li><a class="twitter"><i class="fa fa-twitter"></i></a></li>
+            <li><a class="google-plus"><i class="fa fa-google-plus-square"></i></a></li>
+            <li><a class="pinterest"><i class="fa fa-pinterest"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="editor">
+    </section>
+    <section class="notifications">
+      <div class="row">
+        <div class="columns small-12 small-centered medium-8 large-6">
+          <div class="notifications">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="content">
+      <div class="messages">
+        <div class="row collapse full-height">
+          <div class="columns small-2 folders-holder full-height">
+            <ul class="folders">
+              <li class="hide-for-small">
+                <p class="title">Navigations</p>
+              </li>
+              <li><a><i class="fa fa-arrow-left space hide-for-large-up"></i><span class="show-for-large-up"><i class="fa fa-arrow-left space"></i>Dashboard</span></a></li>
+              <li class="show-for-large-up"><a id="full-view-toggle" href="#"><i class="fa fa-arrows-alt space hide-for-large-up"></i><span class="show-for-large-up"><i class="fa fa-arrows-alt space"></i>Expand View</span></a></li>
+              <li class="hide-for-small">
+                <p class="title">Folders</p>
+              </li>
+              <li data-folder="search"><a><i class="fa fa-search space-10 hide-for-large-up"></i><span class="show-for-large-up">Search</span></a></li>
+              <li data-folder="inbox" class="active"><a><i class="fa fa-inbox space-10 hide-for-large-up"></i><span class="show-for-large-up">Inbox<span class="label space-left round">7</span></span></a></li>
+              <li data-folder="read"><a><i class="fa fa-check-square space-10 hide-for-large-up"></i><span class="show-for-large-up">Read</span></a></li>
+              <li data-folder="unread"><a><i class="fa fa-bookmark space-10 hide-for-large-up"></i><span class="show-for-large-up">Unread<span class="label info space-left round">5</span></span></a></li>
+              <li data-folder="sent"><a><i class="fa fa-send space-10 hide-for-large-up"></i><span class="show-for-large-up">Sent</span></a></li>
+            </ul>
+          </div>
+          <div class="columns small-10 full-height content">
+            <div class="row collapse tool-bar">
+              <div class="columns small-12 medium-6">
+                <div class="row">
+                  <div class="columns small-6 sort-box">
+                    <select class="sort-input">
+                      <option>Latest first</option>
+                      <option>Oldest first</option>
+                      <option>Unread first</option>
+                    </select>
+                  </div>
+                  <div class="columns small-6 search-box">
+                    <input placeholder="Search..." class="search-input">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row collapse full-height">
+              <div class="columns small-12 medium-6 full-height">
+                <ul class="items">
+                  <li data-id="0" class="active"><a>
+                      <p class="from left">Em Thu Thảo</p>
+                      <p class="at right">0:00</p>
+                      <div class="clearfix"></div>
+                      <p class="title">Em gửi anh Gia tuyệt chiêu chọn đầm dự tiệc</p>
+                      <p class="description">Không chỉ lựa chọn những gam màu nhẹ nhàng như những cô nàng tiểu thư trong gam màu đỏ rực rỡ.</p></a>
+                    <ul class="actions">
+                      <li data-action="delete"><a class="button tiny alert"><i class="fa fa-trash space"></i>Del</a></li>
+                      <li data-action="reply"><a class="button tiny info"><i class="fa fa-pencil space"></i>Rep</a></li>
+                    </ul>
+                  </li>
+                  <li data-id="1"><a>
+                      <p class="from left">Nguyet Hang Nguyen</p>
+                      <p class="at right">11:59</p>
+                      <div class="clearfix"></div>
+                      <p class="title">Nguyễn, please add me to your LinkedIn network</p>
+                      <p class="description">Hi Nguyễn, I'd like to connect with you on LinkedIn. Nguyet Hang Nguyen Marketer at Indochina Junk</p></a>
+                    <ul class="actions">
+                      <li data-action="delete"><a class="button tiny alert"><i class="fa fa-trash space"></i>Del</a></li>
+                      <li data-action="reply"><a class="button tiny info"><i class="fa fa-pencil space"></i>Rep</a></li>
+                    </ul>
+                  </li>
+                  <li data-id="2"><a>
+                      <p class="from left">Nguyet Hang Nguyen</p>
+                      <p class="at right">11:59</p>
+                      <div class="clearfix"></div>
+                      <p class="title">Nguyễn, please add me to your LinkedIn network</p>
+                      <p class="description">Hi Nguyễn, I'd like to connect with you on LinkedIn. Nguyet Hang Nguyen Marketer at Indochina Junk</p></a>
+                    <ul class="actions">
+                      <li data-action="delete"><a class="button tiny alert"><i class="fa fa-trash space"></i>Del</a></li>
+                      <li data-action="reply"><a class="button tiny info"><i class="fa fa-pencil space"></i>Rep</a></li>
+                    </ul>
+                  </li>
+                  <li data-id="3"><a>
+                      <p class="from left">Nguyet Hang Nguyen</p>
+                      <p class="at right">11:59</p>
+                      <div class="clearfix"></div>
+                      <p class="title">Nguyễn, please add me to your LinkedIn network</p>
+                      <p class="description">Hi Nguyễn, I'd like to connect with you on LinkedIn. Nguyet Hang Nguyen Marketer at Indochina Junk</p></a>
+                    <ul class="actions">
+                      <li data-action="delete"><a class="button tiny alert"><i class="fa fa-trash space"></i>Del</a></li>
+                      <li data-action="reply"><a class="button tiny info"><i class="fa fa-pencil space"></i>Rep</a></li>
+                    </ul>
+                  </li>
+                  <li data-id="4"><a>
+                      <p class="from left">Nguyet Hang Nguyen</p>
+                      <p class="at right">11:59</p>
+                      <div class="clearfix"></div>
+                      <p class="title">Nguyễn, please add me to your LinkedIn network</p>
+                      <p class="description">Hi Nguyễn, I'd like to connect with you on LinkedIn. Nguyet Hang Nguyen Marketer at Indochina Junk</p></a>
+                    <ul class="actions">
+                      <li data-action="delete"><a class="button tiny alert"><i class="fa fa-trash space"></i>Del</a></li>
+                      <li data-action="reply"><a class="button tiny info"><i class="fa fa-pencil space"></i>Rep</a></li>
+                    </ul>
+                  </li>
+                  <li data-id="5"><a>
+                      <p class="from left">Nguyet Hang Nguyen</p>
+                      <p class="at right">11:59</p>
+                      <div class="clearfix"></div>
+                      <p class="title">Nguyễn, please add me to your LinkedIn network</p>
+                      <p class="description">Hi Nguyễn, I'd like to connect with you on LinkedIn. Nguyet Hang Nguyen Marketer at Indochina Junk</p></a>
+                    <ul class="actions">
+                      <li data-action="delete"><a class="button tiny alert"><i class="fa fa-trash space"></i>Del</a></li>
+                      <li data-action="reply"><a class="button tiny info"><i class="fa fa-pencil space"></i>Rep</a></li>
+                    </ul>
+                  </li>
+                  <li data-id="6"><a>
+                      <p class="from left">Nguyet Hang Nguyen</p>
+                      <p class="at right">11:59</p>
+                      <div class="clearfix"></div>
+                      <p class="title">Nguyễn, please add me to your LinkedIn network</p>
+                      <p class="description">Hi Nguyễn, I'd like to connect with you on LinkedIn. Nguyet Hang Nguyen Marketer at Indochina Junk</p></a>
+                    <ul class="actions">
+                      <li data-action="delete"><a class="button tiny alert"><i class="fa fa-trash space"></i>Del</a></li>
+                      <li data-action="reply"><a class="button tiny info"><i class="fa fa-pencil space"></i>Rep</a></li>
+                    </ul>
+                  </li>
+                  <li data-id="7"><a>
+                      <p class="from left">Nguyet Hang Nguyen</p>
+                      <p class="at right">11:59</p>
+                      <div class="clearfix"></div>
+                      <p class="title">Nguyễn, please add me to your LinkedIn network</p>
+                      <p class="description">Hi Nguyễn, I'd like to connect with you on LinkedIn. Nguyet Hang Nguyen Marketer at Indochina Junk</p></a>
+                    <ul class="actions">
+                      <li data-action="delete"><a class="button tiny alert"><i class="fa fa-trash space"></i>Del</a></li>
+                      <li data-action="reply"><a class="button tiny info"><i class="fa fa-pencil space"></i>Rep</a></li>
+                    </ul>
+                  </li>
+                  <li data-id="8"><a>
+                      <p class="from left">Nguyet Hang Nguyen</p>
+                      <p class="at right">11:59</p>
+                      <div class="clearfix"></div>
+                      <p class="title">Nguyễn, please add me to your LinkedIn network</p>
+                      <p class="description">Hi Nguyễn, I'd like to connect with you on LinkedIn. Nguyet Hang Nguyen Marketer at Indochina Junk</p></a>
+                    <ul class="actions">
+                      <li data-action="delete"><a class="button tiny alert"><i class="fa fa-trash space"></i>Del</a></li>
+                      <li data-action="reply"><a class="button tiny info"><i class="fa fa-pencil space"></i>Rep</a></li>
+                    </ul>
+                  </li>
+                  <li data-id="9"><a>
+                      <p class="from left">Nguyet Hang Nguyen</p>
+                      <p class="at right">11:59</p>
+                      <div class="clearfix"></div>
+                      <p class="title">Nguyễn, please add me to your LinkedIn network</p>
+                      <p class="description">Hi Nguyễn, I'd like to connect with you on LinkedIn. Nguyet Hang Nguyen Marketer at Indochina Junk</p></a>
+                    <ul class="actions">
+                      <li data-action="delete"><a class="button tiny alert"><i class="fa fa-trash space"></i>Del</a></li>
+                      <li data-action="reply"><a class="button tiny info"><i class="fa fa-pencil space"></i>Rep</a></li>
+                    </ul>
+                  </li>
+                  <li data-id="10"><a>
+                      <p class="from left">Nguyet Hang Nguyen</p>
+                      <p class="at right">11:59</p>
+                      <div class="clearfix"></div>
+                      <p class="title">Nguyễn, please add me to your LinkedIn network</p>
+                      <p class="description">Hi Nguyễn, I'd like to connect with you on LinkedIn. Nguyet Hang Nguyen Marketer at Indochina Junk</p></a>
+                    <ul class="actions">
+                      <li data-action="delete"><a class="button tiny alert"><i class="fa fa-trash space"></i>Del</a></li>
+                      <li data-action="reply"><a class="button tiny info"><i class="fa fa-pencil space"></i>Rep</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="columns hide-for-small-only medium-6 full-height">
+                <div class="preview">
+                  <div class="message">
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td>From</td>
+                          <td>
+                            <p class="from">Thảo Đặng Thu<span class="email"><a href="mailto:thaodt_55@vnu.edu.vn">thaodt_55@vnu.edu.vn</a></span></p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Username</td>
+                          <td> 
+                            <p class="username">tHaOdAnGtHu<span class="ip">169.254.96.69</span></p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p class="title">Em gửi anh Gia tuyệt chiêu chọn đầm dự tiệc</p>
+                    <div class="body">
+                      <p>Ngoài nụ cười rạng rỡ, vẻ đẹp trong sáng, nhẹ nhàng làm xiêu lòng người thì tuyệt chiêu lựa đầm tinh tế cũng là bí kíp hoàn hảo giúp người đẹp ghi điểm mỗi khi xuất hiện trước công chúng tại các sự kiện. Các trang phục dạ tiệc mà cô mặc phần lớn là thiết kế của Lê Thanh Hoà. Xuất hiện trong một sự kiện gần đây, Thu Thảo thu hút sự chú ý của quan khách bởi vẻ đẹp mong manh nhưng vẫn toát lên vẻ quý phái sang trọng khi diện bộ đầm đơn sắc tone đen khoe vai trần gợi cảm.</p>
+                      <p>Đặc biệt, cách trang điểm đơn giản, khả năng khéo léo khi mix phụ kiện ví cầm tay kèm đồng hồ và dây chuyền giúp tôn lên phong cách của Thu Thảo. Với vẻ đẹp mong manh, dịu dàng của mình thì chiếc đầm trắng tinh khôi là sự lựa chọn hoàn hảo của hoa hậu. Có mặt tại một sự kiện ở thủ đô, Hoa hậu Việt Nam 2012 vẫn trung thành với phong cách thời trang gợi cảm. Người đẹp chọn cho mình bộ đầm cúp ngực màu tím nhạt khoe bờ vai thon cùng làn da trắng sứ. Thiết kế xẻ sâu đến ngang đùi cũng giúp Thu Thảo ẩn hiện đôi chân dài.</p>
+                    </div>
+                  </div>
+                  <div class="reply-panel">
+                    <form>
+                      <textarea class="quick-reply sans"></textarea>
+                      <button class="button info tiny right">Quick Reply</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script type="text/javascript" src="components/modernizr/modernizr.js"></script>
+    <script type="text/javascript" src="components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="components/foundation/js/foundation.min.js"></script>
+    <script type="text/javascript" src="components/wowjs/dist/wow.min.js"></script>
+    <script type="text/javascript" src="scripts/page.inbox.js"></script>
+    <script type="text/javascript" src="scripts/app.js"></script>
+  </body>
+</html>

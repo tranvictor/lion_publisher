@@ -1,0 +1,64 @@
+body.minimal
+	background-image url(../images/minimal-bg.jpg)
+
+	section.editor
+		margin-bottom 20px
+		h3.title
+			color white
+		ul.sub-menu
+			> li
+				> a
+					font-size 13px
+
+	div.badge-form
+		position relative
+		background-color white
+		badgeColor = mainColors[0]
+		box-shadow 0 0 30px 0 rgba(black, .05)
+		
+		a:not(.button)
+			font-size 14px
+			font-family headerFont
+			font-weight 600
+			color black
+			defaultTransition()
+			&:hover
+				color lighten(black, 50)
+				
+		> h3.title
+			position absolute
+			background-color badgeColor
+			color white
+			font-size 25px
+			line-height 60px
+			text-transform uppercase
+			margin 0
+			padding 0 30px 0 30px
+			max-width 100%
+			top 0
+			right 0
+			@media medium-up
+				right -16px
+				&:after
+					content ''
+					border 8px solid darken(badgeColor, 15)
+					border-right-color transparent
+					border-bottom-color transparent
+					display block
+					width 0
+					height 0
+					position absolute
+					bottom -15px
+					right 0
+					
+		> div.content
+			padding 85px 30px 10px 30px
+			
+		a.button, button.button, input[type='submit']
+			margin-top 10px
+			font-size 13px
+			text-transform uppercase
+			&.badge-color
+				background-color badgeColor
+				&:hover
+					background-color darken(badgeColor, 10)

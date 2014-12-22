@@ -1,0 +1,114 @@
+<%= content_for :js do %>
+  <script type="text/javascript" src="/components/html.sortable/dist/html.sortable.min.js"></script>
+  <script type="text/javascript" src="/components/dropzone/downloads/dropzone.min.js"></script>
+  <%= javascript_include_tag "update-article" %>
+<% end %>
+
+<div class="row">
+  <div class="columns small-12 medium-8 small-text-centered">
+    <h2 class="title">Edit Article (Add images)</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="columns">
+    <%= simple_form_for(@article,
+                        :html => { :id => "edit-article", :remote=>true }) do |f| %>
+      <div class="row">
+        <div class="columns small-12 medium-6">
+          <label>
+            <%= f.check_box :published, {}, true, false %>
+            Is Published?
+          </label>
+        </div>
+        <div class="columns small-12 medium-6">
+          <label>
+            <%= f.check_box :is_list, {}, true, false %>
+            Is A List Article?
+          </label>
+        </div>
+        <div class="columns small-12 medium-6">
+          <label>Title
+            <%= f.text_field :title, placeholder: "Article title",
+              autocomplete: "off" %>
+          </label>
+          <% if @article.errors[:title] != [] %>
+            <small class="error"><%= @article.errors[:title][0] %></small>
+          <% end %>
+        </div>
+        <div class="columns small-12 medium-6">
+          <label>Category
+            <%= select_tag "article[category_id]",
+              options_for_select(@categories.collect{ |u| [u.name, u.id]},
+                                 :selected => @article.category_id) %>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns small-12 medium-6">
+          <label>Intro
+            <%= f.input :intro, label: false, input_html: { rows: "5" } %>
+          </label>
+        </div>
+        <div class="columns small-12 medium-6">
+          <label>Outro
+            <%= f.input :outtro, label: false, input_html: { rows: "5" } %>
+          </label>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="columns">
+    <h3 class="sub-title">Pages</h3>
+  </div>
+</div>
+<div class="row">
+  <div class="columns small-12 medium-6">
+    <h5>Create pages via uploads</h5>
+    <%= simple_form_for(@article, :html => {:id => "dropzone",
+                                            :remote => true,
+                                            :enctype => "multipart/form-data",
+                                            :class => "dropzone" }) do |f| %>
+      <div class="fallback">
+        <input name="upl" type="file">
+      </div>
+    <% end %>
+  </div>
+  <div class="columns small-12 medium-6">
+    <h5>Create pages via URLs</h5>
+    <%= simple_form_for(@article,
+                        :html => { :id => 'image-urls', :remote=>true }) do |f| %>
+      <label>enter image URLs here, separated by enters
+        <textarea name="image-urls"
+          placeholder="http://imagelink.here" class="sans"></textarea>
+      </label>
+      <button type="submit" class="button tiny secondary"><i class="fa fa-check space"></i>Fetch</button>
+    <% end %>
+  </div>
+</div>
+<div class="row thumbs-holder">
+  <div class="columns">
+    <ul class="thumbs">
+      <% @created_pages.each do |page| %>
+        <%= render partial: 'page_thumb', locals: {page: page} %>
+      <% end %>
+      <li class="template">
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="columns">
+    <ul class="pages">
+      <% @created_pages.each do |page| %>
+        <%= render partial: 'page_form', locals: {page: page} %>
+      <% end %>
+      <li class="template">
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+<div class="columns text-right"><button type="submit" form="edit-article" class="button"><i class="fa fa-save space-10"></i>Save This Article</button></div>
+</div>

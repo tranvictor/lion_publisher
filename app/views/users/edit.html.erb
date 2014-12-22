@@ -1,0 +1,29 @@
+<%= content_for :css do %>
+  <%= stylesheet_link_tag "bootstrap.standalone" %>
+<% end %>
+<div id="inner-container" class="chrome-square">
+
+<div id="edit-page">
+  <h2>Edit profile</h2>
+
+  <%= simple_form_for @user, html: {class: 'form-horizontal'} do |f| %>
+    <div class='form-inputs'>
+      <div class="control-group text required">
+        <label class="text required control-label">Current Avatar</label>
+        <div class="controls">
+          <img src="<%= @user.avatar.url(:medium) %>" alt="" id="img-polaroid">
+        </div>
+      </div>
+      <%= f.input :avatar, as: :file %>
+      <%= f.input :name %>
+      <%= f.input :shorten_domain, as: :url, label: "Shorten Domain" %>
+      <%= f.input :current_password %>
+      <%= f.input :password, label: "New password" %>
+      <%= f.input :password_confirmation, label: "Confirm password" %>
+    </div>
+    <div class='form-actions'>
+      <%= f.button :submit, "Update Profile", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+</div>

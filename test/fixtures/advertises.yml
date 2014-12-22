@@ -1,0 +1,17 @@
+one:
+  id: 1
+  top_userimage_desktop: nil
+  top_userimage_mobile: nil
+  top_article_desktop: ""
+  top_article_mobile: ""
+  bot_homepage_desktop: nil
+  bot_homepage_mobile: nil
+  bot_popular_desktop: nil
+  bot_popular_mobile: nil
+  bot_userimage_desktop: nil
+  bot_userimage_mobile: nil
+  bot_article_desktop: ""
+  bot_article_mobile: ""
+  side_article_desktop: nil 
+  side_article_mobile: nil 
+  created_at: Mon, 08 Jul 2013 00:10:25 PDT -07:00

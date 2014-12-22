@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ip: MyString
+  name: MyString
+  email: MyString@gmail.com
+  title: MyString
+  body: MyString
+  state: Unread
+  user_id: 1
+
+two:
+  ip: MyString
+  name: MyString
+  email: MyString@gmail.com
+  title: MyString
+  body: MyString
+  state: Read
+  user_id: 1

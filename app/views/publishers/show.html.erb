@@ -1,0 +1,38 @@
+<div class="chrome-square inner-space" style="text-shadow: 0 1px 0 white;">
+<ul class="breadcrumb">
+  <li><a href="<%= publishers_path %>">Tracking System</a>
+  <span class="divider">/</span></li>
+  <li class="active">Publishers</li>
+</ul>
+
+<hr class="tracking">
+<%= render partial: 'time_range',
+  locals: {startDate: @startDate, endDate: @endDate} %>
+<p style="margin-top: 10px;">
+<span class="label label-info">Note:</span> Sometimes we delete articles due to low quality or it isn't up to Adsense's standards, please check your link to see if it's working before posting. Also make sure you follow the twitter account below for news update about the site.
+</p>
+<span class="label label-info">Note:</span> As an affiliate you agree to all the terms and conditions of <a href="/RequiredReading.pdf">the required reading</a>. If you do not agree, please contact us to have your account terminated.
+<hr class="tracking">
+<%= render partial: 'statistic',
+  locals: {report_dictionary: @report_dictionary,
+           publisher_domain: @publisher_domain,
+           threshold: @threshold} %>
+
+<%= render partial: 'statistic_graph',
+  locals: {tableData: @tableData} %>
+
+<%= render partial: 'persional_info',
+  locals: {publisher: @publisher,
+           publisher_domain: @publisher_domain} %>
+<div class="clear-both"></div>
+<hr class="tracking">
+<div style="text-align: center;">
+  <p class="warning" style="font-size: 9px;">WE ARE NOT LIABLE FOR PAYMENT IF ADSENSE SUSPEND OUR ACCOUNT.</p>
+  <p class="warning" style="font-size: 9px;">AS LONG AS OUR ADSENSE ACCOUNT IS STILL ACTIVE (your stats still show up in our system) YOUR PAY WILL BE GUARANTEED.</p>
+  <p class="warning" style="font-size: 11px;"><a href="https://twitter.com/DuyLLC" class="twitter-follow-button" data-show-count="false" data-lang="en">@DuyLLC</a> for site updates.</p>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+<%= render(partial: 'graph', locals: {canvasID: 'graphCanvas', pointSize: @pointSize}) %>
+
+
+</div>

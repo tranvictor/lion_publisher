@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<%= render 'layouts/head' %>
+<body class="minimal">
+  <section class="top non-fixed">
+    <div class="row">
+      <div class="columns small-10 medium-5 small-text-centered small-centered medium-uncentered"><a href="/" class="logo text-center">
+          <h1 class="title">Trends Read</h1>
+          <p class="sub-title">Everything Worth Reading</p></a></div>
+      <div class="columns small-1 medium-6 large-4 text-right hide-for-small hide-on-search animated fadeIn">
+        <ul class="social-networks">
+          <li><a class="facebook with-counter"><i class="fa fa-facebook-square"></i><span class="counter">1.2M</span></a></li>
+          <li><a class="twitter"><i class="fa fa-twitter"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="notifications">
+    <div class="row">
+      <div class="columns small-12 small-centered medium-8 large-6">
+        <div id="notification-holder" class="notifications">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="content">
+    <%= yield %>
+  </section>
+  <script type="text/javascript" src="/components/modernizr/modernizr.js"></script>
+  <script type="text/javascript" src="/components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="/components/foundation/js/foundation.min.js"></script>
+  <script type="text/javascript" src="/components/wowjs/dist/wow.min.js"></script>
+  <%= javascript_include_tag "jquery_ujs" %>
+  <%= yield(:js) %>
+  <%= javascript_include_tag "application.js" %>
+  <%= yield(:csstail) %>
+</body>
+</html>

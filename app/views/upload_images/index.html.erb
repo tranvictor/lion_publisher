@@ -1,0 +1,41 @@
+<div class="row-fluid">
+<div class="span12 articles_index visible-desktop"> Find · Explore · Share · Trending Topics and Images </div>
+</div>
+
+<div class="row-fluid" id="content">
+    <div class="span4" id="first-column">
+    <% @images.each_with_index do |image, index| %>
+        <% if index % 3 == 0 and !@from_mobile %>
+                <%= render partial: "upload_images/thumbnail", locals: {image: image} %>
+        <% end %>
+    <% end %>
+    </div>
+
+    <div class="span4" id="second-column">
+    <% @images.each_with_index do |image, index| %>
+        <% if index % 3 == 1 and !@from_mobile %>
+                <%= render partial: "upload_images/thumbnail", locals: {image: image} %>
+        <% end %>
+    <% end %>
+    </div>
+
+    <div class="span4" id="third-column">
+    <% @images.each_with_index do |image, index| %>
+        <% if index % 3 == 2 or @from_mobile %>
+                <%= render partial: "upload_images/thumbnail", locals: {image: image} %>
+        <% end %>
+    <% end %>
+    </div>
+</div>
+<div class="a__d__s">
+    <% if @from_mobile %>
+        <%= Advertise.first.bot_homepage_mobile.html_safe %>
+    <% else %>
+        <%= Advertise.first.bot_homepage_desktop.html_safe %>
+    <% end %>
+</div>
+<div class="flickr_pagination">
+    <%= will_paginate @images %>
+    <div class="page_info">
+    </div>
+</div>

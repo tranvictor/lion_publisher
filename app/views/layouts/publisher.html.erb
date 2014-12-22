@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Teensdigest</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body id="tracking-page">
+  <%= render 'layouts/topbar'%>
+  <div id="content-outer">
+
+    <div class="tracking-container main">
+      <div class="row">
+        <div class="span11">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+<style type="text/css">
+  #notice{
+    margin-left: 10px;
+    width: 890px;
+  }
+</style>

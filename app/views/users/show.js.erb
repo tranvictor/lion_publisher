@@ -1,0 +1,49 @@
+var firstColumn = $('#first-column');
+var firstColumnHeight = firstColumn.height();
+var secondColumn = $('#second-column');
+var secondColumnHeight = secondColumn.height();
+var thirdColumn = $('#third-column');
+var thirdColumnHeight = thirdColumn.height();
+
+<% @images.each_with_index do |image, index| %>
+    if (isMobile){
+        $('#third-column').append(
+            '<%=escape_javascript render partial: "upload_images/thumbnail", :locals => {image: image } %>');
+    } else {
+        var min = 1000000000;
+        var theCol;
+        if (firstColumnHeight < min){
+            min = firstColumnHeight
+            theCol = 1;
+        }
+        if (secondColumnHeight < min){
+            min = secondColumnHeight;
+            theCol = 2;
+        }
+        if (thirdColumnHeight < min){
+            min = thirdColumnHeight;
+            theCol = 3;
+        }
+        if (theCol == 1){
+            firstColumn.append(
+            '<%= escape_javascript render partial: "upload_images/thumbnail", :locals => {image: image } %>');
+            firstColumnHeight += 384;
+        } else if (theCol == 2){
+            secondColumn.append(
+            '<%= escape_javascript render partial: "upload_images/thumbnail", :locals => {image: image } %>');
+            secondColumnHeight += 384;
+        } else if (theCol == 3){
+            thirdColumn.append(
+            '<%= escape_javascript render partial: "upload_images/thumbnail", :locals => {image: image } %>');
+            thirdColumnHeight += 384;
+        }
+    };
+<% end %>
+
+$('a.load-more-posts').attr('href', '<%= user_path(@user, page: @images.next_page) %>');
+$('#loading-bar').hide();
+
+<% if @images.next_page == nil %>
+    $('a.load-more-posts').remove();
+    $('#loading-bar').remove();
+<% end %>

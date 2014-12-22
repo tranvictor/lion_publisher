@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Trendsread</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:300,600,700,900">
+  </head>
+  <body style="background-color: white; margin: 0; padding 0;font-family: 'Raleway', sans-serif;line-height: 1.5em; font-size: 14px;">
+    <table style="padding: 0; margin: auto; text-align: left; width: 600px; background-color: #f7f7f7;" cellspacing="0" cellpadding="0">
+      <tbody>
+        <tr>
+          <td>
+            <section style="width: 600px;">
+              <h3 style="background-color: #b81b1b; color: white; float: right; position: relative; font-size: 25px; line-height: 60px; font-weight: 900; text-transform: uppercase; margin: 0; padding: 0 30px; max-width: 100%; top: 0; right: 0;">Today's trending</h3>
+              <div style="padding: 70px 20px 10px 20px;" class="content">
+                <p>Dear,</p>
+                <p>Here are some hot and news post from Trendsread.com. We are pleased to bring you the most trending articles on the Internet. Please check out <a href="<%= root_url %>">here</a> for a lot more.</p>
+                <table cellspacing="0" cellpadding="10px" style="margin: 0 -10px">
+                  <tbody>
+                    <% @articles.each_with_index do |article, index| %>
+                      <% if index % 2 == 0 %>
+                      <tr>
+                      <% end %>
+                        <td style="width: 50%; vertical-align: top; height: 200px;">
+                        <%= link_to article_path(article, only_path: false), style: "display: block; text-decoration: none;" do %>
+                          <div style="width: 100%; height: 200px; background-size: cover; background-position: center; background-image: url(<%= article.thumbnail %>)" class="image"></div>
+
+                          <div style="background-color: #222; padding: 5px 15px 10px 15px;"><span style="font-size: 10px; text-transform: uppercase; font-weight: normal; color: #666; margin-top: 10px;"><%= article.category.try(:name) %></span>
+                            <h3 style="font-size: 15px; color: #fff; margin: 0; line-height: 20px;"><%= article.title %></h3>
+                          </div>
+                        <% end %>
+                        </td>
+                        <% if index % 2 == 1 &&
+                             (index % 2 == 0 && index == @articles.size - 1 ) %>
+                          </tr>
+                        <% end %>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </td>
+        </tr>
+        <tr>
+          <td>
+      <section style="width: 600px;text-align: right; background-color: white;">
+        <div style="background-color: #ddd; padding: 15px 20px; margin-top: 20px; text-align: right;"><a href="<%= unsubscribe_subscriber_path @subscriber, token: @subscriber.token, only_path: false %>" data-method="delete" style="color: black; text-decoration: none; font-weight: bold;">Unsubscribe</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%= info_privacy_path only_path: false %>" style="color: black; text-decoration: none; font-weight: bold;">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%= new_message_path only_path: false %>" style="color: black; text-decoration: none; font-weight: bold;">Contact Support</a>
+                <p style="margin: 0; padding: 0; font-size: 13px;">© 2014 Trendsread</p>
+              </div>
+              <div style="margin: 0; padding: 30px 0 0 0; text-align: left; background-color: white;"><a style="text-decoration: none; display: inline-block; color: black;" href="<%= root_path only_path: false %>">
+                  <h1 style="margin: 0; color: black; font-size: 25px;">Trendsread</h1>
+                  <p style="margin: 0; color: #444; font-size: 11px; letter-spacing: 3px;">Everything Worth Trending</p></a></div>
+            </section>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

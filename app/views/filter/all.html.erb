@@ -1,0 +1,9 @@
+<% content_for :js do %>
+  <script type="text/javascript" src="/components/datatables/media/js/jquery.dataTables.min.js"></script>
+  <%= javascript_include_tag "your-articles" %>
+<% end %>
+<div class="row">
+  <div class="columns">
+    <table id="your-articles" class="articles"></table>
+  </div>
+</div>

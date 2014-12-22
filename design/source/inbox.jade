@@ -1,0 +1,166 @@
+extend minimal
+
+block css
+
+block script
+	script(type="text/javascript", src="scripts/page.inbox.js")
+
+block editor-menu
+	//- .row
+		.columns.small-12.medium-3.large-2
+			h3.title Dashboard
+		.columns.small-12.medium-9.large-10
+			ul.small-block-grid-2.medium-block-grid-3.large-block-grid-4.sub-menu
+				li
+					a
+						i.fa.fa-dashboard.space-10
+						| Dashboard
+				li
+					a
+						i.fa.fa-user.space-10
+						| Edit your profile
+				li
+					a
+						i.fa.fa-lock.space-10
+						| Sign out
+	//- .row
+		.columns.small-12.medium-3.large-2
+			h3.title Articles
+		.columns.small-12.medium-9.large-10
+			ul.small-block-grid-2.medium-block-grid-3.large-block-grid-4.sub-menu
+				li
+					a(href="articles.html")
+						i.fa.fa-list.space-10
+						| Your articles
+				li.active
+					a(href="new-article.html")
+						i.fa.fa-file.space-10
+						| New articles
+
+block notifications
+	//- .alert-box.note(data-alert)
+		span.label.space 7
+		| New message
+		a.close &times;
+
+block content
+	.messages
+		.row.collapse.full-height
+			.columns.small-2.folders-holder.full-height
+				ul.folders
+					li.hide-for-small
+						p.title Navigations
+					li
+						a
+							i.fa.fa-arrow-left.space.hide-for-large-up
+							span.show-for-large-up
+								i.fa.fa-arrow-left.space
+								| Dashboard
+					li.show-for-large-up
+						a#full-view-toggle(href="#")
+							i.fa.fa-arrows-alt.space.hide-for-large-up
+							span.show-for-large-up
+								i.fa.fa-arrows-alt.space
+								| Expand View
+					li.hide-for-small
+						p.title Folders
+					li(data-folder="search")
+						a
+							i.fa.fa-search.space-10.hide-for-large-up
+							span.show-for-large-up
+								| Search
+					li.active(data-folder="inbox")
+						a
+							i.fa.fa-inbox.space-10.hide-for-large-up
+							span.show-for-large-up
+								| Inbox
+								span.label.space-left.round 7
+					li(data-folder="read")
+						a
+							i.fa.fa-check-square.space-10.hide-for-large-up
+							span.show-for-large-up
+								| Read
+					li(data-folder="unread")
+						a
+							i.fa.fa-bookmark.space-10.hide-for-large-up
+							span.show-for-large-up
+								| Unread
+								span.label.info.space-left.round 5
+					li(data-folder="sent")
+						a
+							i.fa.fa-send.space-10.hide-for-large-up
+							span.show-for-large-up
+								| Sent
+			.columns.small-10.full-height.content
+				.row.collapse.tool-bar
+					.columns.small-12.medium-6
+						.row
+							.columns.small-6.sort-box
+								select.sort-input
+									option Latest first
+									option Oldest first
+									option Unread first
+							.columns.small-6.search-box
+								input.search-input(placeholder="Search...")
+				.row.collapse.full-height
+					.columns.small-12.medium-6.full-height
+						ul.items
+							li.active(data-id="0")
+								a
+									p.from.left Em Thu Thảo
+									p.at.right 0:00
+									.clearfix
+									p.title Em gửi anh Gia tuyệt chiêu chọn đầm dự tiệc
+									p.description Không chỉ lựa chọn những gam màu nhẹ nhàng như những cô nàng tiểu thư trong gam màu đỏ rực rỡ.
+								ul.actions
+									li(data-action="delete")
+										a.button.tiny.alert
+											i.fa.fa-trash.space
+											| Del
+									li(data-action="reply")
+										a.button.tiny.info
+											i.fa.fa-pencil.space
+											| Rep
+							each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+								li(data-id="#{i}")
+									a
+										p.from.left Nguyet Hang Nguyen
+										p.at.right 11:59
+										.clearfix
+										p.title Nguyễn, please add me to your LinkedIn network
+										p.description Hi Nguyễn, I'd like to connect with you on LinkedIn. Nguyet Hang Nguyen Marketer at Indochina Junk
+									ul.actions
+										li(data-action="delete")
+											a.button.tiny.alert
+												i.fa.fa-trash.space
+												| Del
+										li(data-action="reply")
+											a.button.tiny.info
+												i.fa.fa-pencil.space
+												| Rep
+					.columns.hide-for-small-only.medium-6.full-height
+						.preview
+							.message
+								table
+									tbody
+										tr
+											td From
+											td
+												p.from
+													| Thảo Đặng Thu
+													span.email
+														a(href="mailto:thaodt_55@vnu.edu.vn") thaodt_55@vnu.edu.vn
+										tr
+											td Username
+											td 
+												p.username
+													| tHaOdAnGtHu
+													span.ip 169.254.96.69
+								p.title Em gửi anh Gia tuyệt chiêu chọn đầm dự tiệc
+								.body
+									p Ngoài nụ cười rạng rỡ, vẻ đẹp trong sáng, nhẹ nhàng làm xiêu lòng người thì tuyệt chiêu lựa đầm tinh tế cũng là bí kíp hoàn hảo giúp người đẹp ghi điểm mỗi khi xuất hiện trước công chúng tại các sự kiện. Các trang phục dạ tiệc mà cô mặc phần lớn là thiết kế của Lê Thanh Hoà. Xuất hiện trong một sự kiện gần đây, Thu Thảo thu hút sự chú ý của quan khách bởi vẻ đẹp mong manh nhưng vẫn toát lên vẻ quý phái sang trọng khi diện bộ đầm đơn sắc tone đen khoe vai trần gợi cảm.
+									p Đặc biệt, cách trang điểm đơn giản, khả năng khéo léo khi mix phụ kiện ví cầm tay kèm đồng hồ và dây chuyền giúp tôn lên phong cách của Thu Thảo. Với vẻ đẹp mong manh, dịu dàng của mình thì chiếc đầm trắng tinh khôi là sự lựa chọn hoàn hảo của hoa hậu. Có mặt tại một sự kiện ở thủ đô, Hoa hậu Việt Nam 2012 vẫn trung thành với phong cách thời trang gợi cảm. Người đẹp chọn cho mình bộ đầm cúp ngực màu tím nhạt khoe bờ vai thon cùng làn da trắng sứ. Thiết kế xẻ sâu đến ngang đùi cũng giúp Thu Thảo ẩn hiện đôi chân dài.
+							.reply-panel
+								form
+									textarea.quick-reply.sans
+									button.button.info.tiny.right Quick Reply

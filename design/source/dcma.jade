@@ -1,0 +1,112 @@
+extend layout
+
+block script
+  script(type="text/javascript", src="components/bxslider-4/jquery.bxslider.min.js")
+
+block css
+
+block notifications
+
+block editor-menu
+  
+block modals
+  #subscribe-modal.reveal-modal.small(data-reveal)
+    h2
+      | Get more stuff like this 
+      b In your inbox
+    p Sign up for our daily email and get the stories everyone is talking about
+    form.subscribe
+      input.radius(type="text", placeholder="your@email.com")
+      button Sign Up
+
+block content
+  div#fb-root
+  script.
+    (function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=253766078122207&version=v2.0";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));
+  .row
+    .columns
+      .row.collapse
+        //- .columns.small-12.medium-10.large-10.medium-centered
+        .columns.small-12.medium-7.large-8
+          .page.feed.color-0
+            .header
+              .row.collapse
+                .columns.small-12.medium-4.large-3
+                  .info
+                    p.category Info
+                    p.author
+                      i.fa.fa-user
+                      |  DuyLLC
+                    p.updated
+                      i.fa.fa-calendar
+                      |  Nov 3, 2014
+                .columns.small-12.medium-8.large-9
+                  h1.title Copyright & DMCA Guidelines
+            .content
+              .sharing.right.unfloat-for-small(data-reveal-id="subscribe-modal")
+                .addthis_sharing_toolbox
+              .article
+
+                p The following may be interpreted as DuyLLC's (hereafter 'the Service') policy towards copyright infringement on the Service in accordance with the Digital Millenium Copyright Act (hereafter 'DMCA'). The address of DuyLLC' Designated Agent for copyright takedown notices ('Designated Agent') is listed below.
+
+                h4 Reporting Instances of Infringement
+                p If you believe copyright infringing Content is on or accessible through the Service, please send a notice of infringement of copyright containing the following information to the Designated Agent at the address listed below:
+                ul
+                  li Identify the material or work being infringed.
+                  li Identify the material that is claimed to be infringing. This includes its location and enough detail so DuyLLC will be able to accurately locate it.
+                  li Contact information for the notifying party.
+                  li A statement that the Notifying party has a good faith belief that the material is not authorized by the copyright owner, its agent or law.
+                  li A statement made under penalty of perjury that the information provided is accurate and that the Notifying Party is authorized to make the complaint on behalf of the copyright owner.
+                  li A signature of the person authorized to act on behalf of the owner of the copyright, or the owner of the copyright that has been allegedly infringed.
+                p After DuyLLC removes material persuant to the DMCA notice, DuyLLC will notify the user responsible for uploading the material that access to said material has been revoked. DuyLLC reserves the right to immediately and without prior notification terminate accounts on the Service for copyright infringement, especially those which are the subject of repeat DMCA notifications.
+
+                h4 How To Submit a DMCA Counter-Notification
+                p You may file a counter-notification to DuyLLC if you believe material you have submitted to the Service has been the wrongful subject of a DMCA notification. Please provide the following information to the Designated Agent, listed below:
+                ul
+                  li Specific URLs which refer to the material which was removed or to which access has been disabled.
+                  li Your name, address, telephone number, and email address.
+                  li You must include a statement consenting to the jurisdiction of Federal District Court for the judicial district in which your address is located (or the federal district courts located in Prince William County, Virginia if you are located outside of the United States). You must further agree to accept service of process from the original DMCA complaintant or the agent(s) of the original complaintant.
+                  li You must also swear under penalty of perjury that you have a good-faith belief that the material in question was removed or access to the material was disabled only as a result of a mistake or misidentification.
+
+                h4 Designated Agent
+                p DuyLLC
+                  br
+                  b ATTN: 
+                  | DCMA Agent
+                  br
+                  b EMAIL: 
+                  | Duy@DuyLLC.net
+
+              .sharing
+                .addthis_sharing_toolbox(data-reveal-id="subscribe-modal")
+
+        .columns.small-12.medium-5.large-4
+
+          ul.feeds.small-block-grid-1
+            li.wow.fadeIn
+              .news-letter
+                .image(style="background-image: url(images/subscribe-bg.jpg)")
+                .info
+                  h1.title Subscribe Us!
+                  p Sign up for our daily email and get the stories everyone is talking about
+                  form.subscribe
+                    input(type="text", placeholder="your@email.com")
+                    button Subscribe
+
+          .links-box
+            h1.title Readmore
+            ul.links
+              li
+                a Advertising
+              li
+                a Privacy Policies
+              li
+                a About Us
+              li
+                a DCMA / Removal
+
+          .facebook-box
+            div.info
+              h1.title Facebook
+              .content
+                .fb-like-box(data-href="https://www.facebook.com/FacebookDevelopers", data-colorscheme="light", data-show-faces="true", data-header="false", data-stream="false", data-show-border="false", data-width="100%", data-height="350")

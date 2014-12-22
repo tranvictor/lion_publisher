@@ -1,0 +1,9 @@
+<div class="chrome-square inner-space" id="broken-checker-page" >
+  <% if @start_scanner %>
+      <h2>Scanner is already running...</h2>
+  <% else %>
+      <h2>Scanning...</h2>
+  <% end %>
+  <br>
+  <h2>See <%= link_to "Broken List", filter_broken_path %></h2>
+</div>

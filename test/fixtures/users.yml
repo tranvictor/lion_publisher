@@ -1,0 +1,46 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+admin:
+  id: 5
+  name: admin
+  user_name: Admin
+  email: admin@teensdigest.com
+  encrypted_password: $2a$10$Xes7pg04Nyl4Kx1ciIMK5eAVUz.IdqFMNKMNkl92h1RYyh/18iSw
+  is_admin: true
+  is_writer: true
+
+writer:
+  id: 58
+  name: nil
+  user_name: phuongdv91
+  email: phuongdv91@gmail.com
+  encrypted_password: $2a$10$FrMg4yp6xpDRvMFWQWuWDudIvcLrQB0Ba9XNVEQLklXqdLLLncCrW
+  is_admin: false
+  is_writer: true
+
+writer2:
+  id: 56
+  name: nil
+  user_name: itspater
+  email: pete@cloudycases.com
+  encrypted_password: $2a$10$oAEzXdz6AJSKtnGEOIQIheHezpzj4h72b9ZDXppJK.bGJxfGgw7yi
+  is_admin: false
+  is_writer: true
+
+writer3: # .articles = []
+  id: 55
+  name: nil
+  user_name: csummers
+  email: connor.summers.1@gmail.com
+  encrypted_password: $2a$10$VlkY/abirggtoXeXSn85y.o3r/YRvD5xGM0.E2AJptdH0yTgx7l0W
+  is_admin: false
+  is_writer: true
+
+normal:
+  id: 47
+  name: nil
+  user_name: Peteyyytran
+  email: peteyyytran@gmail.com
+  encrypted_password: $2a$10$t0XodtAOQR.DIh/mHiu7J.BPC.v7Q.JAUDQxMbrXzFNuYrjNmeQzG
+  is_admin: false
+  is_writer: false

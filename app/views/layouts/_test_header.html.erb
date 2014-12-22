@@ -1,0 +1,38 @@
+<div id="header">
+  <div id="top">
+    <div id="noise" class="noise">
+      <div id="logo" class="logo">
+        <%= link_to image_tag("/logo.png", :width=> 120, :height=> 144), root_path,  :title => "Back to home page" %>
+      </div>
+      <div id="logotext">
+        <div class="nav unit avoid-side-menu">
+          <div class="large-screen-only">
+          <%= link_to "Home", root_path, :title => "Home page", :class => "btn-nav1 logo-links unit" %>
+          <%= link_to "Random", random_path, :title => "Random articles", :class => "btn-nav1 logo-links unit" %>
+          <%= link_to "Popular",
+                      {:controller => '/popular', :action => :article_index},
+                       :class => "btn-nav1 logo-links unit" %>
+          <%= link_to Settings.isolated_cat_name, articles_path(:category=>Settings.isolated_cat_id), :class => "btn-nav1 logo-links unit" %>
+          </div>
+          <a class="btn-nav1 display-on-mobile icon-list logo-links unit" href="#" id="mobile-menu-button"></a>
+        </div>
+      </div>
+      <span id="header-links">
+        <% unless session[:mobile_detected] %>
+        <%= render 'layouts/facebook' %>
+        <%= render 'layouts/twitter' %>
+        <%= render 'layouts/gplus' %>
+        <% end %>
+        <form id="search-form" data-remote="true" action=<%= search_path %>>
+          <input id="search-input-header" name="keyword" type="text" placeholder="Search Articles" autocomplete="off" requierd>
+          <a id="lookup-icon" name="commit" type="submit"><i class="icon-search"></i></a>
+        </form>
+        <% if current_user != nil %>
+          <a class="icon-user" id="user-icon" href="<%= new_user_session_path %>" style="color: #b35047;"></a>
+        <% else %>
+          <a class="icon-user" id="user-icon" href="<%= new_user_session_path %>" style="color: #5E5656;"></a>
+        <% end %>
+      </span>
+    </div>
+  </div>
+</div>

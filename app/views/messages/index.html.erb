@@ -1,0 +1,77 @@
+<% content_for :js do %>
+  <%= javascript_include_tag "messages" %>
+<% end %>
+<div class="messages">
+  <div class="row collapse full-height">
+    <div class="columns small-2 folders-holder full-height">
+      <ul class="folders">
+        <li class="hide-for-small">
+        <p class="title">Navigations</p>
+        </li>
+        <li><a href="<%= rails_admin_path %>"><i class="fa fa-arrow-left space hide-for-large-up"></i><span class="show-for-large-up"><i class="fa fa-arrow-left space"></i>Dashboard</span></a></li>
+        <li class="show-for-large-up"><a id="full-view-toggle" href="#"><i class="fa fa-arrows-alt space hide-for-large-up"></i><span class="show-for-large-up"><i class="fa fa-arrows-alt space"></i>Expand View</span></a>
+        </li>
+        <li class="hide-for-small">
+        <p class="title">Folders</p>
+        </li>
+        <li class="active"><a><i class="fa fa-inbox space-10 hide-for-large-up"></i><span class="show-for-large-up">Inbox (Unread)<span class="label space-left round"><%= @unread_messages_count %></span></span></a></li>
+        <li><a class="disabled"><i class="fa fa-send space-10 hide-for-large-up"></i><span class="show-for-large-up">Sent (Unavailable)</span></a></li>
+      </ul>
+    </div>
+    <div class="columns small-10 full-height">
+      <div class="row collapse tool-bar">
+        <div class="columns small-12 medium-6">
+          <div class="row">
+            <div class="columns small-6 sort-box">
+              <select class="sort-input">
+                <option>Latest first</option>
+                <option>Oldest first</option>
+                <option>Unread first</option>
+              </select>
+            </div>
+            <div class="columns small-6 search-box">
+              <input placeholder="Search..." class="search-input">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row collapse full-height">
+        <div class="columns small-12 medium-6 full-height">
+          <ul class="items">
+            <% @messages.each do |message| %>
+              <li data-id="<%= message.id %>">
+              <%= link_to message_path(message), remote: true,
+                data: { } do %>
+                <p class="from left">
+                <%= message.name || message.email || "Anonymous" %>
+                </p>
+                <p class="at right">
+                <%= message.created_at.strftime("%b %d, %Y") %>
+                </p>
+                <div class="clearfix"></div>
+                <p class="title"><%= message.title %></p>
+                <p class="description"><%= message.desc %></p>
+              <% end %>
+              <ul class="actions">
+                <li data-action="delete">
+                <%= link_to message_path(message), method: :delete,
+                  class: "button tiny alert", remote: true,
+                  data: { confirm: 'Are you sure?', type: "json" } do %>
+                  <i class="fa fa-trash space"></i>Del
+                <% end %>
+                </li>
+              </ul>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="columns hide-for-small-only medium-6 full-height">
+          <div class="preview" id="message-preview">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# link_to message, method: :delete, data: {confirm: 'Are you sure?'} do %>

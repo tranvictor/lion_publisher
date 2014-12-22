@@ -1,0 +1,321 @@
+@import nib
+@import url('http://fonts.googleapis.com/css?family=Raleway:300,600,700,900')
+
+// headerFont = 'Raleway', sans-serif
+// serifFont = 'Georgia', 'Times New Roman',  serif
+
+// topBarHeight = 110px
+// spinnerColor = #bbb
+// mainColors = #b81b1b, #15992A, #E56C19, #B81B1B, #B81B6C, #691BB8, #1B58B8, #569CE3, #00AAAA, #83BA1F, #D39D09, #E064B7
+
+// noteColor = #fc7
+// facebookColor = #3b5998
+// twitterColor = #00aced
+// googleColor = #dd4b39
+// pinterestColor = #cb2027
+
+// submitColor = #0078e7
+// secondaryColor = #ccc
+// successColor = #1cb841
+// warningColor = #df7514
+// alertColor = #ca3c3c
+// infoColor = #00aced
+
+// defaultTransition()
+//   transition all .3s ease-in-out
+
+// // media queries
+// small-range-lower = 0em
+// small-range-upper = 40em
+// medium-range-lower = 40.063em
+// medium-range-upper = 64em
+// large-range-lower = 64.063em
+// large-range-upper = 90em
+// xlarge-range-lower = 90.063em
+// xlarge-range-upper = 120em
+// xxlarge-range-lower = 120.063em
+// xxlarge-range-upper = 99999999em
+
+// only-screen = 'only screen'
+// landscape = only-screen + ' and (orientation: landscape)'
+// portrait = only-screen + ' and (orientation: portrait)'
+// small-up = only-screen
+// small-only = only-screen + ' and (max-width: ' + small-range-upper + ')'
+// medium-up = only-screen + ' and (min-width: ' + medium-range-lower + ')'
+// medium-only = only-screen + ' and (min-width: ' + medium-range-lower + ') and (max-width: ' + medium-range-upper + ')'
+// large-up = only-screen + ' and (min-width: ' + large-range-lower + ')'
+// large-only = only-screen + ' and (min-width: ' + large-range-lower + ') and (max-width: ' + large-range-upper + ')'
+// xlarge-up = only-screen + ' and (min-width: ' + xlarge-range-lower + ')'
+// xlarge-only = only-screen + ' and (min-width: ' + xlarge-range-lower + ') and (max-width: ' + xlarge-range-upper + ')'
+// xxlarge-up = only-screen + ' and (min-width: ' + xxlarge-range-lower + ')'
+// xxlarge-only = only-screen + ' and (min-width: ' + xxlarge-range-lower + ') and (max-width: ' + xxlarge-range-upper + ')'
+
+// small = medium-up
+// medium = medium-up
+// large = large-up
+
+// a
+//   text-decoration none
+
+// *, :before, :after
+//   box-sizing border-box
+
+// .row
+//   width 100%
+//   // max-width 62.5em
+//   max-width 640px
+//   margin 0 auto
+//   &:before, &:after
+//     content ''
+//     display table
+//     clear both
+//   &.collapse
+//     > .column, .columns
+//       padding-left 0
+//       padding-right 0
+//     .row
+//       margin-left 0
+//       margin-right 0
+//   .row
+//     width auto
+//     max-width none
+//     margin 0 -.9375em
+//     &.collapse
+//       width auto
+//       max-width none
+//       margin 0
+// .column, .columns
+//   padding-left .9375em
+//   padding-right @padding-left
+//   width 100%
+//   float left
+  
+// ul.feeds-block-grid
+//   display block
+//   margin 0 -.625rem
+//   padding 0
+//   &:before, &:after
+//     content ''
+//     display table
+//     clear both
+//   > li
+//     list-style none
+//     display block
+//     height auto
+//     float left
+//     padding 0 .625rem 1.25rem
+//   > li
+//     width 100%
+//     &:nth-of-type(1n)
+//       clear both
+//     &:nth-of-type(2n+1)
+//       clear both
+//   @media medium-up
+//     > li
+//       width 50%
+//       &:nth-of-type(1n)
+//         clear none
+//       &:nth-of-type(2n+1)
+//         clear both
+// body
+//   background-color lighten(black, 10)
+//   padding 50px 0
+//   position:relative;
+//   margin 0
+//   line-height 1.5
+//   *
+//     font-family headerFont
+//     font-weight 600
+
+// section.content
+  
+//   div.badge-form
+//     position relative
+//     background-color white
+//     badgeColor = mainColors[0]
+//     box-shadow 0 0 30px 0 rgba(black, .05)
+    
+//     a:not(.button)
+//       font-size 14px
+//       font-family headerFont
+//       font-weight 600
+//       color black
+//       defaultTransition()
+//       &:hover
+//         color lighten(black, 50)
+        
+//     > h3.title
+//       float right
+//       position relative
+//       background-color badgeColor
+//       color white
+//       font-size 25px
+//       line-height 60px
+//       font-weight 900
+//       text-transform uppercase
+//       margin 0
+//       padding 0 30px 0 30px
+//       max-width 100%
+//       top 0
+//       right 0
+//       @media medium-up
+//         right -16px
+//         &:after
+//           content ''
+//           border 8px solid darken(badgeColor, 15)
+//           border-right-color transparent
+//           border-bottom-color transparent
+//           display block
+//           width 0
+//           height 0
+//           position absolute
+//           bottom -15px
+//           right 0
+          
+//     > div.content
+//       padding 70px 20px 10px 20px
+//       p
+//         font-weight 400
+//         font-size 15px
+//         margin-bottom 25px
+    
+      
+//     a.button, button.button, input[type='submit']
+//       margin-top 10px
+//       font-size 13px
+//       text-transform uppercase
+//       &.badge-color
+//         background-color badgeColor
+//         &:hover
+//           background-color darken(badgeColor, 10)
+
+// section.bottom
+//   div.notices
+//     background-color darken(white, 6)
+//     margin 0
+//     padding 20px 20px
+//     > p
+//       color lighten(black, 60)
+//       font-size 13px
+//       font-weight 300
+//       margin 0
+//     > ul.links
+//       margin 0
+//       padding 0
+//       > li
+//         display inline-block
+//         &:not(:last-child)
+//           &:after
+//             color lighten(black, 50)
+//             content '|'
+//             padding 0 5px
+//             font-weight 300
+//         > a
+//           color black
+//           &:hover
+//             color mainColors[0]
+//             defaultTransition()
+            
+//   a.logo
+//     padding 33px 0 20px 0
+//     display inline-block
+//     h1.title
+//       text-transform uppercase
+//       font-size 22px
+//       line-height 30px
+//       font-weight 900
+//       color darken(white, 20)
+//       defaultTransition()
+//       margin 0
+//     p.sub-title
+//       margin 0
+//       letter-spacing 2px
+//       color darken(white, 30)
+//       font-size 11px
+//       text-transform uppercase
+//       font-weight 300
+//       defaultTransition()
+//     @media small-only
+//       h1.title
+//         font-size 27px
+//         line-height 15px
+//       p.sub-title
+//         font-size 14px
+//         letter-spacing 2px
+
+// ul.feeds
+//   > li
+//     div.news-letter
+//       padding-right 15px
+//       position relative
+//       @media small-only
+//         height 250px
+//         padding-right 0
+//       div.image
+//         @media small-only
+//           height 250px
+//       div.info
+//         background-color rgba(black, .6)
+//         position absolute
+//         top 0
+//         bottom 0
+//         left 0
+//         right 15px
+//         @media small-only
+//           right 0
+//         > p
+//           color white
+//           font-family serifFont
+//           font-style italic
+//           margin 30px 35px 20px 35px
+//           font-size 16px
+//           font-weight 300
+//           line-height 26px
+//         > h1.title
+//           position relative
+//           color white
+//           text-transform uppercase
+//           padding 12px 20px
+//           background mainColors[0]
+//           margin 0 0 0 60px
+//           font-size 25px
+//           @media small-only
+//             margin 0
+//             text-align center
+//           @media medium-up
+//             font-size 20px
+//             margin 0 -15px 0 80px
+//     div.image
+//       background-color darken(white, 20)
+//       background-size cover
+//       background-repeat none
+//       background-position center
+//       width 100%
+//       height 200px
+//     > a
+//       display block
+//       position relative
+//       > div.info
+//         position absolute
+//         bottom 0
+//         right 0
+//         left 0
+//         > h3.title
+//           position relative
+//           defaultTransition()
+//           padding 24px 20px 12px 20px
+//           background-color rgba(darken(#444, 10), .9)
+//           background linear-gradient(top, transparent, rgba(#000, .9))
+//           color white
+//           font-size 16px
+//           font-weight 600
+//           text-transform capitalize
+//           margin 0
+//           padding-top auto
+//         > span.category
+//           float right
+//           padding 20px 20px
+//           display none
+//           text-transform uppercase
+//           color white
+//           background-color darken(#444, 10)
