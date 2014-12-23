@@ -71,6 +71,9 @@ gem 'redis-rails'
 
 gem 'connection_pool'
 
+gem 'protected_attributes'
+
+
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'capybara'
