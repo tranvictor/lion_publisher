@@ -72,6 +72,7 @@ gem 'redis-rails'
 gem 'connection_pool'
 
 gem 'protected_attributes'
+gem 'actionpack-action_caching'
 
 
 group :test do

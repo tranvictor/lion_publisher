@@ -1,5 +1,6 @@
 require "open-uri"
 require "redis"
+require 'actionpack/action_caching'
 
 class ArticlesController < ApplicationController
   # GET /articles
