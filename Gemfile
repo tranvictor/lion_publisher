@@ -72,7 +72,10 @@ gem 'redis-rails'
 gem 'connection_pool'
 
 gem 'protected_attributes'
+gem 'rails-observers'
+gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
+gem 'activerecord-deprecated_finders'
 
 
 group :test do

@@ -44,10 +44,10 @@ Magazine::Application.routes.draw do
   get "filter/all"
 
   #match 'random' => 'upload_images#random'
-  match '/s/:id', to: "shortener/shortened_urls#show", via: [:get, :post]
-  match 'random', to: 'articles#random', via: [:get, :post]
-  match 'search', to: 'search#index', via: [:get, :post]
-  match 'filter', to: 'filter#index', via: [:get, :post]
+  get '/s/:id', to: "shortener/shortened_urls#show"
+  get 'random', to: 'articles#random'
+  get 'search', to: 'search#index'
+  get 'filter', to: 'filter#index'
 
   #resource :trackings do
   #  collection do
