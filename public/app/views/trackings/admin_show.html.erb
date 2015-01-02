@@ -1,0 +1,73 @@
+<div class="well" style="text-shadow: 0 1px 0 white;">
+<ul class="breadcrumb">
+  <li><a href="<%= trackings_path %>">Tracking System</a>
+  <span class="divider">/</span></li>
+  <li class="active">Publishers</li>
+</ul>
+
+<hr class="tracking">
+<%= render partial: 'time_range',
+  locals: {startDate: @startDate, endDate: @endDate} %>
+<h3> Publisher </h3>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Domain</th>
+      <th>Pageview</th>
+      <th>Clicks</th>
+      <th>Earned Money</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% for p in @publishers %>
+    <tr>
+      <td><%= p.id %></td>
+      <td><%=link_to p.name, trackings_publisher_path(p.id) %></td>
+      <td><%= p.get_domain %></td>
+      <% if @report_dictionary.key? p.get_domain %>
+        <td><%= number_to_currency(@report_dictionary[p.get_domain][:pageview] * @threshold,
+                                   :precision => 0,
+                                   :unit => "") %></td>
+        <td><%= number_to_currency(@report_dictionary[p.get_domain][:clicks] * @threshold,
+                                   :precision => 0,
+                                   :unit => "") %></td>
+        <td><%= number_to_currency(@report_dictionary[p.get_domain][:earning] * @threshold)%></td>
+      <% else %>
+        <td>0</td>
+        <td>0</td>
+        <td>$0</td>
+      <% end %>
+      <td>
+        <%= link_to raw("<i class='icon-eye-open'></i>"), publisher_path(p) %>
+        <%= link_to raw("<i class='icon-edit'></i>"), edit_publisher_path(p) %>
+        <%= link_to raw("<i class='icon-remove-sign'></i>"), publisher_path(p), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= link_to 'New Publisher', new_publisher_path, class: 'btn' %>
+<% if current_user.super_admin? %>
+<div class="row">
+  <div class="span5">
+    <h3> Threshold configuration </h3>
+    <%= simple_form_for(:tracking,
+                        :url => update_threshold_trackings_path,
+                        :method => "post",
+                        ) do |f| %>
+    <% if @threshold %>
+      <%= f.input :threshold, label: "Threshold",
+        input_html: { value: @threshold } %>
+      <%= f.input :domain, label: "Tracking domain",
+        input_html: { value: @tracking_domain } %>
+    <% end %>
+      <%= f.button :submit, "Save" %>
+    <% end %>
+  </div>
+</div>
+</div>
+<% end %>

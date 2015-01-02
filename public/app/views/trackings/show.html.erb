@@ -1,0 +1,69 @@
+<div class="well" style="text-shadow: 0 1px 0 white;">
+<ul class="breadcrumb">
+  <li><a href="<%= trackings_path %>">Tracking System</a>
+  <span class="divider">/</span></li>
+  <li class="active">Publishers</li>
+</ul>
+
+<hr class="tracking">
+<%= render partial: 'time_range',
+  locals: {startDate: @startDate, endDate: @endDate} %>
+<hr class="tracking">
+<div id="graphCanvas" style="height: 500px; width: 100%">
+</div>
+<hr class="tracking">
+<div class="row">
+  <div class="span4">
+    <h3>Statistics</h3>
+    <% if @report_dictionary[@publisher_domain] != nil %>
+    <p><strong>Page views: </strong>
+    <span><%= number_to_currency(@report_dictionary[@publisher_domain][:pageview] * @threshold, :precision => 0, :unit => "")%></span></p>
+    <p><strong>Clicks: </strong>
+    <span><%= number_to_currency(@report_dictionary[@publisher_domain][:clicks] * @threshold, :precision => 0, :unit => "" )%></span></p>
+    <% if @report_dictionary[@publisher_domain][:pageview] != 0 %>
+    <p><strong>Page CTR: </strong>
+      <span>
+        <%= "%.2f%" % (@report_dictionary[@publisher_domain][:clicks] / @report_dictionary[@publisher_domain][:pageview] * 100) %>
+      </span></p>
+    <p><strong>RPM: </strong>
+      <span>
+        <%= "$%.2f" % (@report_dictionary[@publisher_domain][:earning] / @report_dictionary[@publisher_domain][:pageview] * 1000 ) %>
+      </span></p>
+    <% else %>
+    <p><strong>Page CTR: </strong>
+      <span>N/A</span></p>
+    <p><strong>RPM: </strong>
+      <span>N/A</span></p>
+    <% end %>
+    <% if @report_dictionary[@publisher_domain][:clicks] != 0 %>
+    <p><strong>CPC: </strong>
+      <span>
+        <%= "$%.2f" % (@report_dictionary[@publisher_domain][:earning] / @report_dictionary[@publisher_domain][:clicks] ) %>
+      </span></p>
+    <% else %>
+    <p><strong>CPC: </strong>
+      <span>N/A</span></p>
+    <% end %>
+    <p><strong>Estimated earning: </strong>
+      <span><%= number_to_currency(@report_dictionary[@publisher_domain][:earning] * @threshold) %></span></p>
+    <% else %>
+    <p><strong>Page views: </strong> <span>0</span></p>
+    <p><strong>Clicks: </strong><span>0</span></p>
+    <p><strong>Estimated earning: </strong><span>$0</span></p>
+    <% end %>
+  </div>
+  <div class="span4">
+    <h3>Personal Information</h3>
+    <p><strong>Name: </strong> <span><%= @publisher.name %></span></p>
+    <p><strong>Domain: </strong> <span><%= @publisher_domain %></span></p>
+    <p><strong>Paypal Email: </strong> <span><%= @publisher.paypal_email %></span></p>
+  </div>
+</div>
+<div>
+  <p class="warning">WE ARE NOT LIABLE FOR PAYMENT IF ADSENSE SUSPEND OUR ACCOUNT.</p>
+</div>
+<%= render(partial: 'graph', locals: {canvasID: 'graphCanvas', pointSize: @pointSize}) %>
+
+
+
+</div>

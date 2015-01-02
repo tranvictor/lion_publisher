@@ -1,0 +1,55 @@
+<%= simple_form_for(@message) do |f| %>
+<div class="row">
+  <div class="small-12 columns">
+    <%= f.label :name do %>Display Name
+      <%= f.text_field :name, class: "dark", placeholder: "You display name" %>
+    <% end %>
+    <% if @message.errors[:name] != [] %>
+      <small class="error" id="name-error">
+        <%= @message.errors[:name][0] %>
+      </small>
+    <% end %>
+  </div>
+  <div class="small-12 columns">
+    <%= f.label :email do %>Your Email
+      <%= f.email_field :email, class: "dark", placeholder: "Your email" %>
+    <% end %>
+    <% if @message.errors[:email] != [] %>
+      <small class="error" id="email-error">
+        <%= @message.errors[:email][0] %>
+      </small>
+    <% end %>
+  </div>
+  <div class="small-12 columns">
+    <%= f.label :title do %>Title
+      <%= f.text_field :title, class: "dark",
+        placeholder: "What's your message about?" %>
+    <% end %>
+    <% if @message.errors[:title] != [] %>
+      <small class="error" id="title-error">
+        <%= @message.errors[:title][0] %>
+      </small>
+    <% end %>
+  </div>
+  <div class="small-12 columns">
+    <%= f.label :body do %>Body
+      <%= f.input_field :body, as: "text", class: "dark",
+        rows: "5",
+        placeholder: "What do you want to say?" %>
+    <% end %>
+    <% if @message.errors[:body] != [] %>
+      <small class="error" id="title-error">
+        <%= @message.errors[:body][0] %>
+      </small>
+    <% end %>
+  </div>
+  <div class="small-12 columns">
+    <%= recaptcha_tags %>
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 columns text-right">
+    <%= f.submit "Submit", :class => "button badge-color small" %>
+  </div>
+</div>
+<% end %>

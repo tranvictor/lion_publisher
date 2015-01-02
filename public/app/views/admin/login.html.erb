@@ -1,0 +1,17 @@
+<h1>Admin login</h1>
+
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<%= form_tag("check", method: "post", :class=>"login_form teensdigest-form") do %>
+<div class="username">
+  <%= label_tag(:user, "Username ") %>
+  <%= text_field_tag(:user) %>
+</div>
+<div class="password">
+  <%= label_tag(:password, "password ") %>
+  <%= password_field_tag(:password) %>
+</div>
+  <%= submit_tag("Login", :class => "btn btn-success") %>
+<% end %>

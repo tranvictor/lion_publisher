@@ -1,0 +1,17 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title><%= content_for?(:title) ? yield(:title) : "Trends Read" %></title>
+  <meta name="description" content="Trendsread is your number one website for trending content on the web.">
+  <meta name="author" content="">
+  <%= yield(:css) %>
+  <link rel="stylesheet" href="/components/foundation/css/normalize.css">
+  <link rel="stylesheet" href="/components/foundation/css/foundation.css">
+  <link rel="stylesheet" href="/components/animate.css/animate.min.css">
+  <link rel="stylesheet" href="/components/fontawesome/css/font-awesome.min.css">
+  <%= stylesheet_link_tag "app" %>
+  <%= csrf_meta_tags %>
+  <%= yield(:head) %>
+</head>

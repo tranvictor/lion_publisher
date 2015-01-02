@@ -1,0 +1,13 @@
+<div class="chrome-square inner-space" id="broken-page" >
+  <% if @start_scanner %>
+      <h2>Scanner is running...</h2><br>
+  <% end %>
+  <% if @filter_results.count == 0 %>
+      <h2>All Articles are not broken</h2>
+  <%else%>
+      <h2>Broken Article List: (Click to edit)</h2>
+  <%end%>
+  <br>
+  <%= render partial: 'article_list',
+             locals: {list: @filter_results} %>
+</div>

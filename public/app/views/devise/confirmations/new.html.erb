@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="small-12 medium-6 medium-centered large-4 columns">
+    <div class="badge-form fadeInUp animated">
+      <h3 class="title">Confirmation</h3>
+      <div class="content">
+        <%= form_for(resource, :as => resource_name,
+                     :url => confirmation_path(resource_name),
+                     :html => { :method => :post,
+                                :class => 'teensdigest-form' }) do |f| %>
+          <div class="row"><div class="small-12 columns">
+          <%= devise_error_messages! %>
+          <%= f.label :email do %>
+            Email
+            <%= f.email_field :email, :autofocus => true %>
+          <% end %>
+          </div></div>
+
+          <div class="row">
+              <div class="small-12 columns text-right">
+              <%= f.submit "Resend",
+                           :class => "button badge-color" %>
+              </div>
+              <div class="small-12 columns">
+                <%= render "devise/shared/links" %>
+              </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

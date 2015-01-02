@@ -1,6 +1,6 @@
 Magazine::Application.routes.draw do
 
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :subscribers, only: [:create] do
     member do

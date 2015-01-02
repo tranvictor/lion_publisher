@@ -1,0 +1,21 @@
+<ul class="article-list">
+  <% list.each do |article| %>
+  <li>
+    <div class="one-search-result">
+      <div class="box-hold box search-thumbnail" style="background-image: url(<%= article.thumbnail %>);">
+        <% if @isAdmin %>
+          <%= link_to raw("<i class='icon-remove'></i>"), article_path(article),
+            method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
+      <div class="search-body">
+        <h3> <%= link_to article.title, edit_article_url(article) %></h3>
+        <div class="body-one-search-result">
+          <p><%= article.desc %></p>
+        </div>
+      </div>
+      <div class="clear-both"></div>
+    </div>
+  </li>
+  <% end %>
+</ul>

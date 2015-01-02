@@ -1,0 +1,9 @@
+<%= simple_form_for(image,:url => upload_image_path(image),
+                    :html => { :id => "edit_img_form",:class => 'form-vertical' }) do |f| %>
+    <%= f.input :title %>
+    <%= f.button :submit, "Share", class: "btn btn-primary" %>
+<% end %>
+<div class="clear-left"></div>
+<div class="preview_image">
+   <%= image_tag image.content.url(:thumb), class: "center" %>
+</div>

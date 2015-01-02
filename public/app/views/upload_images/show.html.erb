@@ -1,0 +1,231 @@
+<% content_for :title, @uploaded_image.title %>
+<div class="row-fluid">
+    <% if !@from_mobile %>
+    <div class="right-panel visible-desktop">
+        <h5>RANDOM ARTICLES</h5>
+        <div class="most-shared">
+            <% @articles.each do |article| %>
+                <a class="gallery_grid_item"
+                    href="<%= article_url(article) %>">
+                    <div class="gallery_grid_info">
+                        <div class="trans_bg"></div>
+                        <div class="content_over_transparent">
+                            <p class="gallery_title">
+                            <%= article.title %></p>
+                        </div>
+                    </div>
+                    <img class="gallery_grid_image"
+                    src="<%= article.thumbnail %>">
+                </a>
+            <% end %>
+        </div>
+        <h5>RANDOM IMAGES</h5>
+        <div class="most-shared">
+            <% @images.each do |img| %>
+                <a class="gallery_grid_item"
+                    href="<%= upload_image_url(img) %>">
+                    <div class="gallery_grid_info">
+                        <div class="trans_bg"></div>
+                        <div class="content_over_transparent">
+                            <p class="gallery_title">
+                            <%= img.title %></p>
+                        </div>
+                    </div>
+                    <img class="gallery_grid_image"
+                    src="<%= img.content.url(:thumb) %>">
+                </a>
+            <% end %>
+        </div>
+    </div>
+    <% end %>
+    <div class="single_article_page">
+        <a href="<%= upload_images_path %>" id="back_to_stream">« Back to Home</a>
+        <div class="a__d__s">
+            <% if @from_mobile %>
+                <%= Advertise.first.top_userimage_mobile.html_safe %>
+            <% else %>
+                <%= Advertise.first.top_userimage_desktop.html_safe %>
+            <% end %>
+        </div>
+
+        <div class="single_article_page_main" >
+            <div>
+            <div class="single_article_main_top">
+                <h2><%= @uploaded_image.title %></h2>
+            </div>
+
+            <div id="single_image" style="position: relative;">
+                <%= image_tag @uploaded_image.content.url(:medium) %>
+                <a class="carousel-control left" href="<%= upload_image_path(@prev) %>" data-slide="prev">&lsaquo;</a>
+                <a class="carousel-control right" href="<%= upload_image_path(@next) %>" data-slide="next">&rsaquo;</a>
+            </div>
+
+            <div id="statistic">
+                <div class="image-stats" data-id="<%= @uploaded_image.id%>" >
+                    <div class="user-info">
+                        <div class="avatar-wrapper">
+                            <%= image_tag(@uploaded_image.user.avatar.url(:thumb), class: "avatar-thumb") %>
+                        </div>
+                        <span><%=link_to @uploaded_image.user.user_name, user_path(@uploaded_image.user) %></span>
+                    </div>
+                    <div class="statistic" data-id="<%= @uploaded_image.id%>">
+                        <span id="like-counter"><%= @uploaded_image.count_like %></span>
+                        <% if user_signed_in? %>
+                            <% if @uploaded_image.liked_by(current_user) %>
+                                <%= image_tag 'Like.png', class: "like-this like-btn liked", title: "Unlike this" %>
+                            <% else %>
+                                <%= image_tag 'Like.png', class: "like-this like-btn", title: "Like this" %>
+                            <% end %>
+                        <% else %>
+                            <%= image_tag 'Like.png', class: "like-btn" %>
+                        <% end %>
+                    </div>
+                    <div style="clear: left;"></div>
+                </div>
+            </div>
+            </div>
+            <hr>
+            <% if @from_mobile %>
+            <div id="bottom-navigate">
+                <div id="phone-sharing-buttons" class="hidden-desktop">
+                    <div id="twitter_button" style="width: 90px;">
+                        <a href='http://twitter.com/share' rel='nofollow' class='twitter-share-button' expr:data-url='data:post.canonicalUrl' expr:data-text='<%= @uploaded_image.title %>' data-related='DuyLLC:' data-count='horizontal' data-via='DuyLLC'  data-lang='en'></a>
+                        <script type="text/javascript" src="http://platform.twitter.com/widgets.js"> </script>
+                    </div>
+                    <div id="fb_button">
+                        <div id="fb-root">
+                            <script>(function(d, s, id) {
+                                var js, fjs = d.getElementsByTagName(s)[0];
+                                if (d.getElementById(id)) return;
+                                js = d.createElement(s); js.id = id;
+                                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                                fjs.parentNode.insertBefore(js, fjs);
+                                }(document, 'script', 'facebook-jssdk'));</script>
+                        </div>
+                        <!-- <div class="fb-like fb_edge_widget_with_comment fb_iframe_widget" data-href="<%= upload_image_url(@uploaded_image)%>" data-send="false" data-layout="box_count" data-width="60" data-show-faces="true" data-font="arial" colorscheme="light" fb-xfbml-state="rendered">
+                        </div> -->
+                        <div class="fb-like" data-href="<%= upload_image_url(@uploaded_image)%>" data-send="false" data-layout="button_count" data-width="60" data-show-faces="true"></div>
+                    </div>
+                    <div id="views" class="share_button_wrapper" style="margin-left: 10px; padding: 0px; height: auto;">
+                        <span class="icon-eye-open"></span> <%= @uploaded_image.impressions_to_human %>
+                    </div>
+                </div>
+                <div class="clear-bottom-nav"></div>
+            </div>
+            <hr>
+            <% end %>
+            <div class="comment-area">
+                <% if @more %>
+                    <div class="quantity">
+                        <a href="#" id="view-all" data-id="<%= @uploaded_image.id %>">
+                            View earlier comments
+                        </a>
+                    </div>
+                <% end %>
+                 <ul class="comments">
+                    <%= render @comments %>
+                </ul>
+                <% if user_signed_in? %>
+                    <div class="cmt-form">
+                        <%= render "comments/form", image: @uploaded_image %>
+                    </div>
+                <% end %>
+            </div>
+
+        </div>
+        <div class="a__d__s">
+            <% if @from_mobile %>
+                <%= Advertise.first.bot_userimage_mobile.html_safe %>
+            <% else %>
+                <%= Advertise.first.bot_userimage_desktop.html_safe %>
+            <% end %>
+        </div>
+        <% if !@from_mobile %>
+        <div id="bottom-buttons">
+                <div id="sharing_buttons" class="visible-desktop hide" style="position: fixed; top: 100px; left: 160px; display: none !important;">
+                    <div id="pinterest_button" class="share_button_wrapper">
+                        <a href="//pinterest.com/pin/create/button/?url=<%=u upload_image_url(@uploaded_image) %>&media=<%=u @uploaded_image.content.url %>&description=<%=u 'Pin this'%>" data-pin-do="buttonPin" data-pin-config="above"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" /></a>
+                        <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+                    </div>
+                    <div id="twitter_button" class="share_button_wrapper">
+                        <a href='http://twitter.com/share' rel='nofollow' class='twitter-share-button' expr:data-url='data:post.canonicalUrl' expr:data-text='<%= @uploaded_image.title %>' data-related='DuyLLC:' data-count='vertical' data-via='DuyLLC'  data-lang='en'></a>
+                        <script type="text/javascript" src="http://platform.twitter.com/widgets.js"> </script>
+                    </div>
+                    <div id="fb_button" class="share_button_wrapper">
+                        <div id="fb-root">
+                            <script>(function(d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s); js.id = id;
+                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                            fjs.parentNode.insertBefore(js, fjs);
+                            }(document, 'script', 'facebook-jssdk'));</script>
+                        </div>
+                        <div class="fb-like fb_edge_widget_with_comment fb_iframe_widget" data-href="<%= upload_image_url(@uploaded_image)%>" data-send="false" data-layout="box_count" data-width="60" data-show-faces="true" data-font="arial" colorscheme="light" fb-xfbml-state="rendered">
+                        </div>
+                    </div>
+
+                    <div id="googleplus_button" class="share_button_wrapper">
+                        <!-- Place this tag where you want the +1 button to render. -->
+                        <div class="g-plusone" data-size="tall" data-href="<%= upload_image_url(@uploaded_image)%>"></div>
+
+                        <!-- Place this tag after the last +1 button tag. -->
+                        <script type="text/javascript">
+                            (function() {
+                            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                            po.src = 'https://apis.google.com/js/plusone.js';
+                            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                            })();
+                        </script>
+                    </div>
+
+                    <div id="views" class="share_button_wrapper">
+                        <span class="icon-eye-open"></span> <%= @uploaded_image.impressions_to_human %>
+                    </div>
+                </div>
+        </div>
+        <% end %>
+        <% if @from_mobile %>
+        <div class="recommended" id="related-topics">
+            <h4>YOU MAY WANT TO CHECK OUT:</h4>
+            <div id="related-topics-inner">
+            <% @articles.each do |article| %>
+                <a class="gallery-list-item"
+                    href="<%= article_url article %>">
+                    <div class="gallery-list-image-wrapper">
+                        <img class="gallery_grid_image"
+                            src="<%= article.thumbnail %>">
+                    </div>
+                    <div class="gallery-list-info">
+                        <p class="gallery-title">
+                        <%= article.title %>
+                        </p>
+                        <p class="gallery-desc">
+                        </p>
+                    </div>
+                </a>
+            <% end %>
+            <% @images.each do |img| %>
+                <a class="gallery-list-item"
+                    href="<%= upload_image_url img %>">
+                    <div class="gallery-list-image-wrapper">
+                        <img class="gallery_grid_image"
+                            src="<%= img.content.url(:thumb) %>">
+                    </div>
+                    <div class="gallery-list-info">
+                        <p class="gallery-title">
+                        <%= img.title %>
+                        </p>
+                        <p class="gallery-desc">
+                        </p>
+                    </div>
+                </a>
+            <% end %>
+            </div>
+        </div>
+        <% end %>
+
+
+    </div>
+    <div class="clear"></div>
+    </div>
