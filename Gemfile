@@ -1,7 +1,6 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 DEBUG_RESOLVER=1
-ruby '2.1.5'
-gem 'rails', '~> 4.1.8'
+gem 'rails', '~> 3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -17,6 +16,9 @@ gem 'rb-readline'
 gem 'whenever'
 
 group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
@@ -37,8 +39,8 @@ gem 'devise'
 
 gem 'settingslogic'
 
-gem 'safe_yaml'
-gem 'rails_admin', '~> 0.6.6'
+gem 'safe_yaml', '~> 0.9.3'
+gem 'rails_admin'
 gem 'cancan'
 gem 'kaminari'
 gem 'bootstrap-wysihtml5-rails'
