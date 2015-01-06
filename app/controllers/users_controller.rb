@@ -1,22 +1,4 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :click_ad]
-
-  def show
-    @user = User.find(params[:id])
-    if request_from_mobile
-        @images = UploadImage.order('created_at DESC')\
-            .where(user_id: @user.id)\
-            .paginate(:page => params[:page], :per_page => 10)
-        @from_mobile = true
-    else
-        @images = UploadImage.order('created_at DESC')\
-          .where(user_id: @user.id).paginate(:page => params[:page])
-        @from_mobile = false
-    end
-    @total_views = @user.upload_images.map(&:impressions_count).sum(&:to_i)
-    @total_likes = @user.upload_images.map(&:count_like).sum(&:to_i)
-  end
-
   def edit
     @user = User.find(params[:id])
     redirect_to root_path unless current_user.id == @user.id

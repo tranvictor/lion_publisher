@@ -82,10 +82,12 @@ gem 'protected_attributes'
 gem 'rails-observers'
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
+gem 'actionpack-xml_parser'
 gem 'activerecord-deprecated_finders'
 gem 'activerecord-session_store'
 gem 'activeresource'
 
+gem 'dalli'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
