@@ -25,12 +25,8 @@ class User < ActiveRecord::Base
     :content_type => /^image\/(png|gif|jpeg|jpg)/,\
     message: 'must be a gif, jpg or png image.'
 
-  has_many :upload_images, dependent: :destroy
-  has_many :likes, dependent: :destroy
-  has_many :comments, dependent: :destroy
   has_many :articles, dependent: :nullify
   has_many :messages
-  has_one :publisher, dependent: :destroy
 
   def admin?
     is_admin || Settings.admin_emails.include?(email)
