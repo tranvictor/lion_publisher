@@ -3,6 +3,8 @@ require "redis"
 require 'actionpack/action_caching'
 
 class ArticlesController < ApplicationController
+  load_and_authorize_resource
+
   # GET /articles
   # GET /articles.json
   #before_filter :tracking, :only => [:index, :show]
@@ -80,15 +82,6 @@ class ArticlesController < ApplicationController
     @next_id = Article.where("category_id = ? AND id < ? AND published = true",
                              @article.category_id, @article.id).maximum(:id)
 
-    unless @article.published
-      if (!current_user) or (!current_user.admin? and !current_user.writer?)
-        return redirect_to root_path
-      end
-      if (!current_user.admin? and @article.user_id != current_user.id)
-        return redirect_to root_path
-      end
-    end
-
     if @article.category_id != nil
       @recommend_articles = Article.where(:category_id => @article.category_id)
                                    .where(:published => true)
@@ -110,56 +103,25 @@ class ArticlesController < ApplicationController
   # GET /articles/new.json
   def new
     respond_to do |format|
-      if current_user
-        if current_user.writer? or current_user.admin?
-          @categories = Category.all
-          @article = Article.new
-          format.html { render layout: 'minimal' }
-          format.json { render json: @article }
-        else
-          format.html { redirect_to root_path,
-                        :notice => "Only writer or admin can access this area!!!" }
-        end
-      else
-        format.html { redirect_to new_user_session_path,
-                                  :notice => "Please login first!!!" }
-      end
+      @categories = Category.all
+      @article = Article.new
+      format.html { render layout: 'minimal' }
+      format.json { render json: @article }
     end
   end
 
   # GET /articles/1/edit
   def edit
     respond_to do |format|
-      if current_user
-        begin
-          @article = Article.find(params[:id])
-        rescue
-          return redirect_to root_path
-        end
-        if (current_user.admin?)
-          @categories = Category.all
-          @created_pages = @article.pages.order('page_no')
-          format.html
-        elsif (current_user.writer?)
-          if (@article.user_id == current_user.id)
-            @categories = Category.all
-            @created_pages = @article.pages.order('page_no')
-            format.html
-          else
-            format.html {
-              redirect_to root_path,
-              :notice => "You can't edit this article!!!" }
-          end
-        else
-          format.html {
-            redirect_to root_path,
-            :notice => "Only writer or admin can edit this article!!!" }
-        end
-      else
-        format.html {
-          redirect_to new_user_session_path,
-          :notice => "Please login first!!!" }
+      begin
+        @article = Article.find(params[:id])
+      rescue
+        return redirect_to root_path
       end
+
+      @categories = Category.all
+      @created_pages = @article.pages.order('page_no')
+      format.html
     end
   end
 

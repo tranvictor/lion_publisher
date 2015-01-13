@@ -59,7 +59,7 @@ gem 'settingslogic'
 
 gem 'safe_yaml'
 gem 'rails_admin'
-gem 'cancan'
+gem 'cancancan', '~> 1.10'
 gem 'kaminari'
 gem 'bootstrap-wysihtml5-rails'
 gem 'codemirror-rails'
