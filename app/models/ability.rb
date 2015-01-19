@@ -5,11 +5,9 @@ class Ability
     user = user || User.new
 
     # Article
-    cannot :new, Article
-    can :index, Article
-    can :show, Article do |a|
-      a.published?
-    end
+    can [:index, :random], Article
+    can :show, Article, :published => true
+    cannot [:new, :edit, :create, :update, :destroy, :clearcache], Article
 
     # Message
     cannot [:index, :show, :reply, :destroy], Message

@@ -125,16 +125,19 @@ class ArticlesController < ApplicationController
     end
   end
 
-
   # POST /articles
   # POST /articles.json
   def create
     respond_to do |format|
-      if current_user && (current_user.admin? || current_user.writer?)
-        @article = Article.new(params[:article])
-        @article.user_id = current_user.id
-        @article.published = false
-        @categories = Category.all
+      # if current_user && (current_user.admin? || current_user.writer?)
+        article_params = params.require(:article).permit(:title, :category_id)
+        article_params[:user_id] = current_user.id
+        article_params[:published] = false
+        @article = Article.new(article_params)
+        # @article = Article.new(params[:article])
+        # @article.user_id = current_user.id
+        # @article.published = false
+        # @categories = Category.all
         if @article.save
           #@article.short_url = get_shorten_url(URI.join(root_url,
                                                       #article_path(@article)))
@@ -147,30 +150,17 @@ class ArticlesController < ApplicationController
           format.html { render action: "new", layout: "minimal" }
           format.js { render json: @article.errors, status: :unprocessable_entity }
         end
-      else
-        format.html { redirect_to :controller=>'admin',
-                      :action=>'login'}
-      end
+      # else
+      #   format.html { redirect_to :controller=>'admin',
+      #                 :action=>'login'}
+      # end
     end
-  end
-
-  def get_host(url)
-    url = "http://#{url}" if URI.parse(url).scheme.nil?
-    URI.parse(url).host.downcase
   end
 
   # PUT /articles/1
   # PUT /articles/1.json
   def update
-    if !current_user || (!current_user.admin? && !current_user.writer?)
-      return redirect_to root_path
-    end
-
     @article = Article.find(params[:id]) rescue (return redirect_to root_path)
-
-    if (!current_user.admin? && @article.user_id != current_user.id)
-      return redirect_to root_path
-    end
 
     @created_pages = @article.pages.order('page_no')
     @page = nil
@@ -185,6 +175,7 @@ class ArticlesController < ApplicationController
     end
 
     if params[:file] != nil
+      p "abc"
       @pages = []
       max_page_no = @article.pages.maximum('page_no')
       @page = @article.pages.build(
@@ -234,9 +225,6 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
-    if !(current_user && current_user.admin?)
-      return redirect_to root_path
-    end
     @article = Article.find(params[:id])
     @article.destroy
 
@@ -301,5 +289,10 @@ class ArticlesController < ApplicationController
       }
     end
     results
+  end
+
+  def get_host(url)
+    url = "http://#{url}" if URI.parse(url).scheme.nil?
+    URI.parse(url).host.downcase
   end
 end
