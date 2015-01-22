@@ -1,7 +1,0 @@
----
-stat_threshold: 1.0
-pageview_threshold: 0.65
-clickcount_threshold: 0.3
-adclick_threshold: 1.0
-under_threshold_chance: 0.85
-above_threshold_chance: 0.85
