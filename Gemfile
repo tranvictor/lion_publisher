@@ -78,7 +78,7 @@ gem 'progress_bar'
 gem 'redis-rails'
 gem 'connection_pool'
 
-gem 'protected_attributes'
+# gem 'protected_attributes'
 gem 'rails-observers'
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'

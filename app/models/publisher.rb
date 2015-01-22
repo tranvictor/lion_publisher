@@ -20,13 +20,13 @@ class Publisher < ActiveRecord::Base
 
   attr_accessor :from, :to
 
-  attr_accessible :code, :from, :to, :paypal_email, :name, :address,
-    :bank_account, :user_id, :checks_address, :checks_city, :checks_state,
-    :checks_zipcode, :bank_bank_name, :bank_account_number, :bank_routing_number,
-    :foreign_swift_code, :foreign_account_number, :foreign_irc_code,
-    :foreign_iban_code, :payment_method, :payment, :foreign_bank_name,
-    :foreign_branch_sort_code, :foreign_address, :foreign_currency,
-    :google_wallet_email, :real_currency
+  # attr_accessible :code, :from, :to, :paypal_email, :name, :address,
+  #   :bank_account, :user_id, :checks_address, :checks_city, :checks_state,
+  #   :checks_zipcode, :bank_bank_name, :bank_account_number, :bank_routing_number,
+  #   :foreign_swift_code, :foreign_account_number, :foreign_irc_code,
+  #   :foreign_iban_code, :payment_method, :payment, :foreign_bank_name,
+  #   :foreign_branch_sort_code, :foreign_address, :foreign_currency,
+  #   :google_wallet_email, :real_currency
 
   #:bank_account is for foreign bank address
   #:foreign_account_number is for foreign bank name

@@ -8,9 +8,9 @@ class User < ActiveRecord::Base
          :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name,
-                  :user_name, :confirmed_at, :avatar, :is_admin, :login, :is_writer,
-                  :shorten_domain
+  # attr_accessible :email, :password, :password_confirmation, :remember_me, :name,
+  #                 :user_name, :confirmed_at, :avatar, :is_admin, :login, :is_writer,
+  #                 :shorten_domain
   # attr_accessible :title, :body
 
   has_attached_file :avatar,

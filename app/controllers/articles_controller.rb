@@ -130,13 +130,12 @@ class ArticlesController < ApplicationController
   def create
     respond_to do |format|
       # if current_user && (current_user.admin? || current_user.writer?)
-        article_params = params.require(:article).permit(:title, :category_id)
-        article_params[:user_id] = current_user.id
-        article_params[:published] = false
+        # article_params = params.require(:article).permit(:title, :category_id)
+        # article_params[:user_id] = current_user.id
+        # article_params[:published] = false
         @article = Article.new(article_params)
-        # @article = Article.new(params[:article])
-        # @article.user_id = current_user.id
-        # @article.published = false
+        @article.user_id = current_user.id
+        @article.published = false
         # @categories = Category.all
         if @article.save
           #@article.short_url = get_shorten_url(URI.join(root_url,
@@ -170,7 +169,7 @@ class ArticlesController < ApplicationController
       #paras['page_no'] = paras['page_no'].to_i
       #puts paras
       if paras != nil
-        created_page.update_attributes(paras)
+        created_page.update_attributes(sanitize_page_params(paras))
       end
     end
 
@@ -218,7 +217,8 @@ class ArticlesController < ApplicationController
     if !@article.published && params[:article][:published]
       params[:article][:publish_date] = Date.today
     end
-    @article.update_attributes(params[:article])
+
+    @article.update_attributes(article_params)
     return render :json => gen_update_json(@pages)
   end
 
@@ -294,5 +294,14 @@ class ArticlesController < ApplicationController
   def get_host(url)
     url = "http://#{url}" if URI.parse(url).scheme.nil?
     URI.parse(url).host.downcase
+  end
+
+  def article_params
+    params.require(:article).permit(:title, :page_ids, :category_id, :published, :publish_date,
+      :intro, :outtro, :cache_thumbnail, :cache_desc, :cache_citation, :is_list)
+  end
+
+  def sanitize_page_params(paras)
+    paras.permit(:article_id, :body, :citation, :image, :page_no, :title, :broken)
   end
 end

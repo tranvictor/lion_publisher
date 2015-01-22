@@ -1,8 +1,8 @@
 require "open-uri"
 
 class Page < ActiveRecord::Base
-  attr_accessible :article_id, :body, :citation, :image,
-                  :page_no, :title, :broken
+  # attr_accessible :article_id, :body, :citation, :image,
+  #                 :page_no, :title, :broken
 
   searchable(only_reindex_attribute_changes_of: [:body]) do
     text :body

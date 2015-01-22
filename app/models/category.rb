@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  attr_accessible :name, :article_ids, :color, :parent_id, :subcategory_ids
+  # attr_accessible :name, :article_ids, :color, :parent_id, :subcategory_ids
 
   validates :name, :presence => true
   validates_uniqueness_of :name, scope: :parent_id
