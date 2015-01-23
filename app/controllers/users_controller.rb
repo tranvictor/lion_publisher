@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
-  
+
   def edit
     @user = User.find(params[:id])
   end
@@ -35,8 +35,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(email, :password, :password_confirmation,
-      :remember_me, :name, :user_name, :confirmed_at, :avatar, :is_admin,
-      :login, :is_writer, :shorten_domain)
+    params.require(:user).permit(:password, :password_confirmation, 
+                                :remember_me, :name, :avatar)
   end
 end
