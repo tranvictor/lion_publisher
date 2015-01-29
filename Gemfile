@@ -79,13 +79,13 @@ gem 'redis-rails'
 gem 'connection_pool'
 
 # gem 'protected_attributes'
-gem 'rails-observers'
-gem 'actionpack-page_caching'
+# gem 'rails-observers'
+# gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
-gem 'actionpack-xml_parser'
-gem 'activerecord-deprecated_finders'
-gem 'activerecord-session_store'
-gem 'activeresource'
+# gem 'actionpack-xml_parser'
+# gem 'activerecord-deprecated_finders'
+# gem 'activerecord-session_store'
+# gem 'activeresource'
 
 gem 'dalli'
 
@@ -98,11 +98,14 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'rspec-rails'
+  gem 'rspec-mocks'
+  gem 'factory_girl_rails'
 end
 
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'factory_girl_rails', :require => false
 end
