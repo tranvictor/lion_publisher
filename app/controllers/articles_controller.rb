@@ -129,18 +129,11 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     respond_to do |format|
-      # if current_user && (current_user.admin? || current_user.writer?)
-        # article_params = params.require(:article).permit(:title, :category_id)
-        # article_params[:user_id] = current_user.id
-        # article_params[:published] = false
         @article = Article.new(article_params)
         @article.user_id = current_user.id
         @article.published = false
         # @categories = Category.all
         if @article.save
-          #@article.short_url = get_shorten_url(URI.join(root_url,
-                                                      #article_path(@article)))
-          #@article.save
           format.html { redirect_to :controller=>'articles',
                         :action=>'edit',
                         :id=>@article.id }
@@ -149,10 +142,6 @@ class ArticlesController < ApplicationController
           format.html { render action: "new", layout: "minimal" }
           format.js { render json: @article.errors, status: :unprocessable_entity }
         end
-      # else
-      #   format.html { redirect_to :controller=>'admin',
-      #                 :action=>'login'}
-      # end
     end
   end
 
@@ -165,9 +154,6 @@ class ArticlesController < ApplicationController
     @page = nil
     @created_pages.each do |created_page|
       paras = params['page_' + created_page.id.to_s]
-      #puts 'For ' + created_page.id.to_s
-      #paras['page_no'] = paras['page_no'].to_i
-      #puts paras
       if paras != nil
         created_page.update_attributes(sanitize_page_params(paras))
       end

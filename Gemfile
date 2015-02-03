@@ -77,16 +77,7 @@ gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in developm
 gem 'progress_bar'
 gem 'redis-rails'
 gem 'connection_pool'
-
-# gem 'protected_attributes'
-# gem 'rails-observers'
-# gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
-# gem 'actionpack-xml_parser'
-# gem 'activerecord-deprecated_finders'
-# gem 'activerecord-session_store'
-# gem 'activeresource'
-
 gem 'dalli'
 
 group :development, :test do
@@ -101,6 +92,7 @@ group :development, :test do
 
   gem 'rspec-rails'
   gem 'rspec-mocks'
+  gem 'rspec-collection_matchers'
   gem 'factory_girl_rails'
 end
 

@@ -279,6 +279,8 @@ GEM
     retriable (1.4.1)
     rsolr (1.0.10)
       builder (>= 2.1.2)
+    rspec-collection_matchers (1.1.2)
+      rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.1.7)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.2)
@@ -406,6 +408,7 @@ DEPENDENCIES
   rb-readline
   recaptcha
   redis-rails
+  rspec-collection_matchers
   rspec-mocks
   rspec-rails
   safe_yaml
