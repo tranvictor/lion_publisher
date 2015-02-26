@@ -93,6 +93,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-mocks'
   gem 'rspec-collection_matchers'
+  gem 'sunspot_matchers'
   gem 'factory_girl_rails'
 end
 

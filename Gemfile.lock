@@ -337,6 +337,7 @@ GEM
     sunspot (2.1.1)
       pr_geohash (~> 1.0)
       rsolr (~> 1.0.7)
+    sunspot_matchers (2.1.1.0)
     sunspot_rails (2.1.1)
       nokogiri
       rails (>= 3)
@@ -419,6 +420,7 @@ DEPENDENCIES
   simple_form
   spring
   sqlite3
+  sunspot_matchers
   sunspot_rails
   sunspot_solr
   turbolinks
