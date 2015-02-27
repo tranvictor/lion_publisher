@@ -6,7 +6,7 @@ RSpec.describe ArticlesController, :type => :controller do
 
   let(:writer) { FactoryGirl.create(:user, :writer)}
   let(:published_article) { FactoryGirl.create(:article, user_id: writer, published: true)}
-  let(:unpublished_article) { FactoryGirl.create(:article, title: 'another article', published: false)}
+  let(:unpublished_article) { FactoryGirl.create(:article, title: 'another article', published: false )}
   let(:articles) { [published_article, unpublished_article]}
 
   describe 'When a user sign in' do
@@ -34,13 +34,14 @@ RSpec.describe ArticlesController, :type => :controller do
     
     context 'GET show' do
       it 'should allow users to view a published article' do
-        get :show, id: published_article.id
+        get :show, id: published_article
         expect(response).to have_http_status('200')
       end
 
-      # it 'should not allow users to view an unpublished article' do
-
-      # end
+      it 'should not allow users to view an unpublished article' do
+        get :show, id: unpublished_article
+        expect(response).to have_http_status('302')
+      end
     end
   end
 
@@ -50,7 +51,22 @@ RSpec.describe ArticlesController, :type => :controller do
     end
 
     context 'GET show' do
+      it 'should allow an author to view a published article' do
+        get :show, id: published_article
+        expect(response).to have_http_status('200')
+      end
 
+      it 'should not allow a writer to view an unpublished article written by another writer' do
+        get :show, id: unpublished_article
+        expect(response).to have_http_status('302')
+      end
+
+      it 'should allow a writer to view his/her unpublished articles' do
+        tmp = unpublished_article.clone
+        tmp.update_attributes(:user_id => writer.id)
+        get :show, id: unpublished_article
+        expect(response).to have_http_status('200')
+      end      
     end
   end
 end

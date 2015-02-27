@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :article do
     title 'test article'
-    # category_id 1
+    association :category, factory: :category, strategy: :build
   end
 end

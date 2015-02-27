@@ -77,10 +77,12 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @article = Article.find(params[:id]) rescue (return redirect_to(root_path))
-    @previous_id = Article.where("category_id = ? AND id > ? AND published = true",
-                                 @article.category_id, @article.id).minimum(:id)
-    @next_id = Article.where("category_id = ? AND id < ? AND published = true",
-                             @article.category_id, @article.id).maximum(:id)
+    @previous_id = Article.where("category_id = ? AND id > ?", 
+                                  @article.category_id, @article.id)
+                          .where(:published => true).minimum(:id)
+    @next_id = Article.where("category_id = ? AND id < ?",
+                                  @article.category_id, @article.id)
+                      .where(:published => true).maximum(:id)
 
     if @article.category_id != nil
       @recommend_articles = Article.where(:category_id => @article.category_id)
