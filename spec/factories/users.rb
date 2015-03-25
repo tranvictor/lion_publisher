@@ -5,6 +5,8 @@ FactoryGirl.define do
     password 'password'
     password_confirmation 'password'
     confirmed_at Time.now
+    is_writer false
+    is_admin false
     
     trait :writer do
       user_name 'author_user'

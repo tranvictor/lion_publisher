@@ -18,7 +18,7 @@ class Article < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
 
-  self.per_page = 5
+  self.per_page = 30
 
   def author
     self.user

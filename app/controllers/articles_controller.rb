@@ -66,6 +66,9 @@ class ArticlesController < ApplicationController
                       .where('category_id <> ?', Settings.isolated_cat_id)
                       .where(:published => true)
                       .order(Settings.random_query).first
+
+    p Article.first
+
     unless @article.nil?
       redirect_to article_path @article
       return

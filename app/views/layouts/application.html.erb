@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <%= render 'layouts/head' %>
-<body>
-<div id="fb-root"></div>
+<% current_cat = Category.find_by_id(params[:category].to_i) %>
+<body class="color-<%= (current_cat.nil?)? 0 : current_cat.color.to_i-1 %>">
 <script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=253766078122207&version=v2.0";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
 <section class="top">
   <div class="row">
-    <div class="columns small-1 medium-1 text-center"><a class="search-toggle"><i class="fa fa-search"></i></a></div>
     <div class="columns small-11 show-on-search hide search-form animated fadeIn">
       <div class="row collapse">
         <div class="columns small-11">
           <form method="get" action="search">
-            <input placeholder="I'm looking for..." name="q" autocomplete="off" class="search-box">
+            <input placeholder="I'm looking for..." name="q" autocomplete="off" class="search-box radius">
           </form>
         </div>
         <div class="columns small-1 text-center"><a class="search-toggle"><i class="fa fa-close"></i></a></div>
       </div>
     </div>
-    <div class="columns small-10 medium-5 small-text-centered small-centered medium-uncentered hide-on-search animated fadeIn"><a href="/" class="logo text-center">
-        <h1 class="title">Trends Read</h1>
-        <p class="sub-title">Everything Worth Reading</p></a></div>
+    <div class="columns small-10 medium-3 small-text-centered small-centered medium-uncentered hide-on-search animated fadeIn"><a href="/" class="logo"></a></div>
     <div class="columns small-1 medium-6 large-4 text-right hide-for-small hide-on-search animated fadeIn">
       <ul class="social-networks">
         <li><a class="facebook with-counter"><i class="fa fa-facebook-square"></i><span class="counter">1.2M</span></a></li>
         <li><a class="twitter"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="google-plus"><i class="fa fa-google-plus-square"></i></a></li>
+        <li><a class="pinterest"><i class="fa fa-pinterest"></i></a></li>
       </ul>
     </div>
   </div>
@@ -82,37 +81,39 @@
 </section>
 <section class="editor">
   <% if user_signed_in? %>
-    <div class="row">
-      <div class="columns small-12 medium-3 large-2">
-        <h3 class="title">Dashboard</h3>
+    <div class="menu">
+      <div class="row">
+        <div class="columns small-12 medium-3 large-2">
+          <h3 class="title">Dashboard</h3>
+        </div>
+        <div class="columns small-12 medium-9 large-10">
+          <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 sub-menu">
+            <% if current_user.admin? %>
+              <li><a href="<%= rails_admin_path %>">
+                <i class="fa fa-dashboard space-10"></i>Dashboard</a></li>
+              <li><a href="<%= messages_path %>">
+                <i class="fa fa-envelope space-10"></i>Messages</a></li>
+            <% end %>
+            <li><a href="<%= edit_user_path current_user %>">
+              <i class="fa fa-user space-10"></i>Edit your profile</a></li>
+            <li><a href="<%= destroy_user_session_path %>" data-method="delete" rel="nofollow">
+              <i class="fa fa-lock space-10"></i>Sign out</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="columns small-12 medium-9 large-10">
-        <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 sub-menu">
-          <% if current_user.admin? %>
-            <li><a href="<%= rails_admin_path %>">
-              <i class="fa fa-dashboard space-10"></i>Dashboard</a></li>
-            <li><a href="<%= messages_path %>">
-              <i class="fa fa-envelope space-10"></i>Messages</a></li>
-          <% end %>
-          <li><a href="<%= edit_user_path current_user %>">
-            <i class="fa fa-user space-10"></i>Edit your profile</a></li>
-          <li><a href="<%= destroy_user_session_path %>" data-method="delete" rel="nofollow">
-            <i class="fa fa-lock space-10"></i>Sign out</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="row">
-      <div class="columns small-12 medium-3 large-2">
-        <h3 class="title">Posts</h3>
-      </div>
-      <div class="columns small-12 medium-9 large-10">
-        <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 sub-menu">
-          <li><a href="<%= filter_all_path %>">
-            <i class="fa fa-list space-10"></i>Your posts</a></li>
-          <li><a href="<%= new_article_path %>">
-            <i class="fa fa-file space-10"></i>New post</a></li>
-          <%= yield :writer_menu %>
-        </ul>
+      <div class="row">
+        <div class="columns small-12 medium-3 large-2">
+          <h3 class="title">Posts</h3>
+        </div>
+        <div class="columns small-12 medium-9 large-10">
+          <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 sub-menu">
+            <li><a href="<%= filter_all_path %>">
+              <i class="fa fa-list space-10"></i>Your posts</a></li>
+            <li><a href="<%= new_article_path %>">
+              <i class="fa fa-file space-10"></i>New post</a></li>
+            <%= yield :writer_menu %>
+          </ul>
+        </div>
       </div>
     </div>
   <% end %>
@@ -129,9 +130,11 @@
   </div>
 </section>
 <section class="content">
-  <%= yield %>
+  <div class="content-padding">
+    <%= yield %>
+  </div>
 </section>
-<section class="bottom">
+<section class="social">
   <div class="row">
     <div class="columns">
       <div class="row collapse">
@@ -150,31 +153,8 @@
         </div>
       </div>
     </div>
-    <div class="columns small-11 small-centered">
-      <div class="row">
-        <div class="columns small-12">
-          <h2 class="sub-title">Categories</h2>
-          <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3 category-links">
-          <% cache("category_tree") do %>
-            <% Category.main_categories.each do |cat| %>
-              <li><a href="<%= articles_path(:category=>cat.id) %>">
-                <%= cat.name %></a>
-                <ul class="small-block-grid-2 sub-category-links">
-                <% Category.category_tree[cat.id].each_with_index do |sub_cat, index| %>
-                  <% if index > 0 %>
-                    <li><a href="<%= articles_path(:category=>sub_cat.id) %>"><%= sub_cat.name %></a></li>
-                  <% end %>
-                <% end %>
-                </ul>
-              </li>
-            <% end %>
-          <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
   </div>
-  <div id="subscribe-modal" data-reveal class="reveal-modal small">
+  <!-- <div id="subscribe-modal" data-reveal class="reveal-modal small">
     <h2>Get more stuff like this <b>In your inbox</b></h2>
     <p>Sign up for our daily email and get the stories everyone is talking about</p>
     <form class="subscribe" data-remote="true" method="post"
@@ -182,9 +162,38 @@
       <input type="text" name="subscriber[email]" placeholder="your@email.com">
       <button type="submit">Sign Up</button>
     </form>
+  </div> -->
+</section>
+
+<section class="bottom">
+  <div class="row">
+    <div class="columns small-11 small-centered">
+      <div class="row">
+        <div class="columns small-11 small-centered medium-5 medium-uncentered">
+          <h2 class="sub-title">Categories</h2>
+          <ul class="small-block-grid-3 category-links">
+            <% cache("category_tree") do %>
+              <% Category.main_categories.each do |cat| %>
+                <li><a href="<%= articles_path(:category=>cat.id) %>">
+                  <%= cat.name %></a>
+                  <!-- <ul class="small-block-grid-2 sub-category-links">
+                  <% Category.category_tree[cat.id].each_with_index do |sub_cat, index| %>
+                    <% if index > 0 %>
+                      <li><a href="<%= articles_path(:category=>sub_cat.id) %>"><%= sub_cat.name %></a></li>
+                    <% end %>
+                  <% end %>
+                  </ul> -->
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
-<a class="scroll-top"><span class="fa fa-arrow-circle-up"></span><br>Back<br>To Top</a>
+
+<a class="scroll-top"><span class="fa fa-arrow-circle-up"></span><br>Top</a>
 <script type="text/javascript" src="/components/modernizr/modernizr.js"></script>
 <script type="text/javascript" src="/components/jquery/dist/jquery.min.js"></script>
 <%= javascript_include_tag "jquery_ujs" %>
@@ -193,9 +202,10 @@
 <script type="text/javascript" src="/components/wowjs/dist/wow.min.js"></script>
 <script type="text/javascript" src="/components/bxslider-4/jquery.bxslider.min.js"></script>
 <script type="text/javascript" src="/components/ScrollToFixed/jquery-scrolltofixed-min.js"></script>
-<%= javascript_include_tag "jquery.trending-slider.js" %>
+
 <%= yield(:js) %>
 <%= javascript_include_tag "application.js" %>
+<%= javascript_include_tag "page.home.js" %>
 <%= yield(:csstail) %>
 </body>
 </html>
