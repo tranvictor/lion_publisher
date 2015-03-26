@@ -2,8 +2,24 @@
   <h1>Get more stuffs like this <b>In your Inbox</b></h1>
   <form class="subscribe" data-remote="true" method="post"
     id="new_subscriber" action="<%= subscribers_path %>">
+    <div class="row collapse">
+      <div class="small-8 columns">
+        <input type="text" name="subscriber[email]" placeholder="your@email.com">
+      </div>
+      <div class="small-4 columns">
+        <button class="postfix tiny color button">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- 
+<div class="subscribe">
+  <h1>Get more stuffs like this <b>In your Inbox</b></h1>
+  <form class="subscribe" data-remote="true" method="post"
+    id="new_subscriber" action="<%= subscribers_path %>">
     <input type="text" name="subscriber[email]" placeholder="your@email.com">
     <button type="submit">Sign Up</button>
   </form>
 </div>
 
+ -->

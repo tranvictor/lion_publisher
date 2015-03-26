@@ -1,9 +1,10 @@
+
 class SubscribersController < ApplicationController
 
   # POST /subscribers
   # POST /subscribers.json
   def create
-    @subscriber = Subscriber.new(params[:subscriber])
+    @subscriber = Subscriber.new(subscriber_params)
 
     if @subscriber.save
       res = <<-HTML
@@ -38,4 +39,8 @@ class SubscribersController < ApplicationController
     end
   end
 
+  private
+  def subscriber_params
+    params.require(:subscriber).permit(:email, :token)
+  end
 end

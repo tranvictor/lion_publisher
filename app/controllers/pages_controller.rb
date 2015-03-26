@@ -45,7 +45,7 @@ class PagesController < ApplicationController
   def create
     begin
       @article = Article.find(params[:page][:article_id])
-      @page = @article.pages.build(params[:page])
+      @page = @article.pages.build(page_params)
 
       print params
       print params[:page]
@@ -78,7 +78,7 @@ class PagesController < ApplicationController
     @page = Page.find(params[:id])
 
     respond_to do |format|
-      if @page.update_attributes(params[:page])
+      if @page.update_attributes(page_params)
         format.html { redirect_to @page, notice: 'Page was successfully updated.' }
         format.json { head :no_content }
       else
@@ -115,5 +115,9 @@ class PagesController < ApplicationController
         connection.del "trending"
       end
     end
+  end
+
+  def page_params
+    params.requires[:page].permit(:article_id, :body, :citation, :image, :page_no, :title, :broken)
   end
 end

@@ -1,15 +1,5 @@
 class MessagesController < ApplicationController
-  before_filter :check_admin, :only => [:index, :show, :destroy]
-
-  #For test only
-  #before_filter :check_admin, :only => [:show, :destroy]
-
-  def check_admin
-    unless user_signed_in? && current_user.admin?
-      redirect_to "/", :notice => "Please login as admin to access this area!"
-    end
-  end
-
+  load_and_authorize_resource
   # GET /messages
   # GET /messages.json
   def index

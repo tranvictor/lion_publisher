@@ -11,11 +11,12 @@ class Ranking
       return cached_trending unless cached_trending.nil?
     end
     template = <<-TEMPLATE
-      <li><div style="background-image: url(%s)" class="image"></div>
+      <li>
+        <div style="background-image: url(%s)" class="image"></div>
         <div class="overlay"></div>
         <div class="info">
-          <h2 style="background-color: #0aa" class="category">%s</h2>
-          <h1 class="title"><a href="%s">%d. %s</a></h1>
+          <h2 class="category">%s</h2>
+          <h1 class="title"><a href="%s">%s</a></h1>
         </div>
       </li>
     TEMPLATE
@@ -23,7 +24,7 @@ class Ranking
     @articles.each_with_index do |article, index|
       result << template % [article.hi_thumbnail, article.category.name,
                             article_path(article),
-                            index + 1, article.title]
+                            article.title]
     end
     RedisConnectionPool.instance.with do |connection|
       connection.set "trending", result, ex: 3600

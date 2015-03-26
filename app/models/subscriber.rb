@@ -1,6 +1,6 @@
 class Subscriber < ActiveRecord::Base
   before_validation :generate_token
-  attr_accessible :email, :token
+  # attr_accessible :email, :token
 
   validates_presence_of :email, message: 'Email field should not be blank.'
   validates_uniqueness_of :email, message: 'This email already subscribed.'

@@ -1,4 +1,16 @@
-<div class="news-letter">
+<div class="block subscribe">
+  <h1 class="title">Subscribe Us!</h1>
+  <div class="content">
+    <p>Sign up for our daily email and get the stories everyone is talking about</p>
+    <form class="subscribe" data-remote="true" method="post"
+      id="new_subscriber" action="<%= subscribers_path %>">
+      <input type="text" name="subscriber[email]" placeholder="your@email.com">
+      <button class="tiny info">Subscribe</button>
+    </form>
+  </div>
+</div>
+
+<!-- <div class="block subscribe">
   <div style="background-image: url(/images/subscribe-bg.jpg)" class="image"></div>
   <div class="info">
     <h1 class="title">Subscribe Us!</h1>
@@ -11,3 +23,4 @@
   </div>
 </div>
 
+ -->
