@@ -18,3 +18,4 @@ solr/
 public/components/foundation/scss/.sass-cache
 dump.rdb
 database.yml
+Gemfile.lock
