@@ -6,7 +6,7 @@ $ document
   # .trendingSlider()
   trendingSlider = $ 'div.trending ul.slides'
   .bxSlider
-  	slideMargin: 40
+  	# slideMargin: 40
   	speed: 500
   	pager: false
   	adaptiveHeight: false

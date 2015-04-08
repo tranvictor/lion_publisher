@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format =~ %r{application/json} }
   before_filter :mobile_detect
 
   def after_sign_in_path_for(resource_or_scope)
@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to main_app.root_url, :notice => exception.message
+    redirect_to main_app.root_path, :notice => exception.message
   end
 
   def get_threshold

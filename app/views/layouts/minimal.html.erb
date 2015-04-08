@@ -2,19 +2,29 @@
 <html>
 <%= render 'layouts/head' %>
 <body class="minimal">
-  <section class="top non-fixed">
-    <div class="row">
-      <div class="columns small-10 medium-5 small-text-centered small-centered medium-uncentered"><a href="/" class="logo text-center">
-          <h1 class="title">Trends Read</h1>
-          <p class="sub-title">Everything Worth Reading</p></a></div>
-      <div class="columns small-1 medium-6 large-4 text-right hide-for-small hide-on-search animated fadeIn">
-        <ul class="social-networks">
-          <li><a class="facebook with-counter"><i class="fa fa-facebook-square"></i><span class="counter">1.2M</span></a></li>
-          <li><a class="twitter"><i class="fa fa-twitter"></i></a></li>
-        </ul>
+  <section class="top">
+  <div class="row">
+    <div class="columns small-11 show-on-search hide search-form animated fadeIn">
+      <div class="row collapse">
+        <div class="columns small-11">
+          <form method="get" action="search">
+            <input placeholder="I'm looking for..." name="q" autocomplete="off" class="search-box radius">
+          </form>
+        </div>
+        <div class="columns small-1 text-center"><a class="search-toggle"><i class="fa fa-close"></i></a></div>
       </div>
     </div>
-  </section>
+    <div class="columns small-10 medium-3 small-text-centered small-centered medium-uncentered hide-on-search animated fadeIn"><a href="/" class="logo"></a></div>
+    <div class="columns small-1 medium-6 large-4 text-right hide-for-small hide-on-search animated fadeIn">
+      <ul class="social-networks">
+        <li><a class="facebook with-counter"><i class="fa fa-facebook-square"></i><span class="counter">1.2M</span></a></li>
+        <li><a class="twitter"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="google-plus"><i class="fa fa-google-plus-square"></i></a></li>
+        <li><a class="pinterest"><i class="fa fa-pinterest"></i></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
   <section class="notifications">
     <div class="row">
       <div class="columns small-12 small-centered medium-8 large-6">

@@ -2,8 +2,8 @@ require 'action_view'
 include ActionView::Helpers::NumberHelper
 
 class Article < ActiveRecord::Base
-  attr_accessible :title, :page_ids, :category_id, :published, :publish_date,
-    :intro, :outtro, :cache_thumbnail, :cache_desc, :cache_citation, :is_list
+  # attr_accessible :title, :page_ids, :category_id, :published, :publish_date,
+    # :intro, :outtro, :cache_thumbnail, :cache_desc, :cache_citation, :is_list
 
   searchable(only_reindex_attribute_changes_of: [:title]) do
     text :title
@@ -18,7 +18,7 @@ class Article < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
 
-  self.per_page = 30
+  self.per_page = 20
 
   def author
     self.user

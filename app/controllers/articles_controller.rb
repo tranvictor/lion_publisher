@@ -1,7 +1,10 @@
 require "open-uri"
 require "redis"
+require 'actionpack/action_caching'
 
 class ArticlesController < ApplicationController
+  load_and_authorize_resource
+
   # GET /articles
   # GET /articles.json
   #before_filter :tracking, :only => [:index, :show]
@@ -63,6 +66,9 @@ class ArticlesController < ApplicationController
                       .where('category_id <> ?', Settings.isolated_cat_id)
                       .where(:published => true)
                       .order(Settings.random_query).first
+
+    p Article.first
+
     unless @article.nil?
       redirect_to article_path @article
       return
@@ -74,19 +80,12 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @article = Article.find(params[:id]) rescue (return redirect_to(root_path))
-    @previous_id = Article.where("category_id = ? AND id > ? AND published = true",
-                                 @article.category_id, @article.id).minimum(:id)
-    @next_id = Article.where("category_id = ? AND id < ? AND published = true",
-                             @article.category_id, @article.id).maximum(:id)
-
-    unless @article.published
-      if (!current_user) or (!current_user.admin? and !current_user.writer?)
-        return redirect_to root_path
-      end
-      if (!current_user.admin? and @article.user_id != current_user.id)
-        return redirect_to root_path
-      end
-    end
+    @previous_id = Article.where("category_id = ? AND id > ?", 
+                                  @article.category_id, @article.id)
+                          .where(:published => true).minimum(:id)
+    @next_id = Article.where("category_id = ? AND id < ?",
+                                  @article.category_id, @article.id)
+                      .where(:published => true).maximum(:id)
 
     if @article.category_id != nil
       @recommend_articles = Article.where(:category_id => @article.category_id)
@@ -109,73 +108,37 @@ class ArticlesController < ApplicationController
   # GET /articles/new.json
   def new
     respond_to do |format|
-      if current_user
-        if current_user.writer? or current_user.admin?
-          @categories = Category.all
-          @article = Article.new
-          format.html { render layout: 'minimal' }
-          format.json { render json: @article }
-        else
-          format.html { redirect_to root_path,
-                        :notice => "Only writer or admin can access this area!!!" }
-        end
-      else
-        format.html { redirect_to new_user_session_path,
-                                  :notice => "Please login first!!!" }
-      end
+      @categories = Category.all
+      @article = Article.new
+      format.html { render layout: 'minimal' }
+      format.json { render json: @article }
     end
   end
 
   # GET /articles/1/edit
   def edit
     respond_to do |format|
-      if current_user
-        begin
-          @article = Article.find(params[:id])
-        rescue
-          return redirect_to root_path
-        end
-        if (current_user.admin?)
-          @categories = Category.all
-          @created_pages = @article.pages.order('page_no')
-          format.html
-        elsif (current_user.writer?)
-          if (@article.user_id == current_user.id)
-            @categories = Category.all
-            @created_pages = @article.pages.order('page_no')
-            format.html
-          else
-            format.html {
-              redirect_to root_path,
-              :notice => "You can't edit this article!!!" }
-          end
-        else
-          format.html {
-            redirect_to root_path,
-            :notice => "Only writer or admin can edit this article!!!" }
-        end
-      else
-        format.html {
-          redirect_to new_user_session_path,
-          :notice => "Please login first!!!" }
+      begin
+        @article = Article.find(params[:id])
+      rescue
+        return redirect_to root_path
       end
+
+      @categories = Category.all
+      @created_pages = @article.pages.order('page_no')
+      format.html
     end
   end
-
 
   # POST /articles
   # POST /articles.json
   def create
     respond_to do |format|
-      if current_user && (current_user.admin? || current_user.writer?)
-        @article = Article.new(params[:article])
+        @article = Article.new(article_params)
         @article.user_id = current_user.id
         @article.published = false
-        @categories = Category.all
+        # @categories = Category.all
         if @article.save
-          #@article.short_url = get_shorten_url(URI.join(root_url,
-                                                      #article_path(@article)))
-          #@article.save
           format.html { redirect_to :controller=>'articles',
                         :action=>'edit',
                         :id=>@article.id }
@@ -184,44 +147,25 @@ class ArticlesController < ApplicationController
           format.html { render action: "new", layout: "minimal" }
           format.js { render json: @article.errors, status: :unprocessable_entity }
         end
-      else
-        format.html { redirect_to :controller=>'admin',
-                      :action=>'login'}
-      end
     end
-  end
-
-  def get_host(url)
-    url = "http://#{url}" if URI.parse(url).scheme.nil?
-    URI.parse(url).host.downcase
   end
 
   # PUT /articles/1
   # PUT /articles/1.json
   def update
-    if !current_user || (!current_user.admin? && !current_user.writer?)
-      return redirect_to root_path
-    end
-
     @article = Article.find(params[:id]) rescue (return redirect_to root_path)
-
-    if (!current_user.admin? && @article.user_id != current_user.id)
-      return redirect_to root_path
-    end
 
     @created_pages = @article.pages.order('page_no')
     @page = nil
     @created_pages.each do |created_page|
       paras = params['page_' + created_page.id.to_s]
-      #puts 'For ' + created_page.id.to_s
-      #paras['page_no'] = paras['page_no'].to_i
-      #puts paras
       if paras != nil
-        created_page.update_attributes(paras)
+        created_page.update_attributes(sanitize_page_params(paras))
       end
     end
 
     if params[:file] != nil
+      p "abc"
       @pages = []
       max_page_no = @article.pages.maximum('page_no')
       @page = @article.pages.build(
@@ -264,16 +208,14 @@ class ArticlesController < ApplicationController
     if !@article.published && params[:article][:published]
       params[:article][:publish_date] = Date.today
     end
-    @article.update_attributes(params[:article])
+
+    @article.update_attributes(article_params)
     return render :json => gen_update_json(@pages)
   end
 
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
-    if !(current_user && current_user.admin?)
-      return redirect_to root_path
-    end
     @article = Article.find(params[:id])
     @article.destroy
 
@@ -338,5 +280,19 @@ class ArticlesController < ApplicationController
       }
     end
     results
+  end
+
+  def get_host(url)
+    url = "http://#{url}" if URI.parse(url).scheme.nil?
+    URI.parse(url).host.downcase
+  end
+
+  def article_params
+    params.require(:article).permit(:title, :page_ids, :category_id, :published, :publish_date,
+      :intro, :outtro, :cache_thumbnail, :cache_desc, :cache_citation, :is_list)
+  end
+
+  def sanitize_page_params(paras)
+    paras.permit(:article_id, :body, :citation, :image, :page_no, :title, :broken)
   end
 end

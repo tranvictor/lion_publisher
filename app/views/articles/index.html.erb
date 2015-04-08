@@ -31,6 +31,7 @@
   <%= javascript_include_tag "jquery-ias.min" %>
   <script type="text/javascript" src="/components/bxslider-4/jquery.bxslider.min.js"></script>
   <%= javascript_include_tag "articles" %>
+  <%= javascript_include_tag "page.home.js" %>
 <% end %>
 
 <% content_for :banner do %>
@@ -49,14 +50,15 @@
         <li class="article wow fadeIn"><a href="<%= article_url article %>">
           <div style="background-image: url(<%= article.thumbnail %>);" class="image"></div>
           <div class="info">
-            <h3 class="title"><%= article.title %></h3>
             <span class="category"><%= article.category.name %></span>
+            <h3 class="title"><%= article.title %></h3>
           </div>
         </a></li>
       <% end %>
     </ul>
   </div>
 </div>
+
 <div class="flickr_pagination">
   <%= will_paginate @articles %>
   <div class="page_info">

@@ -13,6 +13,8 @@
 <% end %>
 <% content_for :js do %>
   <%= javascript_include_tag "articles-show" %>
+  <%= javascript_include_tag "page.view.js" %>
+
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5459a18c0cf8482a" async="async"></script>
 <% end %>
 
@@ -21,7 +23,7 @@
     <i class="fa fa-pencil space-10"></i>Edit this post</a></li>
 <% end %>
 
-<div class="row"> <div class="columns"> <div class="row collapse">
+<div class="row"> <div class="columns"> <div class="row">
   <div class="columns small-12 medium-7 large-8">
     <div class="page feed color-<%= @article.category.parent.try(:color) || @article.category.color %>">
       <div class="header">
@@ -29,13 +31,8 @@
           <div class="columns small-12 medium-4 large-3">
             <div class="info">
               <p class="category"><%= @article.category.name %></p>
-              <p class="updated"><i class="fa fa-calendar"></i>
-                <%= @article.publish_date.try(:strftime, "%b %d, %Y") %>
-              </p>
-              <div class="author">
-                <div style="background-image: url(<%= @article.author.avatar.url(:thumb)%>);" class="avatar"></div>
-                <p class="name"><%= @article.author.name rescue "" %></p>
-              </div>
+              <p class="author"><%= @article.author.user_name rescue "" %></p>
+              <p class="updated"><%= @article.publish_date.try(:strftime, "%b %d, %Y") %></p>
             </div>
           </div>
           <div class="columns small-12 medium-8 large-9">
@@ -46,15 +43,17 @@
       <div class="content">
         <div class="navigation hide-for-small-only">
           <div class="row">
-            <a href="<%= article_path(@previous_id) rescue root_path %>"
-            class="button color left"><i class="fa fa-arrow-left"></i> Previous</a>
-            <a href="<%= article_path(@next_id) rescue root_path %>"
-              class="button color right">Next <i class="fa fa-arrow-right"></i></a>
+            <div class="columns">
+              <a href="<%= article_path(@previous_id) rescue root_path %>"
+              class="button color tiny left radius"><i class="fa fa-arrow-left"></i> Previous</a>
+              <a href="<%= article_path(@next_id) rescue root_path %>"
+                class="button color tiny right radius">Next <i class="fa fa-arrow-right"></i></a>
+            </div>
           </div>
         </div>
-        <div data-reveal-id="subscribe-modal" class="sharing right unfloat-for-small">
+<!--         <div data-reveal-id="subscribe-modal" class="sharing right unfloat-for-small">
           <div class="addthis_sharing_toolbox"></div>
-        </div>
+        </div> -->
         <div class="article">
           <% @article.intros.each do |intro| %>
             <p> <%= intro %> </p>
@@ -67,15 +66,17 @@
           <% end %>
           </ul>
         </div>
-        <div class="sharing">
+<!--         <div class="sharing">
           <div data-reveal-id="subscribe-modal" class="addthis_sharing_toolbox"></div>
-        </div>
+        </div> -->
         <div class="navigation">
           <div class="row">
-            <a href="<%= article_path(@previous_id) rescue root_path %>"
-            class="button color left"><i class="fa fa-arrow-left"></i> Previous</a>
-            <a href="<%= article_path(@next_id) rescue root_path %>"
-              class="button color right">Next <i class="fa fa-arrow-right"></i></a>
+            <div class="columns">
+              <a href="<%= article_path(@previous_id) rescue root_path %>"
+              class="button color tiny left radius"><i class="fa fa-arrow-left"></i> Previous</a>
+              <a href="<%= article_path(@next_id) rescue root_path %>"
+                class="button color tiny right radius">Next <i class="fa fa-arrow-right"></i></a>
+            </div>
           </div>
         </div>
       </div>
@@ -92,18 +93,17 @@
             <div style="background-image: url(<%= article.thumbnail %>);"
               class="image"></div>
             <div class="info">
+              <span class="category"><%= article.category.name %></span>
               <h3 class="title"><%= article.title %></h3>
             </div>
           </a>
         </li>
       <% end %>
     </ul>
-    <div class="facebook-box">
-      <div class="info">
-        <h1 class="title">Facebook</h1>
-        <div class="content">
-          <div data-href="https://www.facebook.com/FacebookDevelopers" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false" data-width="100%" data-height="350" class="fb-like-box"></div>
-        </div>
+    <div class="facebook-box block">
+      <h1 class="title">Facebook</h1>
+      <div class="content">
+        <div data-href="https://www.facebook.com/FacebookDevelopers" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false" data-width="100%" data-height="350" class="fb-like-box"></div>
       </div>
     </div>
   </div>
