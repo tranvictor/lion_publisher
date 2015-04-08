@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title> Magz</title>
+    <link rel="stylesheet" href="components/foundation/css/normalize.css">
+    <link rel="stylesheet" href="components/foundation/css/foundation.css">
+    <link rel="stylesheet" href="components/animate.css/animate.min.css">
+    <link rel="stylesheet" href="components/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body class="color-0">
+    <section class="top">
+      <div class="row">
+        <div class="columns medium-2"><a href="index.html" class="logo"></a></div>
+        <div class="columns medium-5 hide-for-small">
+          <form method="get" action="search" class="search-form">
+            <div class="row collapse">
+              <div class="columns small-9">
+                <input placeholder="I'm looking for..." name="q" autocomplete="off" class="search-box">
+              </div>
+              <div class="columns small-3">
+                <input type="submit" value="search">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="columns medium-5 hide-for-small">
+          <ul class="social-networks text-right">
+            <li><a class="facebook with-counter"><i class="fa fa-facebook-square"></i><span class="counter">1.2M</span></a></li>
+            <li><a class="twitter"><i class="fa fa-twitter"></i></a></li>
+            <li><a class="google-plus"><i class="fa fa-google-plus-square"></i></a></li>
+            <li><a class="pinterest"><i class="fa fa-pinterest"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="menu">
+      <div class="row">
+        <div class="columns"><a class="toggle show-for-small-only">Menu<i class="fa fa-th-large space"></i></a>
+          <ul class="menu show-for-medium-up">
+            <li class="home active"><a href="index.html"><i class="fa fa-home"></i></a></li>
+            <li><a href="">Latest</a>
+              <ul class="sub-menu">
+                <li><a href="#">International News</a></li>
+                <li><a href="#">One more category</a></li>
+                <li><a href="#">Sport 360</a></li>
+              </ul>
+            </li>
+            <li><a href="">News</a>
+              <ul class="sub-menu">
+                <li><a href="#">International News</a></li>
+                <li><a href="#">One more category</a></li>
+                <li><a href="#">Sport 360</a></li>
+              </ul>
+            </li>
+            <li><a href="">Science</a></li>
+            <li><a href="">Life</a></li>
+            <li><a href="">Culture</a></li>
+            <li><a href="">Videos</a></li>
+            <li><a href="">Entertainment</a></li>
+            <li class="with-fill-menu"><a href=""><i class="fa fa-plus-square space"></i>Mores</a>
+              <div class="fill-menu">
+                <div class="columns">
+                  <div class="menu-content">
+                    <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-2 menu-grid">
+                      <li>
+                        <h3 class="title">Others Categories</h3>
+                        <ul class="small-block-grid-2 medium-block-grid-3 menu-sub-grid categories">
+                          <li><a>Sport</a></li>
+                          <li><a>Vietnam</a></li>
+                          <li><a>Economic</a></li>
+                          <li><a>Math</a></li>
+                          <li><a>Funny</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <h3 class="title">Links</h3>
+                        <ul class="small-block-grid-2 menu-sub-grid">
+                          <li><a>Advertising</a></li>
+                          <li><a>Submit Content</a></li>
+                          <li><a>Privacy Policy</a></li>
+                          <li><a>About Us</a></li>
+                          <li><a>Contact Us</a></li>
+                          <li><a href="dcma.html">DCMA / Removal</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="editor">
+      <div class="row">
+        <div class="columns small-12 medium-3 large-2">
+          <h3 class="title">Dashboard</h3>
+        </div>
+        <div class="columns small-12 medium-9 large-10">
+          <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 sub-menu">
+            <li><a><i class="fa fa-dashboard space-10"></i>Dashboard</a></li>
+            <li><a><i class="fa fa-user space-10"></i>Edit your profile</a></li>
+            <li><a><i class="fa fa-lock space-10"></i>Sign out</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns small-12 medium-3 large-2">
+          <h3 class="title">Articles</h3>
+        </div>
+        <div class="columns small-12 medium-9 large-10">
+          <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 sub-menu">
+            <li><a href="articles.html"><i class="fa fa-list space-10"></i>Your articles</a></li>
+            <li class="active"><a href="new-article.html"><i class="fa fa-file space-10"></i>New articles</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="notifications">
+      <div class="row">
+        <div class="columns small-12 small-centered medium-8 large-6">
+          <div class="notifications">
+            <div data-alert class="alert-box note">New article created<a class="close">&times;</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="content">
+      <div class="row">
+        <div class="columns small-12 medium-8 small-text-centered">
+          <h2 class="title">New article</h2>
+        </div>
+        <div class="columns text-right small-12 medium-4"><a href="view.html" target="_blank" class="button info space tiny radius"><i class="fa fa-eye space-10"></i>Preview</a><a href="" class="button tiny radius"><i class="fa fa-save space-10"></i>Save</a></div>
+      </div>
+      <div class="row">
+        <div class="columns">
+          <form action="" method="post">
+            <div class="row">
+              <div class="columns small-12">
+                <label>
+                  <input type="checkbox">&nbsp;&nbsp;
+                  Is Published?
+                </label>
+              </div>
+              <div class="columns small-12 medium-6">
+                <label>Title
+                  <input type="text" name="title" placeholder="Article title" autocomplete="off">
+                </label>
+              </div>
+              <div class="columns small-12 medium-6">
+                <label>Category
+                  <select name="category-id">
+                    <option>Relationship Tips</option>
+                    <option>Celebs</option>
+                    <option>Fitness</option>
+                    <option>Misc</option>
+                    <option>Funny</option>
+                    <option>Hot</option>
+                    <option>Tech</option>
+                    <option>Fashion</option>
+                    <option>Sports</option>
+                    <option>Beauty</option>
+                    <option>Nutritions</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="columns small-12 medium-6">
+                <label>Intro
+                  <textarea name="intro" rows="5"></textarea>
+                </label>
+              </div>
+              <div class="columns small-12 medium-6">
+                <label>Outro
+                  <textarea name="intro" rows="5"></textarea>
+                </label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns">
+          <h3 class="sub-title">Pages</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns small-12 medium-6">
+          <h5>Create pages via uploads</h5>
+          <form id="dropzone" action="http://localhost:3000/users/teensdigest.json" method="post" enctype="multipart/form-data" class="dropzone">
+            <div class="fallback">
+              <input name="image-file" type="file">
+            </div>
+          </form>
+        </div>
+        <div class="columns small-12 medium-6">
+          <h5>Create pages via URLs</h5>
+          <form>
+            <label>enter image URLs here, separated by enters
+              <textarea name="image-links" placeholder="http://imagelink.here" class="sans"></textarea>
+            </label><a href="" class="button tiny secondary"><i class="fa fa-check space"></i>Fetch</a>
+          </form>
+        </div>
+      </div>
+      <div class="row thumbs-holder">
+        <div class="columns">
+          <ul class="thumbs">
+            <li class="template">
+              <div class="image"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns">
+          <ul class="pages">
+            <li class="template">
+              <form>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td class="image">
+                        <div class="index">
+                          <input id="index" type="text" name="index" readonly>
+                        </div>
+                        <ul class="item-menu">
+                          <li><a href="#"><i class="fa fa-trash space"></i>Del</a></li>
+                        </ul>
+                      </td>
+                      <label type="file" for="image" class="upload-mask"></label>
+                      <td class="form">
+                        <div class="row">
+                          <div class="columns">
+                            <input id="page-title" type="text" name="title" placeholder="Page title" value="" class="dark">
+                          </div>
+                          <div class="columns">
+                            <input id="page-image-url" type="text" name="image-url" class="dark hide">
+                            <input id="page-image-source" type="text" name="image-source" placeholder="Source URL" class="dark">
+                          </div>
+                          <div class="columns">
+                            <textarea id="page-description" name="text" placeholder="Page description" rows="10" class="dark"></textarea>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="columns text-right"><a href="view.html" target="_blank" class="button info space tiny radius"><i class="fa fa-eye space-10"></i>Preview</a><a href="" class="button tiny radius"><i class="fa fa-save space-10"></i>Save</a></div>
+      </div>
+    </section>
+    <section class="social">
+      <div class="row">
+        <div class="columns">
+          <div class="row collapse">
+            <div class="columns small-12 medium-7 large-8 footer-block">
+              <div class="cube-wrapper">
+                <div class="social-links">
+                  <div class="facebook front"><i class="fa fa-facebook"></i></div>
+                  <div class="twitter bottom"><i class="fa fa-twitter"></i></div>
+                  <div class="google back"><i class="fa fa-google"></i></div>
+                  <div class="pinterest top"><i class="fa fa-pinterest"></i></div>
+                </div>
+              </div>
+            </div>
+            <div class="columns small-12 medium-5 large-4 footer-block">
+              <div class="subscribe">
+                <h1>Get more stuffs like this <b>In your Inbox</b></h1>
+                <form class="subscribe">
+                  <div class="row collapse">
+                    <div class="small-8 columns">
+                      <input type="text" placeholder="your@email.com">
+                    </div>
+                    <div class="small-4 columns">
+                      <button class="postfix tiny color button">Sign Up</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bottom">
+      <div class="row">
+        <div class="columns small-11 small-centered">
+          <div class="row">
+            <div class="columns small-11 small-centered medium-5 medium-uncentered">
+              <h2 class="sub-title">Categories</h2>
+              <ul class="small-block-grid-3 category-links">
+                <li><a href="">Latest</a></li>
+                <li><a href="">News</a></li>
+                <li><a href="">Science</a></li>
+                <li><a href="">Life</a></li>
+                <li><a href="">Culture</a></li>
+                <li><a href="">Videos</a></li>
+                <li><a href="">Entertainment</a></li>
+                <li><a href=""><i class="fa fa-plus-square space"></i>Mores</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><a class="scroll-top"><span class="fa fa-arrow-circle-up"></span><br>Top</a>
+    <script type="text/javascript" src="components/modernizr/modernizr.js"></script>
+    <script type="text/javascript" src="components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="components/foundation/js/foundation.min.js"></script>
+    <script type="text/javascript" src="components/jquery.scrollTo/jquery.scrollTo.min.js"></script>
+    <script type="text/javascript" src="components/wowjs/dist/wow.min.js"></script>
+    <script type="text/javascript" src="components/ScrollToFixed/jquery-scrolltofixed-min.js"></script>
+    <script type="text/javascript" src="components/bxslider-4/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="components/html.sortable/dist/html.sortable.min.js"></script>
+    <script type="text/javascript" src="components/dropzone/downloads/dropzone.min.js"></script>
+    <script type="text/javascript" src="scripts/page.new-article.js"></script>
+    <script type="text/javascript" src="scripts/app.js"></script>
+  </body>
+</html>

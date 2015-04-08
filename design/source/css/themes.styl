@@ -1,0 +1,128 @@
+mainColors = #e33, #739, #497, #d25, #a22, #338, #e45, #333
+mainGradients = {
+  '0': linear-gradient(top, #e14, #e51),
+  '1': linear-gradient(top, #a39, #56a),
+  '2': linear-gradient(top, #5a9, #4a6),
+  '3': linear-gradient(top, #c38, #e12),
+  '4': linear-gradient(top, #a42, #b14),
+  '5': linear-gradient(top, #528, #039),
+  '6': linear-gradient(top, #e24, #e67),
+  '7': linear-gradient(top, #231, #444)
+}
+mainColor = mainColors[0]
+mainGradient = mainGradients['0']
+
+body
+  
+  ul.colors-table
+    margin-top 30px
+    margin-bottom 0
+    > li
+      padding-bottom 0
+      > p
+        text-align center
+        font-weight 300
+        font-size 15px
+        color white
+        line-height 64px
+        cursor pointer
+        margin 0
+
+              
+  for color, i in mainColors
+    
+    ul.colors-table
+      > li
+        &:nth-child({i+1})
+          > p
+            background-color: mainColors[i]
+            background: mainGradients['' + i]
+            
+    section.menu
+      ul.menu
+        > li
+          &:nth-child({i + 2})
+            &:hover, &:focus
+              > a
+                color: mainColors[i]
+              ul.sub-menu
+                > li
+                  > a
+                    &:hover
+                      color: mainColors[i]
+            &.active
+              > a
+                background-color: mainColors[i]
+                color white
+            
+                
+    &.color-{i}
+      
+      .button
+        &.color
+          background-color: mainColors[i]
+          &:hover
+            background-color darken(mainColors[i], 10)
+            
+      section.top
+        a.logo
+          background-image url('../images/header/logo-' + i + '.png')
+        form.search-form
+          input[type=submit]
+            background: mainGradients['' + i]
+            border 1px solid mainColors[i]
+            
+      section.editor
+        ul.sub-menu
+          > li
+            &:hover
+              > a
+                color: mainColors[i]
+            &.active
+              > a
+                background-color: mainColors[i]
+              &:hover
+                > a
+                  background-color darken(mainColors[i], 5)
+                  color white
+      
+      section.content
+        div.block
+          h1.title
+            background-color: mainColors[i]
+            background: mainGradients['' + i]
+        ul.feeds
+          span.category
+            color: mainColors[i] !important
+        div.page
+          div.header
+            div.info
+              p.category
+                background-color: mainColors[i]
+                background: mainGradients['' + i]
+                background-clip text
+        div.article
+          p
+            a
+              color: mainColors[i]
+              text-decoration underline
+              &:hover
+                color: lighten(mainColors[i], 5)
+          ul.board
+            li
+              div.counter
+                p.number
+                  background-color: mainColors[i]
+                  background: mainGradients['' + i]
+            
+      section.bottom
+        a
+          &:hover, &:focus
+            color: mainColors[i] !important
+        > div.row
+          > div.columns
+            background-image url('../images/footer/bg-' + i + '.png')
+      
+      a.scroll-top
+        background-color: mainColors[i]
+        background: mainGradients['' + i]

@@ -1,0 +1,51 @@
+extend layout
+
+block css
+
+block script
+	script(type="text/javascript", src="components/datatables/media/js/jquery.dataTables.min.js")
+	script(type="text/javascript", src="scripts/page.your-articles.js")
+
+block editor-menu
+	.row
+		.columns.small-12.medium-3.large-2
+			h3.title Dashboard
+		.columns.small-12.medium-9.large-10
+			ul.small-block-grid-2.medium-block-grid-3.large-block-grid-4.sub-menu
+				li
+					a
+						i.fa.fa-dashboard.space-10
+						| Dashboard
+				li
+					a
+						i.fa.fa-user.space-10
+						| Edit your profile
+				li
+					a
+						i.fa.fa-lock.space-10
+						| Sign out
+	.row
+		.columns.small-12.medium-3.large-2
+			h3.title Articles
+		.columns.small-12.medium-9.large-10
+			ul.small-block-grid-2.medium-block-grid-3.large-block-grid-4.sub-menu
+				li.active
+					a
+						i.fa.fa-list.space-10
+						| Your articles
+				li
+					a(href="new-article.html")
+						i.fa.fa-file.space-10
+						| New articles
+
+block content
+	.row
+		.columns.small-12.medium-8.small-text-centered
+			h2.title Your articles
+		.columns.text-right.small-12.medium-4
+			a.button(href="new-article.html").tiny.radius
+				i.fa.fa-file.space-10
+				| New articles
+	.row
+		.columns
+			table#your-articles.articles

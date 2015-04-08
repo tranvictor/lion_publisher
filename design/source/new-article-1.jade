@@ -1,0 +1,42 @@
+extend minimal
+
+block script
+
+block css
+
+block notifications
+  
+block content
+  br
+  br
+  br
+  .row
+    .small-12.medium-7.medium-centered.large-6.columns
+      .badge-form.fadeIn.animated
+        h3.title New Article
+        .content
+          form(action="new-article.html", method="post")
+            .row
+              .small-12.columns
+                label
+                  | Article Title
+                  input.dark(type="text", placeholder="new article title")
+              .small-12.columns
+                label
+                  | Article Category
+                  select(name="category-id").dark
+                    option Select a category
+                    option Relationship Tips
+                    option Celebs
+                    option Fitness
+                    option Misc
+                    option Funny
+                    option Hot
+                    option Tech
+                    option Fashion
+                    option Sports
+                    option Beauty
+                    option Nutritions
+            .row
+              .small-12.columns.text-right
+                button.button.badge-color Create

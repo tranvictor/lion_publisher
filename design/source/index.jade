@@ -1,0 +1,262 @@
+extend layout
+
+block script
+  script(type="text/javascript", src="scripts/page.home.js")
+    
+block css
+
+block hero
+  div.trending
+    .row
+      .columns
+        a(href="#")#previous
+        a(href="#")#next
+        ul.slides
+          for i in [1, 2, 3]
+            li
+              div.image(style="background-image: url(http://40.media.tumblr.com/d2d0dcf3b2e400748af3fbc933c60804/tumblr_nf0ezm3Hsq1qbd81ro1_1280.png)")
+              div.overlay
+              div.info
+                h2.category Beauty
+                h1.title
+                  a(href="view.html") Thicker, Healthier Hair In Just One Month
+                ul.counters
+                  li
+                    i.fa.fa-eye.space
+                    | 5858 views
+                  li
+                    i.fa.fa-share.space
+                    | 113 shares
+                  li
+                    i.fa.fa-comment.space
+                    | 50 comments
+            li
+              div.image(style="background-image: url(http://40.media.tumblr.com/4405728d97a32bb0e7c88fea1931a125/tumblr_n9mfh4gY2F1qbd81ro1_1280.jpg)")
+              div.overlay
+              div.info
+                h2.category Life
+                h1.title
+                  a(href="view.html") Hobbies All Girls Should Get Into
+                ul.counters
+                  li
+                    i.fa.fa-eye.space
+                    | 5858 views
+                  li
+                    i.fa.fa-share.space
+                    | 113 shares
+                  li
+                    i.fa.fa-comment.space
+                    | 50 comments
+            li
+              div.image(style="background-image: url(http://41.media.tumblr.com/9ff41dad54a3a43e306be7fcc7b67a9d/tumblr_nd0rojLtAH1qbd81ro1_1280.jpg)")
+              div.overlay
+              div.info
+                h2.category Fitness
+                h1.title
+                  a(href="view.html") Simple Exercises To Lose Fat
+                ul.counters
+                  li
+                    i.fa.fa-eye.space
+                    | 5858 views
+                  li
+                    i.fa.fa-share.space
+                    | 113 shares
+                  li
+                    i.fa.fa-comment.space
+                    | 50 comments
+
+block content
+  .content-padding
+    .row
+      .columns
+        ul.feeds.small-block-grid-1.medium-block-grid-2.large-block-grid-3
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/850/medium/open-uri20140522-13230-3y26wg?1400727937)")
+              .info
+                span.category Misc
+                h3.title How To Tell If Someone Is Lying
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/758/medium/open-uri20140307-15336-13iia1z?1394165058)")
+              .info
+                span.category Misc
+                h3.title Top Movie Mistakes
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/591/medium/open-uri20140303-31001-11iwcc4?1393877568)")
+              .info
+                span.category Celebs
+                h3.title Most Powerful Families In The World
+          li.wow.fadeIn
+            .block.subscribe
+              h1.title Subscribe Us!
+              .content
+                p Sign up for our daily email and get the stories everyone is talking about
+                form.subscribe
+                  input(type="text", placeholder="your@email.com")
+                  button.tiny.info Subscribe
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/579/medium/open-uri20140303-31092-197fdke?1393876412)")
+              .info
+                span.category Misc
+                h3.title The Strangest Airports
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/568/medium/open-uri20140303-31599-lv9f02?1393875323)")
+              .info
+                span.category Beauty
+                h3.title The Worst Things You Can Do To Your Hair
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/560/medium/open-uri20140303-30669-44mgin?1393873810)")
+              .info
+                span.category Funny
+                h3.title Dumbest Marriage Proposals 
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/495/medium/open-uri20140303-4689-jcm6dr?1393816966)")
+              .info
+                span.category Misc
+                h3.title Shows 90’s Babies Love And Miss
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/485/medium/open-uri20140303-5537-n7k3vx?1393815648)")
+              .info
+                span.category Misc
+                h3.title Films Every Girl Should See And Learn From
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/484/medium/open-uri20140303-4738-jmdqdc?1393814727)")
+              .info
+                span.category Misc
+                h3.title Ways To Make Money In College
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/462/medium/open-uri20140303-5627-1hrhf0u?1393812266)")
+              .info
+                span.category Misc
+                h3.title Hobbies All Girls Should Get Into
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/453/medium/open-uri20140303-5272-163spq6?1393810361)")
+              .info
+                span.category Action
+                h3.title How to Avoid Freshmen 15
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/411/medium/open-uri20140228-9243-12yeyyr?1393656301)")
+              .info
+                span.category Hot
+                h3.title Hottest Brunettes Alive
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/399/medium/open-uri20140228-9276-1ww1nyc?1393655119)")
+              .info
+                span.category Beauty
+                h3.title Thicker, Healthier Hair In Just One Month 
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/362/medium/open-uri20140228-6348-4hdzwu?1393650940)")
+              .info
+                span.category Tips
+                h3.title Why Men And Women Argue
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/356/medium/open-uri20140228-8795-608jq?1393649726)")
+              .info
+                span.category Celebs
+                h3.title Celebrities Who Made Us Crave Short Hair 
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/349/medium/open-uri20140228-8891-1uf90g3?1393648890)")
+              .info
+                span.category Fitness
+                h3.title Simple Exercises To Lose Fat
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/338/medium/open-uri20140228-6145-1kryhp1?1393646955)")
+              .info
+                span.category Tips
+                h3.title Signs You Are Not Over Your Ex (For Girls)
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/325/medium/open-uri20140228-9265-cwrqyx?1393645712)")
+              .info
+                span.category Funny
+                h3.title Better Options At Quarterback For The Jets
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/302/medium/open-uri20140228-8809-194kc3a?1393643093)")
+              .info
+                span.category Celebs
+                h3.title Pictures Of Real Life People Who’ve Been Played By Actors In Films
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/240/medium/open-uri20140228-8769-lr3hao?1393634468)")
+              .info
+                span.category Misc
+                h3.title Famous Landmarks Being Built
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/212/medium/open-uri20140225-10016-1693zo4?1393385066)")
+              .info
+                span.category Misc
+                h3.title Hidden Disney Characters In Other Disney Films
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/200/medium/open-uri20140225-8268-14guu8u?1393380999)")
+              .info
+                span.category Misc
+                h3.title Films You Wish Disney Would Make
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/199/medium/open-uri20140225-7158-18t5xv3?1393355094)")
+              .info
+                span.category Tech
+                h3.title iPhone 6 Rumored Features And Designs
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/177/medium/open-uri20140225-7429-je5v9y?1393351153)")
+              .info
+                span.category Celebs
+                h3.title Richest Actors In The World
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/167/medium/open-uri20140225-7313-1iyu7q?1393349422)")
+              .info
+                span.category Celebs
+                h3.title Richest Actresses In The World
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/157/medium/open-uri20140225-7299-1qx5rxr?1393347854)")
+              .info
+                span.category Celebs
+                h3.title Child Prodigies
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/117/medium/open-uri20140225-7351-1bd9to8?1393341852)")
+              .info
+                span.category Misc
+                h3.title Highest Grossing Films
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/008/054/medium/open-uri20140222-6856-1n87ube?1393127067)")
+              .info
+                span.category Funny
+                h3.title The Most Dangerous Things You Can Do With An NFL Player
+          li.wow.fadeIn
+            a(href="view.html")
+              .image(style="background-image: url(http://us.teensdigest.s3.amazonaws.com/pages/images/000/007/974/medium/open-uri20140221-10947-o80z2g?1392954418)")
+              .info
+                span.category Tips
+                h3.title Things That Guys Do That Girls Hate
+
+        .loader.text-center
+          .spinner
+            .rect-1
+            .rect-2
+            .rect-3
+            .rect-4
+            .rect-5

@@ -1,0 +1,377 @@
+extend layout
+
+block css
+
+block script
+	script(type="text/javascript", src="components/html.sortable/dist/html.sortable.min.js")
+	script(type="text/javascript", src="components/dropzone/downloads/dropzone.min.js")
+	script(type="text/javascript", src="scripts/page.new-article.js")
+
+block editor-menu
+	.row
+		.columns.small-12.medium-3.large-2
+			h3.title Dashboard
+		.columns.small-12.medium-9.large-10
+			ul.small-block-grid-2.medium-block-grid-3.large-block-grid-4.sub-menu
+				li
+					a
+						i.fa.fa-dashboard.space-10
+						| Dashboard
+				li
+					a
+						i.fa.fa-user.space-10
+						| Edit your profile
+				li
+					a
+						i.fa.fa-lock.space-10
+						| Sign out
+	.row
+		.columns.small-12.medium-3.large-2
+			h3.title Articles
+		.columns.small-12.medium-9.large-10
+			ul.small-block-grid-2.medium-block-grid-3.large-block-grid-4.sub-menu
+				li
+					a(href="articles.html")
+						i.fa.fa-list.space-10
+						| Your articles
+				li
+					a(href="new-article.html")
+						i.fa.fa-file.space-10
+						| New articles
+
+block notifications
+
+block content
+	.row
+		.columns.small-12.medium-8.small-text-centered
+			h2.title Edit article
+		.columns.text-right.small-12.medium-4
+			a.button.info.space.tiny.radius(href="view.html", target="_blank")
+				i.fa.fa-eye.space-10
+				| Preview
+			a.button.tiny.radius(href="")
+				i.fa.fa-save.space-10
+				| Save
+	.row
+		.columns
+			form(action="", method="post")
+				.row
+					.columns.small-12
+						label
+							input(type="checkbox", checked)
+							| &nbsp;&nbsp;
+							| Is Published?
+					.columns.small-12.medium-6
+						label
+							| Title
+							input(type="text", name="title", placeholder="Article title", autocomplete="off", value="These Animals Can Build Structures Better Than Most Modern Architects")
+					.columns.small-12.medium-6
+						label
+							| Category
+							select(name="category-id")
+								option Relationship Tips
+								option Celebs
+								option Fitness
+								option Misc
+								option Funny
+								option Hot
+								option Tech
+								option Fashion
+								option Sports
+								option Beauty
+								option Nutritions
+				.row
+					.columns.small-12.medium-6
+						label
+							| Intro
+							textarea(name="intro", rows="5") When looking at certain buildings, I often wonder "Someone went to school for this?" Some structures are unoriginal and often filled with errors. They will take your breath away...and not in a good way.
+					.columns.small-12.medium-6
+						label
+							| Outro
+							textarea(name="intro", rows="5") I think it's time we take a cue from nature and get back to basics after seeing these amazing structures. There's a lot to learn here, after all, since Mother Nature's worked at this a lot longer than your former college roommate.
+	.row
+		.columns
+			h3.sub-title Pages
+	.row
+		.columns.small-12.medium-6
+			h5 Create pages via uploads
+			form.dropzone#dropzone(action="http://192.168.1.73:3000/users/teensdigest.json", method="post", enctype="multipart/form-data")
+				.fallback
+					input(name="image-file", type="file")
+		.columns.small-12.medium-6
+			h5 Create pages via URLs
+			form
+				label
+					| enter image URLs here, separated by enters
+					textarea.sans(name="image-links", placeholder="http://imagelink.here")
+				a.button.tiny.secondary(href="")
+					i.fa.fa-check.space
+					| Fetch
+	.row.thumbs-holder
+		.columns
+
+			ul.thumbs
+				li.active
+					div.image(style='background-image: url(http://192.168.1.73:3000/avatars/raws/teensdigest.1416452830384.9003925.jpg);')
+				li
+					div.image(style='background-image: url(http://192.168.1.73:3000/avatars/raws/teensdigest.1416452830377.868071.jpg);')
+				li
+					div.image(style='background-image: url(http://192.168.1.73:3000/avatars/raws/teensdigest.1416452830378.6787775.jpg);')
+				li
+					div.image(style='background-image: url(http://192.168.1.73:3000/avatars/raws/teensdigest.1416452830377.1311144.jpg);')
+				li
+					div.image(style='background-image: url(http://192.168.1.73:3000/avatars/raws/teensdigest.1416452830394.1618633.jpg);')
+				li
+					div.image(style='background-image: url(http://192.168.1.73:3000/avatars/raws/teensdigest.1416452830394.3174250.jpg);')
+				li
+					div.image(style='background-image: url(http://192.168.1.73:3000/avatars/raws/teensdigest.1416452830467.1354868.jpg);')
+				li
+					div.image(style='background-image: url(http://192.168.1.73:3000/avatars/raws/teensdigest.1416452830467.594336.jpg);')
+				li
+					div.image(style='background-image: url(http://192.168.1.73:3000/avatars/raws/teensdigest.1416452830470.3450588.jpg);')
+				li.template
+					div.image
+						
+	.row
+		.columns
+			ul.pages
+				li.active
+					form
+						label.upload-mask(type='file', for='image')
+						table
+							tbody
+								tr
+									td.image(style='background-image: url(http://192.168.1.73:3000/avatars/raws/teensdigest.1416452830384.9003925.jpg);')
+										.index
+											input#index(type='text', name='index', readonly, value="1")
+										ul.item-menu
+											li
+												a(href='#')
+													i.fa.fa-trash.space
+													| Del
+									td.form
+										.row
+											.columns
+												input#page-title.dark(type='text', name='title', placeholder='Page title', value="Swallows")
+											.columns
+												input#page-image-url.dark.hide(type='text', name='image-url')
+												input#page-image-source.dark(type='text', name='image-source', placeholder='Source URL')
+											.columns
+												textarea#page-description.dark(name='text', placeholder='Page description', rows='10') Some swallows don't build nests, but others create theirs from their saliva, which is edible and considered a delicacy.
+				li
+					form
+						label.upload-mask(type='file', for='image')
+						table
+							tbody
+								tr
+									td.image(style='background-image: url(http://192.168.1.73:3000/avatars/raws/teensdigest.1416452830377.868071.jpg);')
+										.index
+											input#index(type='text', name='index', readonly, value="2")
+										ul.item-menu
+											li
+												a(href='#')
+													i.fa.fa-trash.space
+													| Del
+									td.form
+										.row
+											.columns
+												input#page-title.dark(type='text', name='title', placeholder='Page title', value='')
+											.columns
+												input#page-image-url.dark.hide(type='text', name='image-url')
+												input#page-image-source.dark(type='text', name='image-source', placeholder='Source URL')
+											.columns
+												textarea#page-description.dark(name='text', placeholder='Page description', rows='10')
+				li
+					form
+						label.upload-mask(type='file', for='image')
+						table
+							tbody
+								tr
+									td.image(style='background-image: url(http://192.168.1.73:3000/avatars/raws/teensdigest.1416452830378.6787775.jpg);')
+										.index
+											input#index(type='text', name='index', readonly, value="3")
+										ul.item-menu
+											li
+												a(href='#')
+													i.fa.fa-trash.space
+													| Del
+									td.form
+										.row
+											.columns
+												input#page-title.dark(type='text', name='title', placeholder='Page title', value='')
+											.columns
+												input#page-image-url.dark.hide(type='text', name='image-url')
+												input#page-image-source.dark(type='text', name='image-source', placeholder='Source URL')
+											.columns
+												textarea#page-description.dark(name='text', placeholder='Page description', rows='10')
+				li
+					form
+						label.upload-mask(type='file', for='image')
+						table
+							tbody
+								tr
+									td.image(style='background-image: url(http://192.168.1.73:3000/avatars/raws/teensdigest.1416452830377.1311144.jpg);')
+										.index
+											input#index(type='text', name='index', readonly, value="4")
+										ul.item-menu
+											li
+												a(href='#')
+													i.fa.fa-trash.space
+													| Del
+									td.form
+										.row
+											.columns
+												input#page-title.dark(type='text', name='title', placeholder='Page title', value='')
+											.columns
+												input#page-image-url.dark.hide(type='text', name='image-url')
+												input#page-image-source.dark(type='text', name='image-source', placeholder='Source URL')
+											.columns
+												textarea#page-description.dark(name='text', placeholder='Page description', rows='10')
+				li
+					form
+						label.upload-mask(type='file', for='image')
+						table
+							tbody
+								tr
+									td.image(style='background-image: url(http://192.168.1.73:3000/avatars/raws/teensdigest.1416452830394.1618633.jpg);')
+										.index
+											input#index(type='text', name='index', readonly, value="5")
+										ul.item-menu
+											li
+												a(href='#')
+													i.fa.fa-trash.space
+													| Del
+									td.form
+										.row
+											.columns
+												input#page-title.dark(type='text', name='title', placeholder='Page title', value='')
+											.columns
+												input#page-image-url.dark.hide(type='text', name='image-url')
+												input#page-image-source.dark(type='text', name='image-source', placeholder='Source URL')
+											.columns
+												textarea#page-description.dark(name='text', placeholder='Page description', rows='10')
+				li
+					form
+						label.upload-mask(type='file', for='image')
+						table
+							tbody
+								tr
+									td.image(style='background-image: url(http://192.168.1.73:3000/avatars/raws/teensdigest.1416452830394.3174250.jpg);')
+										.index
+											input#index(type='text', name='index', readonly, value="5")
+										ul.item-menu
+											li
+												a(href='#')
+													i.fa.fa-trash.space
+													| Del
+									td.form
+										.row
+											.columns
+												input#page-title.dark(type='text', name='title', placeholder='Page title', value='')
+											.columns
+												input#page-image-url.dark.hide(type='text', name='image-url')
+												input#page-image-source.dark(type='text', name='image-source', placeholder='Source URL')
+											.columns
+												textarea#page-description.dark(name='text', placeholder='Page description', rows='10')
+				li
+					form
+						label.upload-mask(type='file', for='image')
+						table
+							tbody
+								tr
+									td.image(style='background-image: url(http://192.168.1.73:3000/avatars/raws/teensdigest.1416452830467.1354868.jpg);')
+										.index
+											input#index(type='text', name='index', readonly, value="6")
+										ul.item-menu
+											li
+												a(href='#')
+													i.fa.fa-trash.space
+													| Del
+									td.form
+										.row
+											.columns
+												input#page-title.dark(type='text', name='title', placeholder='Page title', value='')
+											.columns
+												input#page-image-url.dark.hide(type='text', name='image-url')
+												input#page-image-source.dark(type='text', name='image-source', placeholder='Source URL')
+											.columns
+												textarea#page-description.dark(name='text', placeholder='Page description', rows='10')
+				li
+					form
+						label.upload-mask(type='file', for='image')
+						table
+							tbody
+								tr
+									td.image(style='background-image: url(http://192.168.1.73:3000/avatars/raws/teensdigest.1416452830467.594336.jpg);')
+										.index
+											input#index(type='text', name='index', readonly, value="7")
+										ul.item-menu
+											li
+												a(href='#')
+													i.fa.fa-trash.space
+													| Del
+									td.form
+										.row
+											.columns
+												input#page-title.dark(type='text', name='title', placeholder='Page title', value='')
+											.columns
+												input#page-image-url.dark.hide(type='text', name='image-url')
+												input#page-image-source.dark(type='text', name='image-source', placeholder='Source URL')
+											.columns
+												textarea#page-description.dark(name='text', placeholder='Page description', rows='10')
+				li
+					form
+						label.upload-mask(type='file', for='image')
+						table
+							tbody
+								tr
+									td.image(style='background-image: url(http://192.168.1.73:3000/avatars/raws/teensdigest.1416452830470.3450588.jpg);')
+										.index
+											input#index(type='text', name='index', readonly, value="9")
+										ul.item-menu
+											li
+												a(href='#')
+													i.fa.fa-trash.space
+													| Del
+									td.form
+										.row
+											.columns
+												input#page-title.dark(type='text', name='title', placeholder='Page title', value="The Sociable Weaver")
+											.columns
+												input#page-image-url.dark.hide(type='text', name='image-url')
+												input#page-image-source.dark(type='text', name='image-source', placeholder='Source URL')
+											.columns
+												textarea#page-description.dark(name='text', placeholder='Page description', rows='10') Found in South Africa, this bird weaves huge communal nests that can host hundreds of birds across multiple generations. These permanent structures woven from sticks and grass contain many inner chambers, allowing the birds to stay warm at night.
+				li.template
+					form
+						label.upload-mask(type='file', for='image')
+						table
+							tbody
+								tr
+									td.image
+										.index
+											input#index(type='text', name='index', readonly)
+										ul.item-menu
+											li
+												a(href='#')
+													i.fa.fa-trash.space
+													| Del
+									td.form
+										.row
+											.columns
+												input#page-title.dark(type='text', name='title', placeholder='Page title')
+											.columns
+												input#page-image-url.dark.hide(type='text', name='image-url')
+												input#page-image-source.dark(type='text', name='image-source', placeholder='Source URL')
+											.columns
+												textarea#page-description.dark(name='text', placeholder='Page description', rows='10')
+
+
+	.row
+		.columns.text-right
+			a.button.info.space.tiny.radius(href="view.html", target="_blank")
+				i.fa.fa-eye.space-10
+				| Preview
+			a.button.tiny.radius(href="")
+				i.fa.fa-save.space-10
+				| Save

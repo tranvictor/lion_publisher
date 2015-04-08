@@ -1,0 +1,1081 @@
+@import nib
+// @import 'nib/border.styl'
+// @import 'nib/clearfix.styl'
+// @import 'nib/color-image.styl'
+// @import 'nib/config.styl'
+// @import 'nib/flex.styl'
+// @import 'nib/gradients.styl'
+// @import 'nib/iconic.styl'
+// @import 'nib/image.styl'
+// @import 'nib/index.styl'
+// @import 'nib/overflow.styl'
+// @import 'nib/positions.styl'
+// @import 'nib/reset.styl'
+// @import 'nib/size.styl'
+// @import 'nib/vendor.styl'
+// @import 'nib/text/aliases.styl'
+// @import 'nib/text/ellipsis.styl'
+// @import 'nib/text/hide-text.styl'
+// @import 'nib/text/index.styl'
+// @import 'nib/text/replace-text.styl'
+// @import 'nib/text/shadow-stroke.styl'
+
+// @import url('http://fonts.googleapis.com/css?family=Raleway:300,600,700,900')
+
+normalFont = 'Avenir Next', 'Helvetica Neue', Helvetica, Arial, sans-serif
+// normalFont = 'Helvetica Neue', Helvetica, Arial, sans-serif
+serifFont = 'Georgia', 'Times New Roman', serif
+
+gridSize = 1200px
+topBarHeight = 110px
+spinnerColor = #bbb
+defaultRadius = 2px
+
+noteColor = #fc7
+facebookColor = #3b5998
+twitterColor = #00aced
+googleColor = #dd4b39
+pinterestColor = #cb2027
+
+submitColor = #0078e7
+secondaryColor = #ccc
+successColor = #1cb841
+warningColor = #df7514
+alertColor = #ca3c3c
+infoColor = #00aced
+
+defaultTransition()
+  transition all .3s ease-in-out
+
+// media queries
+small-range-lower = 0em
+small-range-upper = 40em
+medium-range-lower = 40.063em
+medium-range-upper = 64em
+large-range-lower = 64.063em
+large-range-upper = 90em
+xlarge-range-lower = 90.063em
+xlarge-range-upper = 120em
+xxlarge-range-lower = 120.063em
+xxlarge-range-upper = 99999999em
+
+only-screen = 'only screen'
+landscape = only-screen + ' and (orientation: landscape)'
+portrait = only-screen + ' and (orientation: portrait)'
+small-up = only-screen
+small-only = only-screen + ' and (max-width: ' + small-range-upper + ')'
+medium-up = only-screen + ' and (min-width: ' + medium-range-lower + ')'
+medium-only = only-screen + ' and (min-width: ' + medium-range-lower + ') and (max-width: ' + medium-range-upper + ')'
+large-up = only-screen + ' and (min-width: ' + large-range-lower + ')'
+large-only = only-screen + ' and (min-width: ' + large-range-lower + ') and (max-width: ' + large-range-upper + ')'
+xlarge-up = only-screen + ' and (min-width: ' + xlarge-range-lower + ')'
+xlarge-only = only-screen + ' and (min-width: ' + xlarge-range-lower + ') and (max-width: ' + xlarge-range-upper + ')'
+xxlarge-up = only-screen + ' and (min-width: ' + xxlarge-range-lower + ')'
+xxlarge-only = only-screen + ' and (min-width: ' + xxlarge-range-lower + ') and (max-width: ' + xxlarge-range-upper + ')'
+
+small = medium-up
+medium = medium-up
+large = large-up
+
+@require 'themes.styl'
+@require 'minimal.styl'
+@require 'manage.styl'
+
+// facebook
+
+#fb-root
+  display none
+
+.fb_iframe_widget,
+.fb_iframe_widget span,
+.fb_iframe_widget span iframe[style]
+  width 100% !important
+  
+// general
+
+.full-width
+  width 100%
+  margin-left auto
+  margin-right auto
+  max-width 100%
+
+.full-height
+  height 100%
+
+.space
+  margin-right 5px
+  
+.space-10
+  margin-right 10px
+  
+.space-left
+  margin-left 10px
+
+.z-1000
+  z-index 1000
+    
+.alert-box
+  font-family normalFont
+  font-weight 600
+  &.note
+    background-color noteColor
+    color black
+    &:hover
+      background-color darken(noteColor, 10)
+      
+input
+  &.no-border
+    border none
+    
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="color"],
+select,
+label,
+button, a.button
+  font-family normalFont
+  font-weight 500
+  
+textarea
+  font-family serifFont
+  font-style italic
+  &.sans
+    font-style normal
+    font-family normalFont
+
+.button, button
+  &.tiny
+    text-transform uppercase
+
+.unfloat-for-small
+  @media small-only
+    float none !important
+    
+.reveal-modal
+  h2
+    font-size 25px
+    text-transform uppercase
+    b
+      font-weight 900
+      color mainColor
+
+.modal
+  &.full
+    background-size 100% 100% !important
+    background-repeat no-repeat !important
+    height 100% !important
+    top 0px !important
+    left 0px !important
+    margin 0px 0px 0px 0px !important
+
+.small-text-centered
+  @media small-only
+    text-align center
+    
+.no-transition
+  -webkit-transition none !important
+  -moz-transition none !important
+  -o-transition none !important
+  -ms-transition none !important
+  transition none !important
+  
+h1, h2, h3, h4, h5, h6
+  font-family normalFont
+  font-weight normal
+  
+a, p, span
+  font-family normalFont
+  font-weight normal
+
+a.scroll-top
+  z-index 12
+  display block
+  position fixed
+  bottom 0
+  left 50%
+  margin-left (gridSize / 2)
+  padding 10px 20px
+  font-size 11px
+  text-transform uppercase
+  text-align center
+  line-height 16px
+  color white
+  background mainGradient
+  opacity .9
+  defaultTransition()
+  &:hover, &:focus
+    opacity 1
+  > span
+    font-size 25px
+    margin-bottom 5px
+    
+section.notifications
+  z-index 1
+  pointer-events none
+  div.notifications
+    pointer-events auto
+    > div.alert-box
+      padding 10px 40px 10px 20px
+      defaultTransition()
+      margin 0
+      font-size 14px
+      font-weight normal
+      
+section.editor
+  > div.menu
+    padding-top 50px
+    padding-bottom 40px
+    background-color darken(white, 3)
+    margin-top -1px
+  h3.title
+    font-size 14px
+    line-height 20px
+    text-align right
+    font-weight 600
+    text-transform uppercase
+    @media small-only
+      text-align left
+  ul.sub-menu
+    margin 0 -5px
+    > li
+      padding-bottom 5px
+      &.active
+        > a
+          background-color mainColor
+          border-radius defaultRadius
+          color white
+          &:hover, &:focus
+            color white
+      > a
+        background-color white
+        padding 3px 15px
+        display block
+        defaultTransition()
+        font-size 14px
+        font-weight normal
+        color lighten(black, 30)
+        &:hover, &:focus
+          color mainColor
+
+// bx slider
+div.trending
+  div.bx-wrapper
+    position relative
+    > div.bx-viewport
+      height 400px
+    > div.bx-controls
+      display none
+      position absolute
+      bottom 0
+      right 0
+      > div.bx-controls-direction
+        @media small-only
+          display none
+        > a.bx-next, > a.bx-prev
+          display inline-block
+          background-color black
+          color white
+          font-size 20px
+          font-weight 300
+          text-transform uppercase
+          line-height 50px
+          width 50px
+          text-align center
+          defaultTransition()
+          &:hover
+            background-color lighten(black, 20)
+        > a.bx-prev
+          border-right 1px solid darken(white, 20)
+  
+section.top
+  topBarHeight = 100px
+  
+  &.non-fixed
+    position initial
+    margin-bottom 50px
+    
+  &.shadow
+    box-shadow 0 0 50px rgba(black, .2)  
+  
+  a.logo
+    height 50px
+    margin: ((topBarHeight - @height) / 2) 0
+    display block
+    line-height topBarHeight
+    background-image url(../images/header/logo-0.svg)
+    background-repeat no-repeat
+    background-size contain
+    background-position center
+    @media medium-up
+      background-position left center
+  
+  form.search-form
+    height = 32px
+    height height
+    margin: ((topBarHeight - height) / 2 + 3px) 0 0 0
+    
+    input[type="submit"]
+      margin 0
+      color white
+      background mainGradients['' + 0]
+      border none
+      line-height height
+      height height
+      border-radius 0 3px 3px 0
+      padding 0 10px
+      font-family normalFont
+      font-size 12px
+      font-weight 500
+      
+    input.search-box
+      font-size 13px
+      width 100%
+      line-height height
+      margin 0
+      outline none
+      border none
+      background-color #f2f2f2
+      padding 0 10px
+      border-radius 3px 0 0 3px
+      defaultTransition()
+      &:focus,
+      &:hover,
+      &:active
+        border-color #ccc
+        background-color #eee
+
+  ul.social-networks
+    margin 0
+    padding 0
+    list-style none
+    font-size 0
+    > li
+      display inline-block
+      position relative
+      &:last-child
+        > a
+          padding-right 0
+      > a
+        display block
+        font-size 25px
+        padding 0 10px 0 10px
+        line-height topBarHeight
+        position relative
+        &.with-counter
+          padding-right 70px
+        > span.counter
+          bg-color = darken(white, 15)
+          display block
+          position absolute
+          margin -15px 0 0 5px
+          top 50%
+          right 10px
+          font-size 11px
+          font-family normalFont
+          font-weight 600
+          color black
+          background-color bg-color
+          padding 0 8px
+          line-height 30px
+          &:before
+            content ''
+            display block
+            position absolute
+            left -12px
+            top 50%
+            margin-top -6px
+            border 6px solid transparent
+            border-right-color bg-color
+        &.facebook
+          color facebookColor
+          &:hover
+            color lighten(@color, 10)
+        &.twitter
+          color twitterColor
+          &:hover
+            color lighten(@color, 10)
+        &.google-plus
+          color googleColor
+          &:hover
+            color lighten(@color, 10)
+        &.pinterest
+          color pinterestColor
+          &:hover
+            color lighten(@color, 10)
+            
+section.menu
+  
+  ul.menu
+    margin 0
+    padding 0 0 10px 0
+    font-size 0
+    width 100%
+    list-style none
+    border-bottom 1px solid darken(white, 5)
+    > li
+      display inline-block
+      position relative
+      margin 0
+      padding 0
+      &.with-fill-menu
+        position initial
+      &.active
+        > a
+          background-color mainColor
+          color white
+          &:hover
+            color white
+      &:hover
+        > a
+          color mainColor
+        > ul.sub-menu
+          display block
+        > div.fill-menu
+          display block
+      > a
+        defaultTransition()
+        display block
+        width 100%
+        color black
+        font-weight 600
+        font-size 12px
+        text-transform uppercase
+        padding 5px 15px
+        border-radius defaultRadius
+      > div.fill-menu
+        display none
+        margin 0
+        padding 10px 0 0 0
+        position absolute
+        z-index 9
+        left 0
+        right 0
+        text-align left
+        div.menu-content
+          padding 30px
+          background linear-gradient(top, darken(white, 5), white)
+          > ul.menu-grid
+            > li
+              > h3.title
+                font-size 16px
+                font-weight normal
+              > ul.menu-sub-grid
+                > li
+                  padding-bottom 0
+                  > a
+                    font-size 12px
+                    font-weight 600
+                    color lighten(black, 20)
+                    text-transform uppercase
+                    defaultTransition()
+                    &:before
+                      defaultTransition()
+                      content '■'
+                      margin-right 10px
+                    &:hover
+                      color mainColor
+                      &:before
+                        color mainColor
+        
+      > ul.sub-menu
+        display none
+        margin 0
+        padding 10px 0 0 0
+        list-style none
+        position absolute
+        z-index 11
+        width 200px
+        overflow hidden
+        border-radius defaultRadius
+        > li
+          background-color white
+          font-size 0
+          border 1px solid rgba(black, .2)
+          border-top none
+          border-bottom none
+          background-clip content-box
+          &:not(:last-child)
+            > a
+              border-bottom 1px solid darken(white, 5)
+          &:hover
+            > a
+              color mainColor[0]
+          &:first-child
+            > a
+              padding-top 10px
+          &:last-child
+            border-bottom 1px solid rgba(black, .2)
+            border-radius 0 0 3px 3px
+            > a
+              padding-bottom 7px
+          > a
+            display block
+            font-size 13px
+            font-weight 500
+            color black
+            padding 4px 15px
+  
+  div.trending
+    opacity 0
+    sliderHeight = 350px
+    margin 0 0 20px 0
+    position relative
+    height sliderHeight
+    overflow hidden
+    a#next,
+    a#previous
+      position absolute
+      z-index 10
+      top 0
+      bottom 0
+      background-size 32px auto
+      background-repeat no-repeat
+      opacity .75
+      defaultTransition()
+      &:hover
+        opacity 1
+    a#next
+      background-image url(../images/next.svg)
+      right 20px
+      width 50px
+      background-position left center
+    a#previous
+      background-image url(../images/previous.svg)
+      left 20px
+      width 50px
+      background-position right center
+    ul.slides
+      position relative
+      margin 0
+      padding 0
+      list-style none
+      overflow visible
+      > li
+        position absolute
+        top 0
+        bottom 0
+        left 0
+        width 100%
+        height sliderHeight
+        transition left .5s, margin-left .5s
+        &.ohide
+          opacity 0
+        &.previous
+          left -100%
+          margin-left -40px
+        &.next
+          left 100%
+          margin-left 40px
+        > div.image
+          background-size cover
+          background-position top 30% center
+          height sliderHeight
+        > div.overlay
+          position absolute
+          top 0
+          bottom 0
+          right 0
+          left 0
+          background-color rgba(black, .2)
+        > div.info
+          position absolute
+          top ((sliderHeight - 120px) / 2)
+          left 0
+          right 0
+          text-align center
+          > h2.category
+            margin 0
+            display block
+            font-size 17px
+            text-transform uppercase
+            color white
+            text-align center
+            right 0
+            font-weight bold
+            &:after
+              margin-top 5px
+              content ''
+              width 30%
+              border-bottom 1px solid rgba(white, .25)
+              display block
+              position relative
+              left 35%
+          > h1.title
+            margin 10px 0
+            > a
+              padding 0 100px
+              text-align center
+              font-family normalFont
+              display block
+              font-size 40px
+              font-weight 200
+              color white
+              defaultTransition()
+              @media small-only
+                padding 0 45px
+                font-size 20px
+                font-weight 300
+              @media medium-only
+                font-size 30px
+          > ul.counters
+            display block
+            list-style none
+            margin 0
+            padding 0
+            > li
+              display inline-block
+              font-family normalFont
+              font-weight normal
+              font-size 14px
+              color white
+              &:not(:last-child)
+                &:after
+                  content '·'
+                  display inline-block
+                  padding 0 10px
+                  color white
+              @media small-only
+                display block
+                &:not(:last-child)
+                  &:after
+                    display none
+
+section.content
+  margin 0
+  > div.content-padding
+    padding 40px 0
+    &.sativa
+      background-image url(../images/sativa.jpg)
+  ul.links
+    list-style square
+    padding 0
+    margin-bottom 0
+    > li
+      margin 0
+      > a
+        defaultTransition()
+        color lighten(black, 20)
+        display inline-block
+        // padding 5px 15px
+        font-size 14px
+        // margin-top 5px
+        border-radius defaultRadius
+        &:hover
+          color mainColor
+  div.block
+    border-radius defaultRadius
+    background linear-gradient(top, darken(white, 5), white)
+    overflow hidden
+    &.blank
+      background none
+    &.space-bottom
+      margin-bottom 30px
+    > h1.title
+      display inline-block
+      font-weight 300
+      font-size 20px
+      background mainGradient
+      color white
+      padding 10px 20px
+      margin 0 0 15px 0
+    > div.content
+      padding 0 20px 15px 20px
+      > p
+        font-size 14px
+      button
+        margin 0
+  ul.feeds
+    imageHeight = 250px
+    cardBackgroundColor = white
+    &.cards
+      card(direction = 'left')
+        if direction == 'left'
+          > a
+            &:hover
+              > div.image
+                background-position center left
+            > div.image
+              float right
+              background-position center
+            > div.info
+              float left
+              &:after
+                left auto
+                border-width 10px
+                right: -(@border-width*2)
+                border-left-color cardBackgroundColor
+                border-right-color transparent
+        else
+          > a
+            &:hover
+              > div.image
+                background-position center right
+            > div.image
+              float left
+              background-position center
+            > div.info
+              float right
+              &:after
+                right auto
+                border-width 10px
+                left: -(@border-width*2)
+                border-left-color transparent
+                border-right-color cardBackgroundColor
+      > li
+        > a
+          display block
+          position relative
+          height imageHeight
+          width 100%
+          &:hover
+            > div.image
+              background-position center right
+            > div.info
+              > h3.title
+                background mainGradient
+                background-clip text
+                -webkit-text-fill-color transparent
+          > div.image
+            width 50%
+            float right
+            background-color darken(white, 20)
+            background-size cover
+            background-repeat none
+            background-position center
+            height imageHeight
+            z-index 1
+            defaultTransition()
+          > div.info
+            position relative
+            float left
+            background-color cardBackgroundColor
+            height imageHeight
+            width 50%
+            z-index 2
+            padding 20px 20px
+            &:after
+              content ''
+              display block
+              border-width 10px
+              border-style solid
+              border-color transparent
+              border-left-color cardBackgroundColor
+              width 0
+              height 0
+              position absolute
+              right: -(@border-width*2)
+              top 20%
+            > span.category
+              font-style italic
+              font-size 14px
+              font-family serifFont
+            > h3.title
+              font-weight 600
+              text-transform uppercase
+              font-size 16px
+              
+        @media large-up
+          &:nth-child(6n+1), &:nth-child(6n+2), &:nth-child(6n+3)
+            card('left')
+          &:nth-child(6n+4), &:nth-child(6n+5), &:nth-child(6n+6)
+            card(right)
+            
+        @media medium-only
+          &:nth-child(4n+1), &:nth-child(4n+2)
+            card('left')
+          &:nth-child(4n+3), &:nth-child(4n+4)
+            card(right)
+            
+        @media small-only
+          &:nth-child(2n+1)
+            card('left')
+          &:nth-child(2n)
+            card(right)
+        
+    &:not(.cards)
+      > li
+        div.image
+          border-radius defaultRadius defaultRadius 0 0
+          background-color darken(white, 20)
+          background-size cover
+          background-repeat none
+          background-position center
+          height imageHeight
+        overflow hidden
+        > div.card
+          div.image
+            padding 20px
+            color white
+            background mainGradient
+            h1.title
+              color white
+              font-size 25px
+              font-weight 300
+            p
+              font-weight normal
+              font-size 14px
+        > a
+          div.info
+            border-radius 0 0 defaultRadius defaultRadius
+            overflow hidden
+            padding 10px 20px
+            background linear-gradient(top, darken(white, 6), white)
+            > h3.title
+              font-weight normal
+              font-size 15px
+              margin 0
+            > span.category
+              margin 0
+              font-weight 600
+              text-transform uppercase
+              font-size 11px
+            
+  div.header
+    background linear-gradient(top, rgba(white, 1), rgba(white, 0))
+    h1.title
+      font-size 30px
+      font-weight 600
+      text-transform capitalize
+      margin 0 0 30px 0
+      padding-top 15px
+      padding-bottom 15px
+      defaultTransition()
+      @media medium-up
+        border-left 1px dotted darken(white, 20)
+        padding-left 25px
+      @media small-only
+        font-size 23px
+      @media medium-only
+        font-size 25px
+      @media large-up
+        font-size 33px
+    div.info
+      text-align right
+      position relative
+      font-size 14px
+      padding 25px 20px 0 0
+      > p
+        font-size 12px
+        margin 0
+        &.author
+          font-size 13px
+          font-weight 600
+          margin-top 5px
+        &.category
+          text-transform uppercase
+          font-size 25px
+          line-height 25px
+          font-weight 900
+          -webkit-text-fill-color transparent
+          background mainGradient
+          background-clip text
+          word-break break-word
+            
+  div.sharing
+    text-align right
+    margin 35px 0 30px 20px
+    
+  div.article
+    margin-top 30px
+    h1, h2, h3, h4, h5, h6
+      font-weight 600
+      margin 30px 0 15px 0
+    ul
+      li
+        font-family normalFont
+        font-weight normal
+        margin-bottom 5px
+        font-size 15px
+        color lighten(black, 30)
+        @media small-only
+          font-size 15px
+    p
+      font-size 15px
+      color lighten(black, 30)
+      @media small-only
+        font-size 14px
+    &.serif
+      p
+        font-family serifFont
+        a
+          font-family serifFont
+    div.embed
+      margin 30px 0
+      position relative
+      > a.source
+        display block
+        margin-top 10px
+        font-size 16px
+        word-break break-all
+        @media small-only
+          display none
+        &:before
+          font-family normalFont
+          content 'Source'
+          text-transform uppercase
+          font-size 12px
+          font-weight 600
+          margin-right 10px
+      > img ~ a.source
+        position absolute
+        font-size 0
+        margin 20px 20px 0 0
+        padding 3px 10px
+        background-color rgba(black, .6)
+        right 0
+        top 0
+        color white
+        border-radius defaultRadius
+        &:hover
+          background-color white
+          color black
+        &:before
+          margin 0
+    div.counter
+      position relative
+      badgeSize = 30px
+      > p.number
+        width badgeSize
+        height badgeSize
+        line-height badgeSize
+        color white
+        font-family normalFont
+        font-size 14px
+        text-align center
+        margin 0 15px 0 0
+        z-index 1
+        background mainGradient
+        border-radius badgeSize
+        position absolute
+        top -3px
+        left 0
+      > h4.title
+        margin: 0 0 0 (badgeSize + 15px)
+        color black
+        font-size 18px
+        font-weight normal
+        background rgba(white, .9)
+    ul.board
+      margin 0
+      padding 0
+      list-style none
+      @media medium-up
+        &:first-child
+          margin-top 90px
+
+section.social
+  socialBarHeight = 200px
+  div.cube-wrapper
+    height socialBarHeight
+    margin 0
+    div.social-links
+      position relative
+      height socialBarHeight
+      margin 0
+      padding 0
+      list-style none
+      div
+        position absolute
+        top 0
+        bottom 0
+        left 0
+        right 0
+        text-align center
+        color white
+        height socialBarHeight
+        > i
+          padding-top 40px
+          font-size 130px
+        &.facebook
+          background-color facebookColor
+        &.twitter
+          background-color twitterColor
+        &.google
+          background-color googleColor
+        &.pinterest
+          background-color pinterestColor
+  div.subscribe
+    background-color lighten(black, 5)
+    height socialBarHeight
+    margin 0
+    padding 10px 30px
+    @media small-only
+      margin-top 0
+      margin-bottom 20px
+    input
+      font-family normalFont
+      font-size 14px
+      height 35px
+      border none
+      padding 6px 15px
+    button
+      padding-top 0
+      padding-bottom 0
+    h1
+      text-align left
+      font-size 18px
+      color darken(white, 20)
+      text-transform uppercase
+      margin 0
+      padding 20px 0
+      font-weight 300
+      @media small-only
+        font-size 17px
+      > b
+        display inline-block
+        font-size 18px
+        font-weight 600
+        color white
+
+section.bottom
+  min-height 300px
+  background linear-gradient(top, darken(white, 3), darken(white, 10))
+  &.light
+    background-image none
+    background-color darken(white, 10)
+    h2.sub-title
+      color black
+    ul.category-links
+      > li
+        > a
+          color lighten(black, 30)
+  > div.row
+    > div.columns
+      background-image url(../images/footer/bg-0.svg)
+      background-position top right 15px
+      background-repeat no-repeat
+  div.footer-block
+    z-index 11
+  ul.category-links
+    margin-bottom 30px
+    > li
+      padding-bottom 0
+      > a
+        defaultTransition()
+        font-size 12px
+        color lighten(black, 10)
+        display block
+        font-weight 600
+        line-height 22px
+        width 100%
+        overflow hidden
+        text-overflow ellipsis
+        text-transform uppercase
+        &:hover, &:focus
+          color mainColor
+  h2.sub-title
+    margin 50px 0 10px 0
+    font-size 20px
+    font-weight normal
+    color black

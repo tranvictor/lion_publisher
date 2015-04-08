@@ -1,0 +1,198 @@
+extend layout
+
+block css
+
+block script
+	script(type="text/javascript", src="components/html.sortable/dist/html.sortable.min.js")
+	script(type="text/javascript", src="components/dropzone/downloads/dropzone.min.js")
+	script(type="text/javascript", src="scripts/page.new-article.js")
+
+block editor-menu
+	.row
+		.columns.small-12.medium-3.large-2
+			h3.title Dashboard
+		.columns.small-12.medium-9.large-10
+			ul.small-block-grid-2.medium-block-grid-3.large-block-grid-4.sub-menu
+				li
+					a
+						i.fa.fa-dashboard.space-10
+						| Dashboard
+				li
+					a
+						i.fa.fa-user.space-10
+						| Edit your profile
+				li
+					a
+						i.fa.fa-lock.space-10
+						| Sign out
+	.row
+		.columns.small-12.medium-3.large-2
+			h3.title Articles
+		.columns.small-12.medium-9.large-10
+			ul.small-block-grid-2.medium-block-grid-3.large-block-grid-4.sub-menu
+				li
+					a(href="articles.html")
+						i.fa.fa-list.space-10
+						| Your articles
+				li.active
+					a(href="new-article.html")
+						i.fa.fa-file.space-10
+						| New articles
+
+block notifications
+	.alert-box.note(data-alert)
+		| New article created
+		a.close &times;
+
+block content
+	.row
+		.columns.small-12.medium-8.small-text-centered
+			h2.title New article
+		.columns.text-right.small-12.medium-4
+			a.button.info.space.tiny.radius(href="view.html", target="_blank")
+				i.fa.fa-eye.space-10
+				| Preview
+			a.button.tiny.radius(href="")
+				i.fa.fa-save.space-10
+				| Save
+	.row
+		.columns
+			form(action="", method="post")
+				.row
+					.columns.small-12
+						label
+							input(type="checkbox")
+							| &nbsp;&nbsp;
+							| Is Published?
+					.columns.small-12.medium-6
+						label
+							| Title
+							input(type="text", name="title", placeholder="Article title", autocomplete="off")
+					.columns.small-12.medium-6
+						label
+							| Category
+							select(name="category-id")
+								option Relationship Tips
+								option Celebs
+								option Fitness
+								option Misc
+								option Funny
+								option Hot
+								option Tech
+								option Fashion
+								option Sports
+								option Beauty
+								option Nutritions
+				.row
+					.columns.small-12.medium-6
+						label
+							| Intro
+							textarea(name="intro", rows="5")
+					.columns.small-12.medium-6
+						label
+							| Outro
+							textarea(name="intro", rows="5")
+	.row
+		.columns
+			h3.sub-title Pages
+	.row
+		.columns.small-12.medium-6
+			h5 Create pages via uploads
+			form.dropzone#dropzone(action="http://localhost:3000/users/teensdigest.json", method="post", enctype="multipart/form-data")
+				.fallback
+					input(name="image-file", type="file")
+		.columns.small-12.medium-6
+			h5 Create pages via URLs
+			form
+				label
+					| enter image URLs here, separated by enters
+					textarea.sans(name="image-links", placeholder="http://imagelink.here")
+				a.button.tiny.secondary(href="")
+					i.fa.fa-check.space
+					| Fetch
+	.row.thumbs-holder
+		.columns
+
+			ul.thumbs
+				li.template
+					.image
+
+			//- ul.thumbs
+				li(role='option', aria-grabbed='false', draggable='true')
+					div.image(style='background-image: url(http://localhost:3000/avatars/raws/teensdigest.1416299110803.492590.jpg);')
+				li(role='option', aria-grabbed='false', draggable='true')
+					div.image(style='background-image: url(http://localhost:3000/avatars/raws/teensdigest.1416299110803.1080752.jpg);')
+				li(role='option', aria-grabbed='false', draggable='true')
+					div.image(style='background-image: url(http://localhost:3000/avatars/raws/teensdigest.1416299110807.4038701.jpg);')
+				li(role='option', aria-grabbed='false', draggable='true')
+					div.image(style='background-image: url(http://localhost:3000/avatars/raws/teensdigest.1416299110807.308741.jpg);')
+				li(role='option', aria-grabbed='false', draggable='true')
+					div.image(style='background-image: url(http://localhost:3000/avatars/raws/teensdigest.1416299110807.6442763.jpg);')
+				li(role='option', aria-grabbed='false', draggable='true')
+					div.image(style='background-image: url(http://localhost:3000/avatars/raws/teensdigest.1416299110985.7568742.jpg);')
+				li(role='option', aria-grabbed='false', draggable='true')
+					div.image(style='background-image: url(http://localhost:3000/avatars/raws/teensdigest.1416299110950.7589202.jpg);')
+				li(role='option', aria-grabbed='false', draggable='true')
+					div.image(style='background-image: url(http://localhost:3000/avatars/raws/teensdigest.1416299110943.1152528.jpg);')
+				li(role='option', aria-grabbed='false', draggable='true')
+					div.image(style='background-image: url(http://localhost:3000/avatars/raws/teensdigest.1416299110990.9700060.jpg);')
+				li(role='option', aria-grabbed='false', draggable='true')
+					div.image(style='background-image: url(http://localhost:3000/avatars/raws/teensdigest.1416299111000.7861091.jpg);')
+				li(role='option', aria-grabbed='false', draggable='true')
+					div.image(style='background-image: url(http://localhost:3000/avatars/raws/teensdigest.1416299110814.6924973.jpg);')
+				li(role='option', aria-grabbed='false', draggable='true')
+					div.image(style='background-image: url(http://localhost:3000/avatars/raws/teensdigest.1416299111139.4074270.jpg);')
+				li(role='option', aria-grabbed='false', draggable='true', style='display: block;')
+					div.image(style='background-image: url(http://localhost:3000/avatars/raws/teensdigest.1416299111150.8242641.jpg);')
+				li(role='option', aria-grabbed='false', draggable='true')
+					div.image(style='background-image: url(http://localhost:3000/avatars/raws/teensdigest.1416299111122.6877223.jpg);')
+				li(role='option', aria-grabbed='false', draggable='true')
+					div.image(style='background-image: url(http://localhost:3000/avatars/raws/teensdigest.1416299111346.1576962.jpg);')
+				li(role='option', aria-grabbed='false', draggable='true')
+					div.image(style='background-image: url(http://localhost:3000/avatars/raws/teensdigest.1416299111358.650947.jpg);')
+				li(role='option', aria-grabbed='false', draggable='true')
+					div.image(style='background-image: url(http://localhost:3000/avatars/raws/teensdigest.1416299111214.8483831.jpg);')
+				li(role='option', aria-grabbed='false', draggable='true')
+					div.image(style='background-image: url(http://localhost:3000/avatars/raws/teensdigest.1416299111214.9850409.jpg);')
+				li(role='option', aria-grabbed='false', draggable='true')
+					div.image(style='background-image: url(http://localhost:3000/avatars/raws/teensdigest.1416299111281.6034547.jpg);')
+				li(role='option', aria-grabbed='false', draggable='true')
+					div.image(style='background-image: url(http://localhost:3000/avatars/raws/teensdigest.1416299111353.5980700.jpg);')
+				li.template
+					div.image
+
+	.row
+		.columns
+			ul.pages
+				li.template
+					form
+						table
+							tbody
+								tr
+									td.image
+										.index
+											input#index(type="text", name="index", readonly)
+										ul.item-menu
+											li
+												a(href="#")
+													i.fa.fa-trash.space
+													| Del
+									label.upload-mask(type="file", for="image")
+									td.form
+										.row
+											.columns
+												input#page-title.dark(type="text", name="title", placeholder="Page title", value="")
+											.columns
+												input#page-image-url.dark.hide(type="text", name="image-url")
+												input#page-image-source.dark(type="text", name="image-source", placeholder="Source URL")
+											.columns
+												textarea#page-description.dark(name="text", placeholder="Page description", rows="10")
+
+	.row
+		.columns.text-right
+			a.button.info.space.tiny.radius(href="view.html", target="_blank")
+				i.fa.fa-eye.space-10
+				| Preview
+			a.button.tiny.radius(href="")
+				i.fa.fa-save.space-10
+				| Save

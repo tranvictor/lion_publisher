@@ -1,0 +1,31 @@
+{
+  "name": "magz",
+  "version": "0.0.0",
+  "authors": [
+    "Gia <gia@coa.vn>"
+  ],
+  "description": "xuxu",
+  "keywords": [],
+  "license": "MIT",
+  "homepage": "http://coa.vn",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.4.5",
+    "jquery": "~2.1.1",
+    "animate.css": "~3.2.0",
+    "wowjs": "~1.0.2",
+    "fontawesome": "~4.2.0",
+    "jquery.scrollTo": "~1.4.13",
+    "ScrollToFixed": "~1.0.6",
+    "dropzone": "~3.10.2",
+    "bxslider-4": "stevenwanderski/bxslider-4#~4.1.2",
+    "datatables": "~1.10.4",
+    "html.sortable": "~0.1.6"
+  }
+}
