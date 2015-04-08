@@ -1,4 +1,4 @@
-# new WOW().init()
+new WOW().init()
 $ document
   .ready () ->
 
@@ -29,15 +29,6 @@ $ document
       $ scrollTopButton
         .click () ->
           $.scrollTo $('body'), 1000
-      $ window
-        .scroll () ->
-          if $(window).scrollTop() > 400
-            $ scrollTopButton
-            .show() if $(window).width() >= 640
-          else
-            $ scrollTopButton
-            .hide()
-        .scroll()
 
     # search toggle bind
     $ 'a.search-toggle'
@@ -59,6 +50,20 @@ $ document
               .eq 0
               .click()
 
+    # color theme activator
+    $ 'ul.menu > li > a'
+      .click (e) ->
+        $ 'ul.menu > li'
+          .removeClass 'active'
+        $ this
+          .parent()
+          .addClass 'active'
+        e.preventDefault()
+        $ 'body'
+          .attr 'class', 'color-' + ($(this).parent().index() - 1)
+          .find 'div.header div.info p.category'
+          .text $(e.target).text()
+
     # menu toggle bind
     $ 'section.menu a.toggle'
       .click () ->
@@ -66,10 +71,10 @@ $ document
           .toggleClass 'show-for-medium-up'
 
     # notifications scroll to fixed
-    if typeof $.prototype.scrollToFixed == 'function'
-      $ 'section.notifications'
-        .scrollToFixed
-          marginTop: 110
+    # if typeof $.prototype.scrollToFixed == 'function'
+    #   $ 'section.notifications'
+    #     .scrollToFixed
+    #       marginTop: 110
 
     #  notifications
     Alert =
@@ -121,3 +126,4 @@ $ document
 
     # return
     null
+  
