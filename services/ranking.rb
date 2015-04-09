@@ -39,6 +39,7 @@ class Ranking
       <div class="trending">
         <div class="row">
           <div class="columns">
+            <a href="#" id="previous"></a><a href="#" id="next"></a>
             <ul class="slides">
               #{trending_html}
             </ul>

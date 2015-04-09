@@ -51,18 +51,18 @@ $ document
               .click()
 
     # color theme activator
-    $ 'ul.menu > li > a'
-      .click (e) ->
-        $ 'ul.menu > li'
-          .removeClass 'active'
-        $ this
-          .parent()
-          .addClass 'active'
-        e.preventDefault()
-        $ 'body'
-          .attr 'class', 'color-' + ($(this).parent().index() - 1)
-          .find 'div.header div.info p.category'
-          .text $(e.target).text()
+    # $ 'ul.menu > li > a'
+    #   .click (e) ->
+    #     $ 'ul.menu > li'
+    #       .removeClass 'active'
+    #     $ this
+    #       .parent()
+    #       .addClass 'active'
+    #     e.preventDefault()
+    #     $ 'body'
+    #       .attr 'class', 'color-' + ($(this).parent().index() - 1)
+    #       .find 'div.header div.info p.category'
+    #       .text $(e.target).text()
 
     # menu toggle bind
     $ 'section.menu a.toggle'
@@ -126,4 +126,3 @@ $ document
 
     # return
     null
-  

@@ -6,19 +6,21 @@
 <script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=253766078122207&version=v2.0";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
 <section class="top">
   <div class="row">
-    <div class="columns small-11 show-on-search hide search-form animated fadeIn">
-      <div class="row collapse">
-        <div class="columns small-11">
-          <form method="get" action="search">
-            <input placeholder="I'm looking for..." name="q" autocomplete="off" class="search-box radius">
-          </form>
+    <div class="columns medium-2"><a href="/" class="logo"></a></div>
+    <div class="columns medium-5 hide-for-small">
+      <form method="get" action="search" class="search-form">
+        <div class="row collapse">
+          <div class="columns small-9">
+            <input placeholder="I'm looking for..." name="q" autocomplete="off" class="search-box">
+          </div>
+          <div class="columns small-3">
+            <input type="submit" value="search">
+          </div>
         </div>
-        <div class="columns small-1 text-center"><a class="search-toggle"><i class="fa fa-close"></i></a></div>
-      </div>
+      </form>
     </div>
-    <div class="columns small-10 medium-3 small-text-centered small-centered medium-uncentered hide-on-search animated fadeIn"><a href="/" class="logo"></a></div>
-    <div class="columns small-1 medium-6 large-4 text-right hide-for-small hide-on-search animated fadeIn">
-      <ul class="social-networks">
+    <div class="columns medium-5 hide-for-small">
+      <ul class="social-networks text-right">
         <li><a class="facebook with-counter"><i class="fa fa-facebook-square"></i><span class="counter">1.2M</span></a></li>
         <li><a class="twitter"><i class="fa fa-twitter"></i></a></li>
         <li><a class="google-plus"><i class="fa fa-google-plus-square"></i></a></li>
